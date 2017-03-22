@@ -66,22 +66,50 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        UILabel *title =[UILabel new];
+        title.textColor = [UIColor blackColor];
+        title.font = [UIFont systemFontOfSize:16];
+        [cell addSubview:title];
+        [title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(cell.mas_left).with.offset(55);
+            make.centerY.equalTo(cell.mas_centerY);
+            make.size.mas_equalTo(CGSizeMake(150, 20));
+        }];
+        
+        UIImageView *image = [UIImageView new];
+        image.backgroundColor = [UIColor blackColor];
+        [cell addSubview:image];
+        [image mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(cell.mas_centerY);
+            make.left.equalTo(cell.mas_left).with.offset(15);
+            make.size.mas_equalTo(CGSizeMake(30, 30));
+        }];
+        
         if (indexPath.section==0){
             if (indexPath.row==0) {
-                cell.textLabel.text = @"点击登陆";
+                image.layer.masksToBounds=true;
+                image.layer.cornerRadius=40;
+                [image mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.size.mas_equalTo(CGSizeMake(80, 80));
+                }];
+                title.text = @"点击登陆";
+                [title mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.left.mas_equalTo(cell.mas_left).with.offset(105);
+                }];
             }else if(indexPath.row==1){
-                cell.textLabel.text = @"我的报告";
+                title.text = @"我的报告";
             }else if(indexPath.row==2){
-                cell.textLabel.text = @"我的订单";
+                title.text = @"我的订单";
             }
         }else if(indexPath.section==1){
             if (indexPath.row==0) {
-                cell.textLabel.text = @"帮助";
+                title.text = @"帮助";
             }else if(indexPath.row==1){
-                cell.textLabel.text = @"设置";
+                title.text = @"设置";
             }
         }else{
-            cell.textLabel.text = @"检查更新";
+            title.text = @"检查更新";
         }
     }
     return cell;

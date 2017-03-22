@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15395FEC1E82BD2700797C74 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEB1E82BD2700797C74 /* RegisterViewController.m */; };
+		15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEE1E82C24000797C74 /* LoginViewController.m */; };
 		15A0A3551E5843E0001A8610 /* WcyAdSplashImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */; };
 		15A0A35B1E58461E001A8610 /* MBPreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A0A3581E58461E001A8610 /* MBPreferenceManager.m */; };
 		15A199DA1E21F6C60063D373 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A199D91E21F6C60063D373 /* main.m */; };
@@ -93,6 +95,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15395FEA1E82BD2700797C74 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		15395FEB1E82BD2700797C74 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		15395FED1E82C24000797C74 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		15395FEE1E82C24000797C74 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		15A0A3531E5843E0001A8610 /* WcyAdSplashImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WcyAdSplashImgView.h; sourceTree = "<group>"; };
 		15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WcyAdSplashImgView.m; sourceTree = "<group>"; };
 		15A0A3571E58461E001A8610 /* MBPreferenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBPreferenceManager.h; sourceTree = "<group>"; };
@@ -250,6 +256,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15395FE81E82BCC700797C74 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				15A19A161E21F9B70063D373 /* HomeViewController.h */,
+				15A19A171E21F9B70063D373 /* HomeViewController.m */,
+				15A19A191E21FAC50063D373 /* InformationViewController.h */,
+				15A19A1A1E21FAC50063D373 /* InformationViewController.m */,
+				15A19A1C1E21FAEE0063D373 /* FunctionViewController.h */,
+				15A19A1D1E21FAEE0063D373 /* FunctionViewController.m */,
+				15A19A1F1E21FB1B0063D373 /* MyCenterViewController.h */,
+				15A19A201E21FB1B0063D373 /* MyCenterViewController.m */,
+			);
+			name = "首页";
+			sourceTree = "<group>";
+		};
+		15395FE91E82BCE000797C74 /* 注册&登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				15395FEA1E82BD2700797C74 /* RegisterViewController.h */,
+				15395FEB1E82BD2700797C74 /* RegisterViewController.m */,
+				15395FED1E82C24000797C74 /* LoginViewController.h */,
+				15395FEE1E82C24000797C74 /* LoginViewController.m */,
+			);
+			name = "注册&登陆";
+			sourceTree = "<group>";
+		};
 		15A0A3521E581BEA001A8610 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,14 +384,8 @@
 		15A19A221E21FB230063D373 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				15A19A161E21F9B70063D373 /* HomeViewController.h */,
-				15A19A171E21F9B70063D373 /* HomeViewController.m */,
-				15A19A191E21FAC50063D373 /* InformationViewController.h */,
-				15A19A1A1E21FAC50063D373 /* InformationViewController.m */,
-				15A19A1C1E21FAEE0063D373 /* FunctionViewController.h */,
-				15A19A1D1E21FAEE0063D373 /* FunctionViewController.m */,
-				15A19A1F1E21FB1B0063D373 /* MyCenterViewController.h */,
-				15A19A201E21FB1B0063D373 /* MyCenterViewController.m */,
+				15395FE91E82BCE000797C74 /* 注册&登陆 */,
+				15395FE81E82BCC700797C74 /* 首页 */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -660,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A19A781E222A990063D373 /* UIImage+GIF.m in Sources */,
+				15395FEC1E82BD2700797C74 /* RegisterViewController.m in Sources */,
 				15A19A751E222A990063D373 /* SDWebImageManager.m in Sources */,
 				15A19A7C1E222A990063D373 /* UIImageView+WebCache.m in Sources */,
 				15F2BE4D1E59885100780AAC /* MBUtilities.m in Sources */,
@@ -686,6 +713,7 @@
 				15A19A9E1E226E140063D373 /* MASLayoutConstraint.m in Sources */,
 				15A19AA11E226E140063D373 /* NSArray+MASAdditions.m in Sources */,
 				15A19A181E21F9B70063D373 /* HomeViewController.m in Sources */,
+				15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */,
 				15F2BE561E59A44300780AAC /* NewPagedFlowView.m in Sources */,
 				15A19A1E1E21FAEE0063D373 /* FunctionViewController.m in Sources */,
 				15A19A651E222A990063D373 /* AFHTTPSessionManager.m in Sources */,
