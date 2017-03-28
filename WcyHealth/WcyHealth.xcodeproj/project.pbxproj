@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		15395FEC1E82BD2700797C74 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEB1E82BD2700797C74 /* RegisterViewController.m */; };
 		15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEE1E82C24000797C74 /* LoginViewController.m */; };
+		159FCA271E8AA21F00391107 /* AllOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */; };
+		159FCA2D1E8AAB1B00391107 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FCA2C1E8AAB1B00391107 /* BookingViewController.m */; };
 		15A0A3551E5843E0001A8610 /* WcyAdSplashImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */; };
 		15A0A35B1E58461E001A8610 /* MBPreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A0A3581E58461E001A8610 /* MBPreferenceManager.m */; };
 		15A199DA1E21F6C60063D373 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A199D91E21F6C60063D373 /* main.m */; };
@@ -99,6 +101,10 @@
 		15395FEB1E82BD2700797C74 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		15395FED1E82C24000797C74 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		15395FEE1E82C24000797C74 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		159FCA251E8AA21F00391107 /* AllOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllOrderTableViewCell.h; sourceTree = "<group>"; };
+		159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllOrderTableViewCell.m; sourceTree = "<group>"; };
+		159FCA2B1E8AAB1B00391107 /* BookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingViewController.h; sourceTree = "<group>"; };
+		159FCA2C1E8AAB1B00391107 /* BookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingViewController.m; sourceTree = "<group>"; };
 		15A0A3531E5843E0001A8610 /* WcyAdSplashImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WcyAdSplashImgView.h; sourceTree = "<group>"; };
 		15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WcyAdSplashImgView.m; sourceTree = "<group>"; };
 		15A0A3571E58461E001A8610 /* MBPreferenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBPreferenceManager.h; sourceTree = "<group>"; };
@@ -261,12 +267,8 @@
 			children = (
 				15A19A161E21F9B70063D373 /* HomeViewController.h */,
 				15A19A171E21F9B70063D373 /* HomeViewController.m */,
-				15A19A191E21FAC50063D373 /* InformationViewController.h */,
-				15A19A1A1E21FAC50063D373 /* InformationViewController.m */,
-				15A19A1C1E21FAEE0063D373 /* FunctionViewController.h */,
-				15A19A1D1E21FAEE0063D373 /* FunctionViewController.m */,
-				15A19A1F1E21FB1B0063D373 /* MyCenterViewController.h */,
-				15A19A201E21FB1B0063D373 /* MyCenterViewController.m */,
+				159FCA2B1E8AAB1B00391107 /* BookingViewController.h */,
+				159FCA2C1E8AAB1B00391107 /* BookingViewController.m */,
 			);
 			name = "首页";
 			sourceTree = "<group>";
@@ -282,11 +284,40 @@
 			name = "注册&登陆";
 			sourceTree = "<group>";
 		};
+		159FCA281E8AAAA800391107 /* 订单 */ = {
+			isa = PBXGroup;
+			children = (
+				15A19A1C1E21FAEE0063D373 /* FunctionViewController.h */,
+				15A19A1D1E21FAEE0063D373 /* FunctionViewController.m */,
+			);
+			name = "订单";
+			sourceTree = "<group>";
+		};
+		159FCA291E8AAABD00391107 /* 资讯 */ = {
+			isa = PBXGroup;
+			children = (
+				15A19A191E21FAC50063D373 /* InformationViewController.h */,
+				15A19A1A1E21FAC50063D373 /* InformationViewController.m */,
+			);
+			name = "资讯";
+			sourceTree = "<group>";
+		};
+		159FCA2A1E8AAAD800391107 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				15A19A1F1E21FB1B0063D373 /* MyCenterViewController.h */,
+				15A19A201E21FB1B0063D373 /* MyCenterViewController.m */,
+			);
+			name = "个人中心";
+			sourceTree = "<group>";
+		};
 		15A0A3521E581BEA001A8610 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				15A0A3531E5843E0001A8610 /* WcyAdSplashImgView.h */,
 				15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */,
+				159FCA251E8AA21F00391107 /* AllOrderTableViewCell.h */,
+				159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -384,7 +415,10 @@
 		15A19A221E21FB230063D373 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				159FCA2A1E8AAAD800391107 /* 个人中心 */,
 				15395FE91E82BCE000797C74 /* 注册&登陆 */,
+				159FCA291E8AAABD00391107 /* 资讯 */,
+				159FCA281E8AAAA800391107 /* 订单 */,
 				15395FE81E82BCC700797C74 /* 首页 */,
 			);
 			name = Controller;
@@ -693,6 +727,7 @@
 				15A19A741E222A990063D373 /* SDWebImageDownloaderOperation.m in Sources */,
 				15A19AA41E226E140063D373 /* ViewController+MASAdditions.m in Sources */,
 				15AD75111E48B009000C2217 /* SVIndefiniteAnimatedView.m in Sources */,
+				159FCA271E8AA21F00391107 /* AllOrderTableViewCell.m in Sources */,
 				15A199DD1E21F6C60063D373 /* AppDelegate.m in Sources */,
 				15A19A9F1E226E140063D373 /* MASViewAttribute.m in Sources */,
 				15A19A9C1E226E140063D373 /* MASConstraint.m in Sources */,
@@ -728,6 +763,7 @@
 				15A19A7B1E222A990063D373 /* UIImageView+HighlightedWebCache.m in Sources */,
 				15A19A771E222A990063D373 /* UIButton+WebCache.m in Sources */,
 				15A19A6A1E222A990063D373 /* AFURLSessionManager.m in Sources */,
+				159FCA2D1E8AAB1B00391107 /* BookingViewController.m in Sources */,
 				15A19A6F1E222A990063D373 /* SDImageCache.m in Sources */,
 				15A19A6C1E222A990063D373 /* MKAnnotationView+WebCache.m in Sources */,
 				15A19A661E222A990063D373 /* AFNetworkReachabilityManager.m in Sources */,

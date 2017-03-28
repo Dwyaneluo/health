@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 
-@interface HomeViewController ()<NewPagedFlowViewDelegate, NewPagedFlowViewDataSource>
+@interface HomeViewController ()<NewPagedFlowViewDelegate, NewPagedFlowViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     
     UILabel *dateLb;
@@ -17,6 +17,7 @@
     UILabel *windLb;
     UIImageView *dayImgV;
     UIImageView *nightImgV;
+    UICollectionView *CollView;
 }
 /**
  *  图片数组
@@ -133,6 +134,20 @@
     }];
     
     [self setupUI];
+    
+    
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    //设置布局方向为垂直流布局
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.itemSize = CGSizeMake((ScreenWidth-40)/4, (ScreenWidth-40)/4);
+    CollView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 420, ScreenWidth, ScreenHeight-460) collectionViewLayout:layout];
+    CollView.scrollEnabled=YES;
+    CollView.delegate=self;
+    CollView.dataSource=self;
+    CollView.backgroundColor=[UIColor whiteColor];
+    [CollView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
+    [self.view addSubview:CollView];
 }
 
 
@@ -167,6 +182,8 @@
     [bottomScrollView addSubview:pageFlowView];
     
     self.pageFlowView = pageFlowView;
+    
+    
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     
@@ -209,6 +226,58 @@
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(NewPagedFlowView *)flowView {
     
     NSLog(@"TestViewController 滚动到了第%ld页",pageNumber);
+}
+#pragma mark- collectionView delegate
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 6;
+}
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSString * cellStr=@"cell";
+    UICollectionViewCell* cell =[collectionView dequeueReusableCellWithReuseIdentifier:cellStr forIndexPath:indexPath];
+    
+    UIImageView *image = [UIImageView new];
+    [cell addSubview:image];
+    [image mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(cell.mas_top);
+        make.centerX.equalTo(cell.mas_centerX);
+        make.size.mas_equalTo(CGSizeMake(60, 60));
+    }];
+    
+    UILabel *label = [UILabel new];
+    label.font = [UIFont boldSystemFontOfSize:16];
+    label.textAlignment = NSTextAlignmentRight;
+    [cell addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(image.mas_bottom).with.offset(5);
+        make.left.equalTo(cell.mas_left);
+        make.size.mas_equalTo(CGSizeMake((ScreenWidth-40)/4, 20));
+    }];
+    
+    if (indexPath.row==0){
+        image.image = [UIImage imageNamed:@"1"];
+        label.text = @"预约体检";
+    }else if (indexPath.row==1){
+        image.image = [UIImage imageNamed:@"2"];
+        label.text = @"体检报告";
+    }else if (indexPath.row==2){
+        image.image = [UIImage imageNamed:@"2"];
+        label.text = @"健康宣教";
+    }else if (indexPath.row==3){
+        image.image = [UIImage imageNamed:@"2"];
+        label.text = @"专项筛查";
+    }else if (indexPath.row==4){
+        image.image = [UIImage imageNamed:@"2"];
+        label.text = @"健康指数";
+    }else if (indexPath.row==5){
+        image.image = [UIImage imageNamed:@"2"];
+        label.text = @"健康管理";
+    }
+    
+    return cell;
+}
+//定义每个UICollectionView 的间距
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(10, 10, 10,10);
 }
 #pragma mark --懒加载
 - (NSMutableArray *)imageArray {
@@ -255,9 +324,6 @@
                 nightImgV.image = image;
             }];
         }
-
-        
-        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showWithStatus:@"获取失败"];
