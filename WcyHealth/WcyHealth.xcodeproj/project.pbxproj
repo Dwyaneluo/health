@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		15395FEC1E82BD2700797C74 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEB1E82BD2700797C74 /* RegisterViewController.m */; };
 		15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEE1E82C24000797C74 /* LoginViewController.m */; };
+		154455DC1E8D3516006CE72C /* ComboDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154455DB1E8D3516006CE72C /* ComboDetailViewController.m */; };
 		159FCA271E8AA21F00391107 /* AllOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */; };
 		159FCA2D1E8AAB1B00391107 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FCA2C1E8AAB1B00391107 /* BookingViewController.m */; };
 		15A0A3551E5843E0001A8610 /* WcyAdSplashImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */; };
@@ -64,6 +65,7 @@
 		15A19AA21E226E140063D373 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A19A941E226E140063D373 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		15A19AA31E226E140063D373 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A19A961E226E140063D373 /* View+MASAdditions.m */; };
 		15A19AA41E226E140063D373 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A19A991E226E140063D373 /* ViewController+MASAdditions.m */; };
+		15A8DE481E8BE24000FBAED1 /* BookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8DE471E8BE24000FBAED1 /* BookingTableViewCell.m */; };
 		15AD75111E48B009000C2217 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD75081E48B009000C2217 /* SVIndefiniteAnimatedView.m */; };
 		15AD75121E48B009000C2217 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD750A1E48B009000C2217 /* SVProgressAnimatedView.m */; };
 		15AD75131E48B009000C2217 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15AD750C1E48B009000C2217 /* SVProgressHUD.bundle */; };
@@ -101,6 +103,8 @@
 		15395FEB1E82BD2700797C74 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		15395FED1E82C24000797C74 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		15395FEE1E82C24000797C74 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		154455DA1E8D3516006CE72C /* ComboDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboDetailViewController.h; sourceTree = "<group>"; };
+		154455DB1E8D3516006CE72C /* ComboDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboDetailViewController.m; sourceTree = "<group>"; };
 		159FCA251E8AA21F00391107 /* AllOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllOrderTableViewCell.h; sourceTree = "<group>"; };
 		159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllOrderTableViewCell.m; sourceTree = "<group>"; };
 		159FCA2B1E8AAB1B00391107 /* BookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingViewController.h; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 		15A19A971E226E140063D373 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		15A19A981E226E140063D373 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		15A19A991E226E140063D373 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		15A8DE461E8BE24000FBAED1 /* BookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewCell.h; sourceTree = "<group>"; };
+		15A8DE471E8BE24000FBAED1 /* BookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewCell.m; sourceTree = "<group>"; };
 		15AD75071E48B009000C2217 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		15AD75081E48B009000C2217 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		15AD75091E48B009000C2217 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -269,6 +275,8 @@
 				15A19A171E21F9B70063D373 /* HomeViewController.m */,
 				159FCA2B1E8AAB1B00391107 /* BookingViewController.h */,
 				159FCA2C1E8AAB1B00391107 /* BookingViewController.m */,
+				154455DA1E8D3516006CE72C /* ComboDetailViewController.h */,
+				154455DB1E8D3516006CE72C /* ComboDetailViewController.m */,
 			);
 			name = "首页";
 			sourceTree = "<group>";
@@ -318,6 +326,8 @@
 				15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */,
 				159FCA251E8AA21F00391107 /* AllOrderTableViewCell.h */,
 				159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */,
+				15A8DE461E8BE24000FBAED1 /* BookingTableViewCell.h */,
+				15A8DE471E8BE24000FBAED1 /* BookingTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -730,6 +740,7 @@
 				159FCA271E8AA21F00391107 /* AllOrderTableViewCell.m in Sources */,
 				15A199DD1E21F6C60063D373 /* AppDelegate.m in Sources */,
 				15A19A9F1E226E140063D373 /* MASViewAttribute.m in Sources */,
+				15A8DE481E8BE24000FBAED1 /* BookingTableViewCell.m in Sources */,
 				15A19A9C1E226E140063D373 /* MASConstraint.m in Sources */,
 				15AD75141E48B009000C2217 /* SVProgressHUD.m in Sources */,
 				15A19A701E222A990063D373 /* SDImageCacheConfig.m in Sources */,
@@ -742,6 +753,7 @@
 				15A19A691E222A990063D373 /* AFURLResponseSerialization.m in Sources */,
 				15A19A7D1E222A990063D373 /* UIView+WebCache.m in Sources */,
 				15AD75151E48B009000C2217 /* SVRadialGradientLayer.m in Sources */,
+				154455DC1E8D3516006CE72C /* ComboDetailViewController.m in Sources */,
 				15A19A9B1E226E140063D373 /* MASCompositeConstraint.m in Sources */,
 				15A19A7A1E222A990063D373 /* UIImage+WebP.m in Sources */,
 				15A19A761E222A990063D373 /* SDWebImagePrefetcher.m in Sources */,

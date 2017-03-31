@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-
+#import "BookingViewController.h"
 @interface HomeViewController ()<NewPagedFlowViewDelegate, NewPagedFlowViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     
@@ -274,6 +274,19 @@
     }
     
     return cell;
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row==0){
+        BookingViewController *booking = [BookingViewController new];
+        booking.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:booking animated:YES];
+        
+    }else if (indexPath.row==1){
+    }else if (indexPath.row==2){
+    }else if (indexPath.row==3){
+    }else if (indexPath.row==4){
+    }else if (indexPath.row==5){
+    }
 }
 //定义每个UICollectionView 的间距
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
