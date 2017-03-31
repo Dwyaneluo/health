@@ -94,6 +94,44 @@
         make.top.equalTo(detailLb.mas_bottom).with.offset(5);
         make.size.mas_equalTo(CGSizeMake(80, 20));
     }];
+    
+    confirmBtn = [UIButton new];
+    [confirmBtn setTitle:@"立即预约" forState:UIControlStateNormal];
+    [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    confirmBtn.backgroundColor = [UIColor redColor];
+    [head addSubview:confirmBtn];
+    [confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(oldPrice.mas_bottom).with.offset(20);
+        make.right.equalTo(head.mas_right).with.offset(-10);
+        make.size.mas_equalTo(CGSizeMake(80, 40));
+    }];
+    
+    callConsultBtn = [UIButton new];
+    [callConsultBtn setTitle:@"电话咨询" forState:UIControlStateNormal];
+    [callConsultBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    callConsultBtn.layer.borderWidth = 1;
+    callConsultBtn.layer.backgroundColor = [UIColor blueColor].CGColor;
+    [callConsultBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+    [head addSubview:callConsultBtn];
+    [callConsultBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(oldPrice.mas_bottom).with.offset(80);
+        make.left.equalTo(head.mas_left).with.offset(5);
+        make.size.mas_equalTo(CGSizeMake(80, 40));
+    }];
+    
+    onlineConsultBtn = [UIButton new];
+    [onlineConsultBtn setTitle:@"在线咨询" forState:UIControlStateNormal];
+    [onlineConsultBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    onlineConsultBtn.layer.borderWidth = 1;
+    onlineConsultBtn.layer.backgroundColor = [UIColor redColor].CGColor;
+    [onlineConsultBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+    [head addSubview:onlineConsultBtn];
+    [onlineConsultBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(oldPrice.mas_bottom).with.offset(80);
+        make.left.equalTo(head.mas_left).with.offset(5);
+        make.size.mas_equalTo(CGSizeMake(80, 40));
+    }];
+    
 }
 #pragma mark-  tablview delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
