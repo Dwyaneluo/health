@@ -46,8 +46,9 @@
     imageV.backgroundColor = [UIColor redColor];
     [head addSubview:imageV];
     [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(head);
-        make.height.mas_equalTo(@100);
+        make.top.equalTo(head);
+        make.centerX.equalTo(head);
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth*3/4, ScreenWidth*3/8));
     }];
     
     nameLb = [UILabel new];
@@ -86,7 +87,6 @@
     
     oldPrice = [UILabel new];
     oldPrice.text = @"原价:140";
-    oldPrice.textColor = [UIColor redColor];
     oldPrice.font = [UIFont systemFontOfSize:14];
     [head addSubview:oldPrice];
     [oldPrice mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -107,29 +107,37 @@
     }];
     
     callConsultBtn = [UIButton new];
+    callConsultBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [callConsultBtn setTitle:@"电话咨询" forState:UIControlStateNormal];
     [callConsultBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     callConsultBtn.layer.borderWidth = 1;
-    callConsultBtn.layer.backgroundColor = [UIColor blueColor].CGColor;
+    callConsultBtn.layer.borderColor = [UIColor blueColor].CGColor;
     [callConsultBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+    callConsultBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 60);
+    //button标题的偏移量，这个偏移量是相对于图片的
+    callConsultBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [head addSubview:callConsultBtn];
     [callConsultBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(oldPrice.mas_bottom).with.offset(80);
+        make.top.equalTo(oldPrice.mas_bottom).with.offset(20);
         make.left.equalTo(head.mas_left).with.offset(5);
-        make.size.mas_equalTo(CGSizeMake(80, 40));
+        make.size.mas_equalTo(CGSizeMake((ScreenWidth-30)/3, 40));
     }];
     
     onlineConsultBtn = [UIButton new];
+    onlineConsultBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [onlineConsultBtn setTitle:@"在线咨询" forState:UIControlStateNormal];
     [onlineConsultBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     onlineConsultBtn.layer.borderWidth = 1;
-    onlineConsultBtn.layer.backgroundColor = [UIColor redColor].CGColor;
+    onlineConsultBtn.layer.borderColor = [UIColor redColor].CGColor;
     [onlineConsultBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+    onlineConsultBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 60);
+    //button标题的偏移量，这个偏移量是相对于图片的
+    onlineConsultBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [head addSubview:onlineConsultBtn];
     [onlineConsultBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(oldPrice.mas_bottom).with.offset(80);
-        make.left.equalTo(head.mas_left).with.offset(5);
-        make.size.mas_equalTo(CGSizeMake(80, 40));
+        make.top.equalTo(oldPrice.mas_bottom).with.offset(20);
+        make.left.equalTo(callConsultBtn.mas_right).with.offset(20);
+        make.size.mas_equalTo(CGSizeMake((ScreenWidth-40)/3, 40));
     }];
     
 }
@@ -156,7 +164,8 @@
     if (cell!=nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        if (indexPath.section==0) {
+        }
     }
     return cell;
 }
