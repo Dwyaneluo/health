@@ -31,6 +31,10 @@
 }
 
 - (void)createView{
+    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
+    back.backgroundColor = [UIColor blackColor];
+    self.navigationItem.leftBarButtonItem.customView = back;
+    
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     table.delegate=self;
     table.dataSource=self;
@@ -141,9 +145,36 @@
     }];
     
 }
+-(void)sectionClick{
+    
+}
 #pragma mark-  tablview delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 5;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *headSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
+    
+    UILabel* title = [UILabel new];
+    title.font = [UIFont systemFontOfSize:13];
+    [headSection addSubview:title];
+    [title mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(headSection.mas_centerY);
+        make.left.equalTo(headSection.mas_left).with.offset(15);
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 20));
+    }];
+    if (section==0) {
+        title.text =  @"套餐内容";
+    }else if (section==1){
+        title.text = @"科室检查（4项）";
+    }else if (section==2){
+        title.text = @"实验室检查（3项）";
+    }else if (section==3){
+        title.text = @"医技检查（2项）";
+    }else {
+        title.text = @"其它检查（2项）";
+    }
+    return headSection;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
@@ -158,6 +189,13 @@
         return 2;
     }
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        return 100;
+    }else{
+        return 60;
+    }
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellStr= @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
@@ -165,10 +203,57 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (indexPath.section==0) {
+            
+            UILabel* title = [UILabel new];
+            title.font = [UIFont systemFontOfSize:13];
+            title.text = @"适用人群: 青年女性， 青年男性，中年男性，中年女性";
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:title.text];
+            [attrStr addAttribute:NSFontAttributeName
+                            value:[UIFont systemFontOfSize:15]
+                            range:NSMakeRange(0, 4)];
+            [attrStr addAttribute:NSForegroundColorAttributeName
+                            value:[UIColor blueColor]
+                            range:NSMakeRange(0, 4)];
+            title.attributedText = attrStr;
+            [cell addSubview:title];
+            [title mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(cell.mas_top).with.offset(10);
+                make.left.equalTo(cell.mas_left).with.offset(5);
+                make.size.mas_equalTo(CGSizeMake(ScreenWidth-10, 20));
+            }];
+            
+            UILabel* title2 = [UILabel new];
+            title2.font = [UIFont systemFontOfSize:13];
+            title2.text = @"重点检查：基础性全身检查";
+            NSMutableAttributedString *attrStr1 = [[NSMutableAttributedString alloc] initWithString:title2.text];
+            [attrStr1 addAttribute:NSFontAttributeName
+                            value:[UIFont systemFontOfSize:15]
+                            range:NSMakeRange(0, 4)];
+            [attrStr1 addAttribute:NSForegroundColorAttributeName
+                            value:[UIColor blueColor]
+                            range:NSMakeRange(0, 4)];
+            title2.attributedText = attrStr1;
+            [cell addSubview:title2];
+            [title2 mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(title.mas_bottom).with.offset(10);
+                make.left.equalTo(cell.mas_left).with.offset(5);
+                make.size.mas_equalTo(CGSizeMake(ScreenWidth-10, 20));
+            }];
+            
+            UILabel* title3 = [UILabel new];
+            title3.font = [UIFont systemFontOfSize:13];
+            title3.text = @"体检项目（4项）";
+            [cell addSubview:title3];
+            [title3 mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(title2.mas_bottom).with.offset(10);
+                make.left.equalTo(cell.mas_left).with.offset(5);
+                make.size.mas_equalTo(CGSizeMake(ScreenWidth-10, 20));
+            }];
         }
     }
     return cell;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
