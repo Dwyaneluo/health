@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152F8DC11E96724F0070939C /* MakeAppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 152F8DC01E96724F0070939C /* MakeAppointmentViewController.m */; };
 		15395FEC1E82BD2700797C74 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEB1E82BD2700797C74 /* RegisterViewController.m */; };
 		15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEE1E82C24000797C74 /* LoginViewController.m */; };
 		154455DC1E8D3516006CE72C /* ComboDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154455DB1E8D3516006CE72C /* ComboDetailViewController.m */; };
@@ -99,6 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		152F8DBF1E96724F0070939C /* MakeAppointmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeAppointmentViewController.h; sourceTree = "<group>"; };
+		152F8DC01E96724F0070939C /* MakeAppointmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeAppointmentViewController.m; sourceTree = "<group>"; };
 		15395FEA1E82BD2700797C74 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		15395FEB1E82BD2700797C74 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		15395FED1E82C24000797C74 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				159FCA2C1E8AAB1B00391107 /* BookingViewController.m */,
 				154455DA1E8D3516006CE72C /* ComboDetailViewController.h */,
 				154455DB1E8D3516006CE72C /* ComboDetailViewController.m */,
+				152F8DBF1E96724F0070939C /* MakeAppointmentViewController.h */,
+				152F8DC01E96724F0070939C /* MakeAppointmentViewController.m */,
 			);
 			name = "首页";
 			sourceTree = "<group>";
@@ -754,6 +759,7 @@
 				15A19A7D1E222A990063D373 /* UIView+WebCache.m in Sources */,
 				15AD75151E48B009000C2217 /* SVRadialGradientLayer.m in Sources */,
 				154455DC1E8D3516006CE72C /* ComboDetailViewController.m in Sources */,
+				152F8DC11E96724F0070939C /* MakeAppointmentViewController.m in Sources */,
 				15A19A9B1E226E140063D373 /* MASCompositeConstraint.m in Sources */,
 				15A19A7A1E222A990063D373 /* UIImage+WebP.m in Sources */,
 				15A19A761E222A990063D373 /* SDWebImagePrefetcher.m in Sources */,
