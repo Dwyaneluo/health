@@ -28,7 +28,8 @@
 - (void)createView{
     UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
     back.backgroundColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem.customView = back;
+    [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
     
     defaultBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth/3, 40)];
     [defaultBtn setTitle:@"默认" forState:UIControlStateNormal];
@@ -60,6 +61,9 @@
     table.rowHeight = 120;
     [self.view addSubview:table];
 
+}
+- (void)backBtnClick{
+    [self .navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

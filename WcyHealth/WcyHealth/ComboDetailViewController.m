@@ -20,6 +20,9 @@
     UIButton *callConsultBtn;//电话咨询
     UIButton *onlineConsultBtn;//在线咨询
 }
+@property(nonatomic, strong)NSMutableArray *rowInSectionArray;//section中的cell个数
+@property(nonatomic, strong)NSMutableArray *selectedArray;//是否被点击
+@property(nonatomic, strong)NSMutableArray *sectionArray;//section标题
 @end
 
 @implementation ComboDetailViewController
@@ -28,12 +31,16 @@
     [super viewDidLoad];
     self.title = @"套餐详情";
     [self createView];
+    _sectionArray = [NSMutableArray arrayWithObjects:@"套餐内容",@"科室检查（4项）",@"实验室检查（3项）",@"医技检查（2项）",@"其它检查（2项）", nil];//每个分区的标题
+    _rowInSectionArray = [NSMutableArray arrayWithObjects:@"1",@"4",@"3",@"2",@"2", nil];//每个分区中cell的个数
+    _selectedArray = [NSMutableArray arrayWithObjects:@"1",@"0",@"0",@"0",@"0", nil];//这个用于判断展开还是缩回当前section的cell
 }
 
 - (void)createView{
     UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
     back.backgroundColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem.customView = back;
+    [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
     
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     table.delegate=self;
@@ -41,6 +48,7 @@
     table.tableFooterView = [UIView new];
     [table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
+    table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:table];
     
     UIView *head = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 300)];
@@ -145,49 +153,53 @@
     }];
     
 }
--(void)sectionClick{
-    
+- (void)backBtnClick{
+    [self .navigationController popViewControllerAnimated:YES];
+}
+-(void)sectionClick:(UIButton*)button{
+    if ([_selectedArray[button.tag - 1000] isEqualToString:@"0"]) {
+        
+        
+        //如果当前点击的section是缩回的,那么点击后就需要把它展开,是_selectedArray对应的值为1,这样当前section返回cell的个数就变为真实个数,然后刷新这个section就行了
+        [_selectedArray replaceObjectAtIndex:button.tag - 1000 withObject:@"1"];
+        [table reloadSections:[NSIndexSet indexSetWithIndex:button.tag - 1000] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else
+    {
+        //如果当前点击的section是展开的,那么点击后就需要把它缩回,使_selectedArray对应的值为0,这样当前section返回cell的个数变成0,然后刷新这个section就行了
+        [_selectedArray replaceObjectAtIndex:button.tag - 1000 withObject:@"0"];
+        [table reloadSections:[NSIndexSet indexSetWithIndex:button.tag - 1000] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 #pragma mark-  tablview delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return _sectionArray.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
     
-    UILabel* title = [UILabel new];
-    title.font = [UIFont systemFontOfSize:13];
-    [headSection addSubview:title];
-    [title mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(headSection.mas_centerY);
-        make.left.equalTo(headSection.mas_left).with.offset(15);
-        make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 20));
-    }];
-    if (section==0) {
-        title.text =  @"套餐内容";
-    }else if (section==1){
-        title.text = @"科室检查（4项）";
-    }else if (section==2){
-        title.text = @"实验室检查（3项）";
-    }else if (section==3){
-        title.text = @"医技检查（2项）";
-    }else {
-        title.text = @"其它检查（2项）";
-    }
+    UIButton *sectionButton =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
+    [sectionButton setTitle:[_sectionArray objectAtIndex:section] forState:UIControlStateNormal];
+    [sectionButton addTarget:self action:@selector(sectionClick:) forControlEvents:UIControlEventTouchUpInside];
+    sectionButton.titleLabel.font = [UIFont systemFontOfSize:15];
+//    sectionButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    sectionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    sectionButton.backgroundColor = UIColorFromHexValue(0xf4f4f4);
+    [sectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    sectionButton.tag = 1000 + section;
+    [headSection addSubview:sectionButton];
+    
     return headSection;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section==0) {
-        return 1;
-    }else if(section==1){
-        return 4;
-    }else if(section==2){
-        return 3;
-    }else if(section==3){
-        return 2;
-    }else{
-        return 2;
+    //判断section的标记是否为1,如果是说明为展开,就返回真实个数,如果不是就说明是缩回,返回0.
+    if ([_selectedArray[section] isEqualToString:@"1"]) {
+        return [_rowInSectionArray[section] integerValue];
     }
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
@@ -248,6 +260,37 @@
                 make.top.equalTo(title2.mas_bottom).with.offset(10);
                 make.left.equalTo(cell.mas_left).with.offset(5);
                 make.size.mas_equalTo(CGSizeMake(ScreenWidth-10, 20));
+            }];
+        }else{
+            UILabel* title = [UILabel new];
+            title.font = [UIFont systemFontOfSize:13];
+            title.textAlignment = NSTextAlignmentCenter;
+            title.text = @"内科";
+            [cell addSubview:title];
+            [title mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(cell.mas_centerY);
+                make.left.equalTo(cell.mas_left);
+                make.size.mas_equalTo(CGSizeMake(100, 20));
+            }];
+            
+            UIView *line = [UIView new];
+            line.backgroundColor = [UIColor blackColor];
+            [cell addSubview:line];
+            [line mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(title.mas_right);
+                make.top.equalTo(cell);
+                make.width.mas_equalTo(@1);
+            }];
+            
+            UILabel* title2 = [UILabel new];
+            title2.font = [UIFont systemFontOfSize:13];
+            title2.numberOfLines=2;
+            title2.text = @"心，肺，肝，脾，腹部，现病史及既往病史采集";
+            [cell addSubview:title2];
+            [title2 mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(cell.mas_centerY);
+                make.left.equalTo(line.mas_right).with.offset(4);
+                make.size.mas_equalTo(CGSizeMake(ScreenWidth-105, 40));
             }];
         }
     }
