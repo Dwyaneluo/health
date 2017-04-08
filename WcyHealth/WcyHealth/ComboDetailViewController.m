@@ -8,6 +8,7 @@
 
 #import "ComboDetailViewController.h"
 #import "MBUtilities.h"
+#import "MakeAppointmentViewController.h"
 @interface ComboDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *table;
@@ -110,6 +111,7 @@
     confirmBtn = [UIButton new];
     [confirmBtn setTitle:@"立即预约" forState:UIControlStateNormal];
     [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [confirmBtn addTarget:self action:@selector(confirmBtnClick) forControlEvents:UIControlEventTouchUpInside];
     confirmBtn.backgroundColor = [UIColor redColor];
     [head addSubview:confirmBtn];
     [confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -152,6 +154,11 @@
         make.size.mas_equalTo(CGSizeMake((ScreenWidth-40)/3, 40));
     }];
     
+}
+#pragma mark - 按钮点击事件
+- (void)confirmBtnClick{
+    MakeAppointmentViewController *appoint = [MakeAppointmentViewController new];
+    [self.navigationController pushViewController:appoint animated:YES];
 }
 - (void)backBtnClick{
     [self .navigationController popViewControllerAnimated:YES];
@@ -278,7 +285,8 @@
             [cell addSubview:line];
             [line mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(title.mas_right);
-                make.top.equalTo(cell);
+                make.top.equalTo(cell.mas_top).with.offset(1);
+                make.bottom.equalTo(cell.mas_bottom).with.offset(-1);
                 make.width.mas_equalTo(@1);
             }];
             

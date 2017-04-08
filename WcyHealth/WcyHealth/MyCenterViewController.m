@@ -9,6 +9,8 @@
 #import "MyCenterViewController.h"
 #import "RegisterViewController.h"
 #import "LoginViewController.h"
+#import "medicalReportViewController.h"
+#import "PersonInfoViewController.h"
 @interface MyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
@@ -120,7 +122,13 @@
         if (indexPath.row==0) {
             [self presentViewController:[LoginViewController new] animated:YES completion:nil];
         }else if(indexPath.row==1){
+            medicalReportViewController *medical = [medicalReportViewController new];
+            medical.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:medical animated:YES];
         }else if(indexPath.row==2){
+            PersonInfoViewController *person = [PersonInfoViewController new];
+            person.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:person animated:YES];
         }
     }else if(indexPath.section==1){
         if (indexPath.row==0) {

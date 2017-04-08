@@ -1,49 +1,39 @@
 //
-//  MakeAppointmentViewController.m
+//  PersonInfoViewController.m
 //  WcyHealth
 //
-//  Created by 天涯 on 2017/4/6.
+//  Created by 天涯 on 2017/4/8.
 //  Copyright © 2017年 tianya. All rights reserved.
 //
 
-#import "MakeAppointmentViewController.h"
+#import "PersonInfoViewController.h"
 
-@interface MakeAppointmentViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface PersonInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
-    UILabel *orderNameLb;
     UITextField * nameTld;
-    UITextField *dateTld;
     UITextField *phoneNumTld;
     UITextField *IdCardTld;
-    UILabel *priceLb;
-    UIButton *submitBtn;
-    
-    UIButton *personBtn;
-    UIButton *dateBtn;
-    
     UIButton *manBtn;
     UIButton *WomanBtn;
     UIButton *marriedBtn;
     UIButton *unmarriedBtn;
+    
+    UIButton *confirmBtn;
+
 }
+
 @end
 
-@implementation MakeAppointmentViewController
+@implementation PersonInfoViewController
 -(instancetype)init{
     self= [super init];
     if (self) {
-        orderNameLb = [UILabel new];
-        nameTld = [UITextField new];
-        dateTld = [UITextField new];
-        phoneNumTld = [UITextField new];
-        IdCardTld = [UITextField new];
-        
-        personBtn = [UIButton new];
-        dateBtn = [UIButton new];
-        
         manBtn = [UIButton new];
         WomanBtn = [UIButton new];
+        nameTld = [UITextField new];
+        phoneNumTld = [UITextField new];
+        IdCardTld = [UITextField new];
         marriedBtn = [UIButton new];
         unmarriedBtn = [UIButton new];
     }
@@ -51,158 +41,102 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.title = @"订单填写";
+    self.title = @"个人信息";
     [self createView];
 }
 
-- (void)createView{
+-(void)createView {
     UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
     back.backgroundColor = [UIColor blackColor];
     [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
-    
-    table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-50)];
+
+    table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    [self.view addSubview:table];
     table.delegate=self;
     table.dataSource=self;
-    table.tableFooterView = [UIView new];
     table.rowHeight=50;
     [table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    table.tableFooterView =[UIView new];
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
-    [self.view addSubview:table];
     
-    UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight-50, ScreenWidth, 50)];
-    bottomView.backgroundColor = UIColorFromHexValue(0xf4f4f4);
-    [self.view addSubview:bottomView];
-
-    priceLb = [UILabel new];
-    priceLb.font = [UIFont boldSystemFontOfSize:15];
-    priceLb.textAlignment = NSTextAlignmentCenter;
-    priceLb.text = @"在线实付:¥99.00";
-    [bottomView addSubview:priceLb];
-    [priceLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(bottomView.mas_centerY);
-        make.left.equalTo(bottomView.mas_left);
-        make.size.mas_equalTo(CGSizeMake(ScreenWidth/2, 20));
+    
+    confirmBtn = [UIButton new];
+    confirmBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    [confirmBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [confirmBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    confirmBtn.layer.masksToBounds = YES;
+    confirmBtn.layer.cornerRadius = 3;
+    confirmBtn.layer.borderWidth = 1;
+    confirmBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    [table addSubview:confirmBtn];
+    [confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(table.mas_centerX);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-15);
+        make.size.mas_equalTo(CGSizeMake(200, 30));
     }];
-    
-    submitBtn = [UIButton new];
-    submitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:24];
-    [submitBtn setTitle:@"提交订单" forState:UIControlStateNormal];
-    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    submitBtn.backgroundColor = UIColorFromHexValue(0x169BD5);
-    [bottomView addSubview:submitBtn];
-    [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.right.equalTo(bottomView);
-        make.width.mas_equalTo(@(ScreenWidth/2));
-    }];
-    
 }
 - (void)backBtnClick{
     [self .navigationController popViewControllerAnimated:YES];
 }
-#pragma mark - tableview delegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
+#pragma mark - 列表代理方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 7;
+    return 5;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *cellStr= @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
-    if (cell!=nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
+    NSString * celLStr= @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
+    if (cell!=nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        if (indexPath.row==0) {
-            UILabel *title = [UILabel new];
-            title.font = [UIFont boldSystemFontOfSize:15];
-            [cell addSubview:title];
-            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(cell.mas_centerY);
-                make.left.equalTo(cell.mas_left).with.offset(10);
-                make.size.mas_equalTo(CGSizeMake(150, 20));
-            }];
-            title.text = @"套餐名称";
+        UILabel *title = [UILabel new];
+        title.font = [UIFont systemFontOfSize:15];
+        [cell addSubview:title];
+        [title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(cell.mas_centerY);
+            make.left.equalTo(cell.mas_left).with.offset(10);
+            make.size.mas_equalTo(CGSizeMake(80, 20));
+        }];
+        
+        if(indexPath.row==0){
             
-            orderNameLb.text = @"入职体检套餐";
-            orderNameLb.textAlignment = NSTextAlignmentRight;
-            orderNameLb.font = [UIFont systemFontOfSize:15];
-            [cell addSubview:orderNameLb];
-            [orderNameLb mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(cell.mas_centerY);
-                make.right.equalTo(cell.mas_right).with.offset(-15);
-                make.size.mas_equalTo(CGSizeMake(200, 20));
-            }];
-        }else if(indexPath.row==1){
+            title.text = @"姓 名：";
+            
             nameTld.borderStyle = UITextBorderStyleRoundedRect;
             nameTld.placeholder = @"请输入体检人姓名";
             [nameTld setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
             [cell addSubview:nameTld];
             [nameTld mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(cell.mas_centerY);
-                make.left.equalTo(cell.mas_left).with.offset(10);
+                make.right.equalTo(cell.mas_right).with.offset(-15);
                 make.size.mas_equalTo(CGSizeMake(200, 30));
             }];
             
-            personBtn.backgroundColor = [UIColor blackColor];
-            [cell addSubview:personBtn];
-            [personBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(cell.mas_centerY);
-                make.right.equalTo(cell.mas_right).with.offset(-10);
-                make.size.mas_equalTo(CGSizeMake(40, 40));
-            }];
-            
-        }else if(indexPath.row==2){
-            dateTld.borderStyle = UITextBorderStyleRoundedRect;
-            dateTld.placeholder = @"请输入体检日期";
-            [dateTld setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
-            [cell addSubview:dateTld];
-            [dateTld mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(cell.mas_centerY);
-                make.left.equalTo(cell.mas_left).with.offset(10);
-                make.size.mas_equalTo(CGSizeMake(200, 30));
-            }];
-            
-            dateBtn.backgroundColor = [UIColor blackColor];
-            [cell addSubview:dateBtn];
-            [dateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(cell.mas_centerY);
-                make.right.equalTo(cell.mas_right).with.offset(-10);
-                make.size.mas_equalTo(CGSizeMake(40, 40));
-            }];
-        }else if(indexPath.row==3){
+        }else if(indexPath.row==1){
+            title.text = @"手机号：";
             phoneNumTld.borderStyle = UITextBorderStyleRoundedRect;
-            phoneNumTld.placeholder = @"请输入体检人手机";
+            phoneNumTld.placeholder = @"请输入手机号";
             [phoneNumTld setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
             [cell addSubview:phoneNumTld];
             [phoneNumTld mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(cell.mas_centerY);
-                make.left.equalTo(cell.mas_left).with.offset(10);
+                make.right.equalTo(cell.mas_right).with.offset(-15);
                 make.size.mas_equalTo(CGSizeMake(200, 30));
             }];
-        }else if(indexPath.row==4){
+        }else if(indexPath.row==2){
+            title.text = @"身份证：";
             IdCardTld.borderStyle = UITextBorderStyleRoundedRect;
-            IdCardTld.placeholder = @"请输入体检人身份证";
+            IdCardTld.placeholder = @"请输入人身份证号";
             [IdCardTld setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
             [cell addSubview:IdCardTld];
             [IdCardTld mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(cell.mas_centerY);
-                make.left.equalTo(cell.mas_left).with.offset(10);
+                make.right.equalTo(cell.mas_right).with.offset(-15);
                 make.size.mas_equalTo(CGSizeMake(200, 30));
             }];
-        }else if(indexPath.row==5){
-            UILabel *title = [UILabel new];
-            title.font = [UIFont boldSystemFontOfSize:15];
-            [cell addSubview:title];
-            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(cell.mas_centerY);
-                make.left.equalTo(cell.mas_left).with.offset(10);
-                make.size.mas_equalTo(CGSizeMake(60, 20));
-            }];
-            title.text = @"性别";
-            
+        }else if(indexPath.row==3){
+            title.text = @"性 别：";
             [manBtn setTitle:@"男" forState:UIControlStateNormal];
             manBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
             [manBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -230,17 +164,9 @@
                 make.left.equalTo(manBtn.mas_right);
                 make.size.mas_equalTo(CGSizeMake(80, 40));
             }];
-        }else if(indexPath.row==6){
-            UILabel *title = [UILabel new];
-            title.font = [UIFont boldSystemFontOfSize:15];
-            [cell addSubview:title];
-            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(cell.mas_centerY);
-                make.left.equalTo(cell.mas_left).with.offset(10);
-                make.size.mas_equalTo(CGSizeMake(60, 20));
-            }];
-            title.text = @"婚否";
-            
+        }else if(indexPath.row==4){
+
+            title.text = @"婚 否";
             [marriedBtn setTitle:@"未婚" forState:UIControlStateNormal];
             marriedBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
             [marriedBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
@@ -269,16 +195,15 @@
                 make.size.mas_equalTo(CGSizeMake(80, 40));
             }];
         }
-
     }
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.view endEditing:YES];
-}
+
 
 @end

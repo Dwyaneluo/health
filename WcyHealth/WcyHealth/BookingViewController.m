@@ -9,6 +9,7 @@
 #import "BookingViewController.h"
 #import "BookingTableViewCell.h"
 #import "ComboDetailViewController.h"
+
 @interface BookingViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIButton *defaultBtn;
@@ -30,6 +31,7 @@
     back.backgroundColor = [UIColor blackColor];
     [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
+    self.view.backgroundColor = UIColorFromHexValue(0xf4f4f4);
     
     defaultBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth/3, 40)];
     [defaultBtn setTitle:@"默认" forState:UIControlStateNormal];

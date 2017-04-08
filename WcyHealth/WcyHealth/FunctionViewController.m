@@ -8,7 +8,7 @@
 
 #import "FunctionViewController.h"
 #import "AllOrderTableViewCell.h"
-
+#import "OrderDetailViewController.h"
 @interface FunctionViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
@@ -49,5 +49,9 @@
     }
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderDetailViewController* order = [OrderDetailViewController new];
+    order.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:order animated:YES];
+}
 @end

@@ -35,7 +35,7 @@
     [super viewDidLoad];
     self.title = @"首页";
     
-    [self getNetWork];
+
     
     for (int index = 0; index < 5; index++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d.jpg",index]];
@@ -150,7 +150,9 @@
     [self.view addSubview:CollView];
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+        [self getNetWork];
+}
 
 - (void)setupUI {
     NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 8, ScreenWidth, (ScreenWidth - 84) * 9 / 16 + 24)];
@@ -225,7 +227,7 @@
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(NewPagedFlowView *)flowView {
     
-    NSLog(@"TestViewController 滚动到了第%ld页",pageNumber);
+//    NSLog(@"TestViewController 滚动到了第%ld页",pageNumber);
 }
 #pragma mark- collectionView delegate
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
