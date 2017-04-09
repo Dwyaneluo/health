@@ -7,6 +7,7 @@
 //
 
 #import "InformationViewController.h"
+#import "InformationTableViewCell.h"
 
 @interface InformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -39,7 +40,8 @@
     [self.view addSubview:table];
     table.delegate=self;
     table.dataSource=self;
-    [table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    table.rowHeight=100;
+    [table registerClass:[InformationTableViewCell class] forCellReuseIdentifier:@"cell"];
     MJRefreshNormalHeader *head = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
     [head setTitle:@"下拉刷新中。。。" forState:MJRefreshStateRefreshing];
     table.mj_header = head;
@@ -98,14 +100,18 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString * celLStr= @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
+    InformationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
     if (cell!=nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
+        cell = [[InformationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
     }
     NSDictionary *dict = listArr[indexPath.row];
-    cell.textLabel.text = [dict objectForKey:@"title"];
+    cell.titleLb.text = [dict objectForKey:@"title"];
+    cell.detailLb.text = [dict objectForKey:@"description"];
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://tnfs.tngou.net/image%@_100x80",dict[@"img"]]] placeholderImage:nil];
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

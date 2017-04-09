@@ -89,6 +89,7 @@
 		15A19AA21E226E140063D373 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A19A941E226E140063D373 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		15A19AA31E226E140063D373 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A19A961E226E140063D373 /* View+MASAdditions.m */; };
 		15A19AA41E226E140063D373 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A19A991E226E140063D373 /* ViewController+MASAdditions.m */; };
+		15A238A21E9A23D800E73C4B /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A238A11E9A23D800E73C4B /* InformationTableViewCell.m */; };
 		15A8DE481E8BE24000FBAED1 /* BookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8DE471E8BE24000FBAED1 /* BookingTableViewCell.m */; };
 		15AD75111E48B009000C2217 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD75081E48B009000C2217 /* SVIndefiniteAnimatedView.m */; };
 		15AD75121E48B009000C2217 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD750A1E48B009000C2217 /* SVProgressAnimatedView.m */; };
@@ -289,6 +290,8 @@
 		15A19A971E226E140063D373 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		15A19A981E226E140063D373 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		15A19A991E226E140063D373 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		15A238A01E9A23D800E73C4B /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
+		15A238A11E9A23D800E73C4B /* InformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationTableViewCell.m; sourceTree = "<group>"; };
 		15A8DE461E8BE24000FBAED1 /* BookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewCell.h; sourceTree = "<group>"; };
 		15A8DE471E8BE24000FBAED1 /* BookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewCell.m; sourceTree = "<group>"; };
 		15AD75071E48B009000C2217 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -503,6 +506,8 @@
 				159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */,
 				15A8DE461E8BE24000FBAED1 /* BookingTableViewCell.h */,
 				15A8DE471E8BE24000FBAED1 /* BookingTableViewCell.m */,
+				15A238A01E9A23D800E73C4B /* InformationTableViewCell.h */,
+				15A238A11E9A23D800E73C4B /* InformationTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -920,6 +925,7 @@
 				15A19A741E222A990063D373 /* SDWebImageDownloaderOperation.m in Sources */,
 				15A19AA41E226E140063D373 /* ViewController+MASAdditions.m in Sources */,
 				1514CA691E990CA900F8C8F4 /* MJRefreshBackStateFooter.m in Sources */,
+				15A238A21E9A23D800E73C4B /* InformationTableViewCell.m in Sources */,
 				15AD75111E48B009000C2217 /* SVIndefiniteAnimatedView.m in Sources */,
 				159FCA271E8AA21F00391107 /* AllOrderTableViewCell.m in Sources */,
 				15A199DD1E21F6C60063D373 /* AppDelegate.m in Sources */,
