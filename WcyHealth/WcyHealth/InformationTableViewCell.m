@@ -13,7 +13,6 @@
     self= [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self setUpCell];
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return self;
 }
@@ -27,10 +26,9 @@
     _imageV = [UIImageView new];
     [bgView addSubview:_imageV];
     [_imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(bgView.mas_top).with.offset(10);
-        make.left.equalTo(bgView.mas_left).with.offset(10);
-        make.bottom.equalTo(bgView.mas_bottom).with.offset(-10);
-        make.width.mas_equalTo(@100);
+        make.centerX.equalTo(bgView.mas_centerX);
+        make.left.equalTo(bgView.mas_left).with.offset(5);
+        make.size.mas_equalTo(CGSizeMake(100, 100));
     }];
     
     _titleLb = [UILabel new];
@@ -39,18 +37,27 @@
     [bgView addSubview:_titleLb];
     [_titleLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(bgView.mas_top).with.offset(10);
-        make.left.equalTo(_imageV.mas_right).with.offset(20);
-        make.size.mas_equalTo(CGSizeMake(ScreenWidth-140, 30));
+        make.left.equalTo(_imageV.mas_right).with.offset(10);
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth-130, 35));
     }];
     
     _detailLb = [UILabel new];
     _detailLb.font = [UIFont systemFontOfSize:13];
-    _detailLb.numberOfLines=3;
+    _detailLb.numberOfLines=0;
     [bgView addSubview:_detailLb];
     [_detailLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_titleLb.mas_bottom).with.offset(5);
-        make.left.equalTo(_imageV.mas_right).with.offset(20);
-        make.size.mas_equalTo(CGSizeMake(ScreenWidth-140, 60));
+        make.top.equalTo(_titleLb.mas_bottom).with.offset(10);
+        make.left.equalTo(_imageV.mas_right).with.offset(10);
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth-130, 60));
+    }];
+}
+- (void)countCellHeight:(NSDictionary *)dict{
+    self.titleLb.text = [dict objectForKey:@"title"];
+    self.detailLb.text = [dict objectForKey:@"description"];
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://tnfs.tngou.net/image%@_100x100",dict[@"img"]]] placeholderImage:nil];
+    CGSize size = [MBUtilities countString:self.detailLb.text size:CGSizeMake(ScreenWidth-140, MAXFLOAT) fontSize:13];
+    [_detailLb mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth-130, size.height+5));
     }];
 }
 - (void)awakeFromNib {

@@ -12,4 +12,5 @@
 @property (nonatomic,strong)UILabel *titleLb;
 @property (nonatomic,strong)UILabel *detailLb;
 @property (nonatomic,strong)UIImageView *imageV;
+- (void)countCellHeight:(NSDictionary *)dict;
 @end

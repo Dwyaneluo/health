@@ -96,6 +96,7 @@
 		15AD75131E48B009000C2217 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15AD750C1E48B009000C2217 /* SVProgressHUD.bundle */; };
 		15AD75141E48B009000C2217 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD750E1E48B009000C2217 /* SVProgressHUD.m */; };
 		15AD75151E48B009000C2217 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD75101E48B009000C2217 /* SVRadialGradientLayer.m */; };
+		15C68DF91E9BBEA200DC71F4 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C68DF81E9BBEA100DC71F4 /* ResultsViewController.m */; };
 		15F2BE4D1E59885100780AAC /* MBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE4C1E59885100780AAC /* MBUtilities.m */; };
 		15F2BE551E59A44300780AAC /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE511E59A44300780AAC /* PGIndexBannerSubiew.m */; };
 		15F2BE561E59A44300780AAC /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE541E59A44300780AAC /* NewPagedFlowView.m */; };
@@ -304,6 +305,8 @@
 		15AD750E1E48B009000C2217 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		15AD750F1E48B009000C2217 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		15AD75101E48B009000C2217 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		15C68DF71E9BBEA100DC71F4 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		15C68DF81E9BBEA100DC71F4 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		15F2BE4A1E59863E00780AAC /* health.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = health.pch; sourceTree = "<group>"; };
 		15F2BE4B1E59885100780AAC /* MBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBUtilities.h; sourceTree = "<group>"; };
 		15F2BE4C1E59885100780AAC /* MBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBUtilities.m; sourceTree = "<group>"; };
@@ -493,6 +496,8 @@
 				1514CA281E98AEE600F8C8F4 /* medicalReportViewController.m */,
 				1514CA2A1E98B64C00F8C8F4 /* PersonInfoViewController.h */,
 				1514CA2B1E98B64C00F8C8F4 /* PersonInfoViewController.m */,
+				15C68DF71E9BBEA100DC71F4 /* ResultsViewController.h */,
+				15C68DF81E9BBEA100DC71F4 /* ResultsViewController.m */,
 			);
 			name = "个人中心";
 			sourceTree = "<group>";
@@ -971,6 +976,7 @@
 				1514CA2C1E98B64C00F8C8F4 /* PersonInfoViewController.m in Sources */,
 				1514CA5F1E990CA900F8C8F4 /* MJRefreshAutoFooter.m in Sources */,
 				15A19A721E222A990063D373 /* SDWebImageDecoder.m in Sources */,
+				15C68DF91E9BBEA200DC71F4 /* ResultsViewController.m in Sources */,
 				15A19AA31E226E140063D373 /* View+MASAdditions.m in Sources */,
 				1514CA661E990CA900F8C8F4 /* MJRefreshAutoStateFooter.m in Sources */,
 				15A19A6D1E222A990063D373 /* NSData+ImageContentType.m in Sources */,

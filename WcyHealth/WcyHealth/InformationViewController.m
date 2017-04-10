@@ -40,7 +40,6 @@
     [self.view addSubview:table];
     table.delegate=self;
     table.dataSource=self;
-    table.rowHeight=100;
     [table registerClass:[InformationTableViewCell class] forCellReuseIdentifier:@"cell"];
     MJRefreshNormalHeader *head = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
     [head setTitle:@"下拉刷新中。。。" forState:MJRefreshStateRefreshing];
@@ -104,17 +103,18 @@
     if (cell!=nil){
         cell = [[InformationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     }
     NSDictionary *dict = listArr[indexPath.row];
-    cell.titleLb.text = [dict objectForKey:@"title"];
-    cell.detailLb.text = [dict objectForKey:@"description"];
-    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://tnfs.tngou.net/image%@_100x80",dict[@"img"]]] placeholderImage:nil];
+     [cell countCellHeight:dict];
     
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dict = listArr[indexPath.row];
+    NSString *str = [dict objectForKey:@"description"];
+    CGSize size = [MBUtilities countString:str size:CGSizeMake(ScreenWidth-130, MAXFLOAT) fontSize:13];
+    return 60+size.height+5;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
