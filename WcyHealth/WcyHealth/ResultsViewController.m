@@ -13,6 +13,10 @@
     UITableView *summaryTabV;
     UITableView *detailTabV;
     UIScrollView *scroll;
+    
+    UIButton *summaryBtn;
+    UIButton *detailBtn;
+    UIView *under_line;
 }
 @end
 
@@ -25,8 +29,34 @@
 }
 
 -(void)createView {
-    summaryTabV=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    [self.view addSubview:summaryTabV];
+    summaryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth/2, 40)];
+    [summaryBtn setTitle:@"体检总结" forState:UIControlStateNormal];
+    [summaryBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.view addSubview:summaryBtn];
+    
+    detailBtn = [[UIButton alloc] initWithFrame:CGRectMake( ScreenWidth/2, 0, ScreenWidth/2, 40)];
+    [detailBtn setTitle:@"体检总结" forState:UIControlStateNormal];
+    [detailBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.view addSubview:detailBtn];
+    
+    under_line = [UIView new];
+    under_line.backgroundColor = [UIColor redColor];
+    [self.view addSubview:under_line];
+    [under_line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(summaryBtn);
+        make.bottom.equalTo(summaryBtn.mas_bottom);
+        make.height.mas_equalTo(@1);
+    }];
+    
+    
+    
+    
+    scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight-40)];
+    scroll.contentSize = CGSizeMake(2*ScreenWidth, ScreenHeight-40);
+    [self.view addSubview:scroll];
+    
+    summaryTabV=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-40)];
+    [scroll addSubview:summaryTabV];
     summaryTabV.delegate=self;
     summaryTabV.dataSource=self;
     [summaryTabV registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
