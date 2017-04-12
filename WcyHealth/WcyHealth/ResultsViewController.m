@@ -8,7 +8,7 @@
 
 #import "ResultsViewController.h"
 
-@interface ResultsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ResultsViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     UITableView *summaryTabV;
     UITableView *detailTabV;
@@ -26,42 +26,78 @@
     [super viewDidLoad];
     self.title = @"报告详情";
     [self createView];
+    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
+    back.backgroundColor = [UIColor blackColor];
+    [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
+
 }
 
 -(void)createView {
-    summaryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth/2, 40)];
-    [summaryBtn setTitle:@"体检总结" forState:UIControlStateNormal];
-    [summaryBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.view addSubview:summaryBtn];
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth    , 104)];
+    [self.view addSubview:topView];
     
-    detailBtn = [[UIButton alloc] initWithFrame:CGRectMake( ScreenWidth/2, 0, ScreenWidth/2, 40)];
-    [detailBtn setTitle:@"体检总结" forState:UIControlStateNormal];
+    summaryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth/2, 40)];
+    [summaryBtn setTitle:@"体检总结" forState:UIControlStateNormal];
+    [summaryBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [summaryBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [topView addSubview:summaryBtn];
+    
+    detailBtn = [[UIButton alloc] initWithFrame:CGRectMake( ScreenWidth/2, 64, ScreenWidth/2, 40)];
+    [detailBtn setTitle:@"体检详情" forState:UIControlStateNormal];
+    [detailBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [detailBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.view addSubview:detailBtn];
+    [topView addSubview:detailBtn];
     
     under_line = [UIView new];
     under_line.backgroundColor = [UIColor redColor];
-    [self.view addSubview:under_line];
+    [topView addSubview:under_line];
     [under_line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(summaryBtn);
+        make.left.equalTo(summaryBtn.mas_left);
         make.bottom.equalTo(summaryBtn.mas_bottom);
-        make.height.mas_equalTo(@1);
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth/2, 1));
     }];
     
     
     
     
-    scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight-40)];
+    scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 104, ScreenWidth, ScreenHeight-64)];
+    scroll.pagingEnabled = YES;
+    scroll.scrollEnabled=NO;
+    scroll.delegate=self;
     scroll.contentSize = CGSizeMake(2*ScreenWidth, ScreenHeight-40);
     [self.view addSubview:scroll];
     
-    summaryTabV=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-40)];
+    summaryTabV=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-104)];
     [scroll addSubview:summaryTabV];
     summaryTabV.delegate=self;
     summaryTabV.dataSource=self;
     [summaryTabV registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     summaryTabV.tableFooterView =[UIView new];
     summaryTabV.backgroundColor = UIColorFromHexValue(0xf4f4f4);
+    
+    detailTabV=[[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight-104)];
+    [scroll addSubview:detailTabV];
+    detailTabV.delegate=self;
+    detailTabV.dataSource=self;
+    [detailTabV registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    detailTabV.tableFooterView =[UIView new];
+    detailTabV.backgroundColor = UIColorFromHexValue(0xf4f4f4);
+}
+- (void)backBtnClick{
+    [self .navigationController popViewControllerAnimated:YES];
+}
+-(void)buttonClick:(UIButton *)button{
+    [under_line mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(button.mas_left);
+        make.bottom.equalTo(button.mas_bottom);
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth/2, 1));
+    }];
+    if (button==summaryBtn) {
+        scroll.contentOffset = CGPointMake(0, 0);
+    }else{
+        scroll.contentOffset = CGPointMake(ScreenWidth, 0);
+    }
 }
 #pragma mark- tablview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -7,7 +7,7 @@
 //
 
 #import "medicalReportViewController.h"
-
+#import "ResultsViewController.h"
 @interface medicalReportViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
@@ -66,6 +66,8 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ResultsViewController *result = [ResultsViewController new];
+    [self.navigationController pushViewController:result animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
