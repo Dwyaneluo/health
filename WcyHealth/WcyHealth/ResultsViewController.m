@@ -58,9 +58,6 @@
         make.size.mas_equalTo(CGSizeMake(ScreenWidth/2, 1));
     }];
     
-    
-    
-    
     scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 104, ScreenWidth, ScreenHeight-64)];
     scroll.pagingEnabled = YES;
     scroll.scrollEnabled=NO;
@@ -101,16 +98,35 @@
 }
 #pragma mark- tablview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    if (tableView==summaryTabV) {
+        return 3;
+    }
+    return 5;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section==0) {
-        return 3;
-    }else if (section==1){
-        return 1;
+    
+    if (tableView==summaryTabV) {
+        if (section==0) {
+            return 5;
+        }else if (section==1){
+            return 1;
+        }else{
+            return 1;
+        }
     }else{
-        return 1;
+        if (section==0) {
+            return 5;
+        }else if (section==1){
+            return 7;
+        }else if (section==2){
+            return 6;
+        }else if (section==3){
+            return 3;
+        }else{
+            return 4;
+        }
     }
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 40;
@@ -119,55 +135,121 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
     UILabel *label = [UILabel new];
     [view addSubview:label];
-    label.font = [UIFont boldSystemFontOfSize:16];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(view);
-        make.left.equalTo(view.mas_left).with.offset(15);
-        make.size.mas_equalTo(CGSizeMake(200, 20));
-    }];
-    if (section==0) {
-        label.text = @"异常指标";
+    if(tableView==summaryTabV){
+        
+        label.font = [UIFont boldSystemFontOfSize:16];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(view);
+            make.left.equalTo(view.mas_left).with.offset(15);
+            make.size.mas_equalTo(CGSizeMake(200, 20));
+        }];
+        if (section==0) {
+            label.text = @"异常指标";
+            label.textColor = UIColorFromHexValue(0xFD9827);
+        }else if (section==1){
+            label.text = @"体检结论";
+            label.textColor = UIColorFromHexValue(0x009966);
+        }else if (section==2){
+            label.text = @"体检建议";
+            label.textColor =UIColorFromHexValue(0x009966);
+        }
+        
+    }else{
+        
+        label.font = [UIFont boldSystemFontOfSize:13];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(view.mas_left);
+            make.bottom.equalTo(view.mas_bottom);
+            make.size.mas_equalTo(CGSizeMake(100, 20));
+        }];
         label.textColor = [UIColor whiteColor];
-        view.backgroundColor = UIColorFromHexValue(0xFD9827);
-    }else if (section==1){
-        label.text = @"体检结论";
-        label.textColor = UIColorFromHexValue(0x009966);
-    }else if (section==2){
-        label.text = @"体检建议";
-        label.textColor =UIColorFromHexValue(0x009966);
+        label.textAlignment = NSTextAlignmentCenter;
+        if (section==0) {
+            label.text = @"一般检查";
+            label.backgroundColor = UIColorFromHexValue(0xFF0000);
+        }else if (section==1){
+            label.text = @"一般检查";
+            label.textColor = UIColorFromHexValue(0xFFCD28);
+        }else if (section==2){
+            label.text = @"外科";
+            label.textColor =UIColorFromHexValue(0x63CCCC);
+        }else if (section==3){
+            label.text = @"眼科";
+            label.textColor =UIColorFromHexValue(0x00CD2B);
+        }else if (section==2){
+            label.text = @"外科";
+            label.textColor =UIColorFromHexValue(0x63CCCC);
+        }
     }
+
+
+    
     
     return view;
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
-        return 60;
+    
+    if (tableView==summaryTabV) {
+        if (indexPath.section==0) {
+            return 60;
+        }else{
+            return 120;
+        }
     }else{
-        return 120;
+        return 60;
     }
+
 
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString * celLStr= @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
-    if (cell!=nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    
+    if (tableView==summaryTabV) {
+        NSString * celLStr= @"cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
         
-        UILabel *title =[UILabel new];
-        title.textColor = [UIColor blackColor];
-        title.font = [UIFont systemFontOfSize:16];
-        [cell addSubview:title];
-        [title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(cell.mas_left).with.offset(55);
-            make.centerY.equalTo(cell.mas_centerY);
-            make.size.mas_equalTo(CGSizeMake(150, 20));
-        }];
+        if (cell!=nil){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            UILabel *title =[UILabel new];
+            title.textColor = [UIColor blackColor];
+            title.font = [UIFont systemFontOfSize:16];
+            [cell addSubview:title];
+            [title mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(cell.mas_left).with.offset(55);
+                make.centerY.equalTo(cell.mas_centerY);
+                make.size.mas_equalTo(CGSizeMake(150, 20));
+            }];
+            
+        }
+        return cell;
+    }else{
+        NSString * celLStr= @"cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
         
+        if (cell!=nil){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            UILabel *title =[UILabel new];
+            title.textColor = [UIColor blackColor];
+            title.font = [UIFont systemFontOfSize:16];
+            [cell addSubview:title];
+            [title mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(cell.mas_left).with.offset(55);
+                make.centerY.equalTo(cell.mas_centerY);
+                make.size.mas_equalTo(CGSizeMake(150, 20));
+            }];
+            
+        }
+        return cell;
     }
-    return cell;
+    
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
