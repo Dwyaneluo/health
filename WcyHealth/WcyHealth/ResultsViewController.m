@@ -7,7 +7,8 @@
 //
 
 #import "ResultsViewController.h"
-
+#import "summaryTableViewCell.h"
+#import "detailTableViewCell.h"
 @interface ResultsViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     UITableView *summaryTabV;
@@ -65,19 +66,19 @@
     scroll.contentSize = CGSizeMake(2*ScreenWidth, ScreenHeight-40);
     [self.view addSubview:scroll];
     
-    summaryTabV=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-104)];
+    summaryTabV=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-104) style:UITableViewStyleGrouped];
     [scroll addSubview:summaryTabV];
     summaryTabV.delegate=self;
     summaryTabV.dataSource=self;
-    [summaryTabV registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [summaryTabV registerClass:[summaryTableViewCell class] forCellReuseIdentifier:@"cell"];
     summaryTabV.tableFooterView =[UIView new];
     summaryTabV.backgroundColor = UIColorFromHexValue(0xf4f4f4);
     
-    detailTabV=[[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight-104)];
+    detailTabV=[[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight-104) style:UITableViewStyleGrouped];
     [scroll addSubview:detailTabV];
     detailTabV.delegate=self;
     detailTabV.dataSource=self;
-    [detailTabV registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [detailTabV registerClass:[detailTableViewCell class] forCellReuseIdentifier:@"cell"];
     detailTabV.tableFooterView =[UIView new];
     detailTabV.backgroundColor = UIColorFromHexValue(0xf4f4f4);
 }
@@ -131,6 +132,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 40;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
     UILabel *label = [UILabel new];
@@ -176,7 +180,7 @@
         }else if (section==3){
             label.text = @"眼科";
             label.textColor =UIColorFromHexValue(0x00CD2B);
-        }else if (section==2){
+        }else if (section==4){
             label.text = @"外科";
             label.textColor =UIColorFromHexValue(0x63CCCC);
         }
@@ -207,43 +211,54 @@
     
     if (tableView==summaryTabV) {
         NSString * celLStr= @"cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
+        summaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
         
         if (cell!=nil){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
+            cell = [[summaryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.accessoryType = UITableViewCellAccessoryNone;
             
-            UILabel *title =[UILabel new];
-            title.textColor = [UIColor blackColor];
-            title.font = [UIFont systemFontOfSize:16];
-            [cell addSubview:title];
-            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(cell.mas_left).with.offset(55);
-                make.centerY.equalTo(cell.mas_centerY);
-                make.size.mas_equalTo(CGSizeMake(150, 20));
-            }];
+            if (indexPath.section!=0) {
+                cell.bgView.hidden=YES;
+                UILabel *title =[UILabel new];
+                title.textColor = [UIColor blackColor];
+                title.font = [UIFont systemFontOfSize:14];
+                title.numberOfLines=0;
+                [cell addSubview:title];
+                [title mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(cell.mas_left).with.offset(5);
+                    make.top.equalTo(cell.mas_top).with.offset(10);
+                    make.size.mas_equalTo(CGSizeMake(ScreenWidth-10, 110));
+                }];
+                if (indexPath.section==1) {
+                    title.text = @"1.血脂异常，总胆固醇值偏高（5.56mmol/L），低密度脂蛋白胆固醇值偏高（3.43mmol/L），建议内科随诊。\n2.超声提示:脂肪肝（轻度），建议消化内科随诊。\n3.高尿酸血症，血清你尿酸值（464.7umpl/L），建议内分泌科随诊。";
+                }else{
+                    title.text = @"1.血脂异常\n根据《中国成人血脂异常防治指南》中国人血清胆固醇的合适范围为（TC）<5.18mmol/L。5.18-6.19mmol/L为边缘升高。>=6.22mmol/L为升高。甘油三脂（TC）的合适范围为<1.70mmol/L。1.7-2.25mmol/L为边缘升高。";
+                }
+            }
+            
+
             
         }
         return cell;
     }else{
         NSString * celLStr= @"cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
+        detailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
         
         if (cell!=nil){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
+            cell = [[detailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:celLStr];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.accessoryType = UITableViewCellAccessoryNone;
             
-            UILabel *title =[UILabel new];
-            title.textColor = [UIColor blackColor];
-            title.font = [UIFont systemFontOfSize:16];
-            [cell addSubview:title];
-            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(cell.mas_left).with.offset(55);
-                make.centerY.equalTo(cell.mas_centerY);
-                make.size.mas_equalTo(CGSizeMake(150, 20));
-            }];
+//            UILabel *title =[UILabel new];
+//            title.textColor = [UIColor blackColor];
+//            title.font = [UIFont systemFontOfSize:16];
+//            [cell addSubview:title];
+//            [title mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.left.equalTo(cell.mas_left).with.offset(55);
+//                make.centerY.equalTo(cell.mas_centerY);
+//                make.size.mas_equalTo(CGSizeMake(150, 20));
+//            }];
             
         }
         return cell;
