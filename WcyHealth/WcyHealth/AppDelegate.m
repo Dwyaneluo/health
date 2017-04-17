@@ -100,8 +100,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
      AppDelegate *app=[UIApplication sharedApplication].delegate;
+    
+    //广告页的实现
     self.splashView= [[WcyAdSplashImgView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    self.splashView.image = [UIImage imageNamed:@"1"];
+    self.splashView.image = [UIImage imageNamed:@"Yosemite02.jpg"];
     AppDelegate __weak* weakSelf = self;
     self.splashView.dismissAction = ^(void) {
         [weakSelf.splashView removeFromSuperview];

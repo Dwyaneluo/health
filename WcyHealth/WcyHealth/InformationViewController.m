@@ -69,7 +69,7 @@
     NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/info/list?page=%d",page];
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
 
-    //获取数据
+    
     [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"responseObject:%@",responseObject);
         
@@ -77,6 +77,7 @@
         if (![responseObject[@"error"] boolValue]) {
             [SVProgressHUD dismiss];
             NSArray *tmp=responseObject[@"tngou"];
+            //获取数据
             if (page==1) {
                 listArr = [listArr mutableCopy];
                 [listArr removeAllObjects];

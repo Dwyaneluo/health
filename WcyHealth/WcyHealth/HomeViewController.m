@@ -153,7 +153,7 @@
 -(void)viewWillAppear:(BOOL)animated{
         [self getNetWork];
 }
-
+//设置轮播图
 - (void)setupUI {
     NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 8, ScreenWidth, (ScreenWidth - 84) * 9 / 16 + 24)];
     pageFlowView.backgroundColor = [UIColor whiteColor];
@@ -314,7 +314,7 @@
     params[@"output"]=@"json";
     params[@"ak"]=@"kXCozgObKhiuHs914qgMwLej";
     params[@"mcode"]=@"itany";
-    //获取数据
+    
     [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"responseObject:%@",responseObject);
 
@@ -323,6 +323,7 @@
             [SVProgressHUD dismiss];
             NSArray *tmp=responseObject[@"results"];
             NSDictionary *dictData=tmp[0];
+            //获取数据
             dateLb.text = [NSString stringWithFormat:@"日期：%@",[responseObject objectForKey:@"date"]];
             NSArray *arr = dictData[@"weather_data"];
             
