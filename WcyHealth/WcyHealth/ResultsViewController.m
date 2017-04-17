@@ -28,7 +28,7 @@
     self.title = @"报告详情";
     [self createView];
     UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
-    back.backgroundColor = [UIColor blackColor];
+    [back setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
 
@@ -122,9 +122,9 @@
         }else if (section==2){
             return 6;
         }else if (section==3){
-            return 3;
+            return 2;
         }else{
-            return 4;
+            return 3;
         }
     }
 
@@ -166,6 +166,8 @@
             make.bottom.equalTo(view.mas_bottom);
             make.size.mas_equalTo(CGSizeMake(100, 20));
         }];
+        label.layer.masksToBounds=YES;
+        label.layer.cornerRadius=10;
         label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
         if (section==0) {
@@ -173,16 +175,16 @@
             label.backgroundColor = UIColorFromHexValue(0xFF0000);
         }else if (section==1){
             label.text = @"一般检查";
-            label.textColor = UIColorFromHexValue(0xFFCD28);
+            label.backgroundColor = UIColorFromHexValue(0xFFCD28);
         }else if (section==2){
             label.text = @"外科";
-            label.textColor =UIColorFromHexValue(0x63CCCC);
+            label.backgroundColor =UIColorFromHexValue(0x63CCCC);
         }else if (section==3){
             label.text = @"眼科";
-            label.textColor =UIColorFromHexValue(0x00CD2B);
+            label.backgroundColor =UIColorFromHexValue(0x00CD2B);
         }else if (section==4){
             label.text = @"外科";
-            label.textColor =UIColorFromHexValue(0x63CCCC);
+            label.backgroundColor =UIColorFromHexValue(0x63CCCC);
         }
     }
 
@@ -207,6 +209,7 @@
 
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     
     
     if (tableView==summaryTabV) {
@@ -235,13 +238,37 @@
                 }else{
                     title.text = @"1.血脂异常\n根据《中国成人血脂异常防治指南》中国人血清胆固醇的合适范围为（TC）<5.18mmol/L。5.18-6.19mmol/L为边缘升高。>=6.22mmol/L为升高。甘油三脂（TC）的合适范围为<1.70mmol/L。1.7-2.25mmol/L为边缘升高。";
                 }
+            
             }
             
-
+            if (indexPath.section==0) {
+                if (indexPath.row==0) {
+                    cell.titleLb.text = @"裸眼视力左";
+                    cell.indexLb.text = @"0.8";
+                    cell.normalLb.text = @"正常范围：1～2";
+                }else if (indexPath.row==1){
+                    cell.titleLb.text = @"裸眼视力右";
+                    cell.indexLb.text = @"0.9";
+                    cell.normalLb.text = @"正常范围：1～2";
+                }else if (indexPath.row==2){
+                    cell.titleLb.text = @"血清尿酸";
+                    cell.indexLb.text = @"464.7";
+                    cell.normalLb.text = @"正常范围：90～420";
+                }else if (indexPath.row==3){
+                    cell.titleLb.text = @"总胆固醇";
+                    cell.indexLb.text = @"5.56";
+                    cell.normalLb.text = @"正常范围：<5.18";
+                }else if (indexPath.row==4){
+                    cell.titleLb.text = @"低密度脂蛋白胆固醇";
+                    cell.indexLb.text = @"3.43";
+                    cell.normalLb.text = @"正常范围：<3.37";
+                }
+            }
             
         }
         return cell;
     }else{
+        
         NSString * celLStr= @"cell";
         detailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];
         
@@ -250,15 +277,124 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.accessoryType = UITableViewCellAccessoryNone;
             
-//            UILabel *title =[UILabel new];
-//            title.textColor = [UIColor blackColor];
-//            title.font = [UIFont systemFontOfSize:16];
-//            [cell addSubview:title];
-//            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.left.equalTo(cell.mas_left).with.offset(55);
-//                make.centerY.equalTo(cell.mas_centerY);
-//                make.size.mas_equalTo(CGSizeMake(150, 20));
-//            }];
+            
+            if ((indexPath.section==0&&indexPath.row>1)||(indexPath.section==3&&indexPath.row>0)) {
+                
+                [cell.detailLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(cell.mas_top).with.offset(5);
+                    make.left.equalTo(cell.titleLb.mas_right);
+                    make.size.mas_equalTo(CGSizeMake((ScreenWidth-20)/2, 15));
+                }];
+                
+                
+                UILabel *title =[UILabel new];
+                title.textColor = UIColorFromHexValue(0xBCBCBC);
+                title.font = [UIFont systemFontOfSize:14];
+                [cell addSubview:title];
+                [title mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(cell.detailLb.mas_bottom).with.offset(10);
+                    make.left.equalTo(cell.detailLb.mas_left);
+                    make.size.mas_equalTo(CGSizeMake((ScreenWidth-20)/2, 15));
+                }];
+                if (indexPath.section==0) {
+                    if (indexPath.row==2) {
+                        title.text = @"正常值范围:18.5~23.9";
+                    }else if (indexPath.row==3){
+                        title.text = @"正常值范围:90~139";
+                    }else if (indexPath.row==4){
+                        title.text = @"正常值范围:60~89";
+                    }
+                }else if(indexPath.section==3){
+                    cell.detailLb.textColor = [UIColor redColor];
+                    if (indexPath.row==1) {
+                        title.text = @"正常值范围:90~420";
+                    }
+                }
+                
+            }
+            
+            if (indexPath.section==0) {
+                if (indexPath.row==0) {
+                    cell.titleLb.text = @"身高";
+                    cell.detailLb.text = @"172.0";
+                }else if (indexPath.row==1){
+                    cell.titleLb.text = @"体重";
+                    cell.detailLb.text = @"66.0";
+                }else if (indexPath.row==2){
+                    cell.titleLb.text = @"体重指数BMI";
+                    cell.detailLb.text = @"22.3";
+                }else if (indexPath.row==3){
+                    cell.titleLb.text = @"收缩压";
+                    cell.detailLb.text = @"114";
+                }else if (indexPath.row==4){
+                    cell.titleLb.text = @"舒张压";
+                    cell.detailLb.text = @"73";
+                }
+            }else if (indexPath.section==1){
+                if (indexPath.row==0) {
+                    cell.titleLb.text = @"体质";
+                    cell.detailLb.text = @"营养良好";
+                }else if (indexPath.row==1){
+                    cell.titleLb.text = @"面容";
+                    cell.detailLb.text = @"正常";
+                }else if (indexPath.row==2){
+                    cell.titleLb.text = @"心律";
+                    cell.detailLb.text = @"齐";
+                }else if (indexPath.row==3){
+                    cell.titleLb.text = @"心音";
+                    cell.detailLb.text = @"正常";
+                }else if (indexPath.row==4){
+                    cell.titleLb.text = @"心脏杂音";
+                    cell.detailLb.text = @"无";
+                }else if (indexPath.row==5){
+                    cell.titleLb.text = @"肺部";
+                    cell.detailLb.text = @"两肺呼吸正常";
+                }else if (indexPath.row==6){
+                    cell.titleLb.text = @"腹部";
+                    cell.detailLb.text = @"未见异常";
+                }
+            }else if (indexPath.section==2){
+                if (indexPath.row==0) {
+                    cell.titleLb.text = @"皮肤";
+                    cell.detailLb.text = @"未见异常";
+                }else if (indexPath.row==1){
+                    cell.titleLb.text = @"浅表淋巴结";
+                    cell.detailLb.text = @"未见异常";
+                }else if (indexPath.row==2){
+                    cell.titleLb.text = @"甲状腺";
+                    cell.detailLb.text = @"未见异常";
+                }else if (indexPath.row==3){
+                    cell.titleLb.text = @"乳房";
+                    cell.detailLb.text = @"未见异常";
+                }else if (indexPath.row==4){
+                    cell.titleLb.text = @"脊柱";
+                    cell.detailLb.text = @"未见异常";
+                }else if (indexPath.row==5){
+                    cell.titleLb.text = @"四肢关节";
+                    cell.detailLb.text = @"未见异常";
+                }
+            }else if (indexPath.section==3){
+                if (indexPath.row==0) {
+                    cell.titleLb.text = @"外眼检查";
+                    cell.detailLb.text = @"未见异常";
+                    
+                }else if (indexPath.row==1){
+                    cell.titleLb.text = @"血清尿酸";
+                    cell.detailLb.text = @"464.7";
+                }
+            }else if (indexPath.section==4){
+                if (indexPath.row==0) {
+                    cell.titleLb.text = @"耳";
+                    cell.detailLb.text = @"未见异常";
+                }else if (indexPath.row==1){
+                    cell.titleLb.text = @"鼻";
+                    cell.detailLb.text = @"未见异常";
+                }else if (indexPath.row==2){
+                    cell.titleLb.text = @"口咽";
+                    cell.detailLb.text = @"未见异常";
+                }
+            }
+
             
         }
         return cell;

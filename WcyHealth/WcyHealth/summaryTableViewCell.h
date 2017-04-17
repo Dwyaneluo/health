@@ -14,5 +14,4 @@
 @property (nonatomic,strong)UILabel *titleLb;
 @property (nonatomic,strong)UILabel *normalLb;
 @property (nonatomic,strong)UILabel *indexLb;
-@property (nonatomic,strong)UIImageView *iconV;
 @end

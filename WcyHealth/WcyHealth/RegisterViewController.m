@@ -25,13 +25,14 @@
     [self createView];
 }
 -(void)createView{
-    UIView *TopView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
-    TopView.backgroundColor = UIColorFromHexValue(0xf9f9f9);
+    UIImageView *TopView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    TopView.image= [UIImage imageNamed:@"登陆页面背景"];
+    TopView.userInteractionEnabled=YES;
     [self.view addSubview:TopView];
     self.view.backgroundColor = UIColorFromHexValue(0xf4f4f4);
     
     UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 20, 30)];
-    back.backgroundColor = [UIColor blackColor];
+    [back setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [TopView addSubview:back];
     

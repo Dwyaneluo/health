@@ -81,7 +81,7 @@
         }];
         
         UIImageView *image = [UIImageView new];
-        image.backgroundColor = [UIColor blackColor];
+        image.image = [UIImage imageNamed:@"默认头像"];
         [cell addSubview:image];
         [image mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(cell.mas_centerY);

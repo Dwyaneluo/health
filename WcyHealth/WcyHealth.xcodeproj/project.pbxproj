@@ -34,6 +34,9 @@
 		15395FEC1E82BD2700797C74 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEB1E82BD2700797C74 /* RegisterViewController.m */; };
 		15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEE1E82C24000797C74 /* LoginViewController.m */; };
 		154455DC1E8D3516006CE72C /* ComboDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154455DB1E8D3516006CE72C /* ComboDetailViewController.m */; };
+		158760E61EA4EF5D008320C0 /* 登陆页面背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 158760E31EA4EF5D008320C0 /* 登陆页面背景.png */; };
+		158760E71EA4EF5D008320C0 /* 默认头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 158760E41EA4EF5D008320C0 /* 默认头像.png */; };
+		158760E81EA4EF5D008320C0 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 158760E51EA4EF5D008320C0 /* back.png */; };
 		159FCA271E8AA21F00391107 /* AllOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */; };
 		159FCA2D1E8AAB1B00391107 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FCA2C1E8AAB1B00391107 /* BookingViewController.m */; };
 		15A0A3551E5843E0001A8610 /* WcyAdSplashImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A0A3541E5843E0001A8610 /* WcyAdSplashImgView.m */; };
@@ -181,6 +184,9 @@
 		15395FEE1E82C24000797C74 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		154455DA1E8D3516006CE72C /* ComboDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboDetailViewController.h; sourceTree = "<group>"; };
 		154455DB1E8D3516006CE72C /* ComboDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboDetailViewController.m; sourceTree = "<group>"; };
+		158760E31EA4EF5D008320C0 /* 登陆页面背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登陆页面背景.png"; sourceTree = "<group>"; };
+		158760E41EA4EF5D008320C0 /* 默认头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像.png"; sourceTree = "<group>"; };
+		158760E51EA4EF5D008320C0 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		159FCA251E8AA21F00391107 /* AllOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllOrderTableViewCell.h; sourceTree = "<group>"; };
 		159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllOrderTableViewCell.m; sourceTree = "<group>"; };
 		159FCA2B1E8AAB1B00391107 /* BookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingViewController.h; sourceTree = "<group>"; };
@@ -633,6 +639,9 @@
 		15A19A231E2202290063D373 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				158760E31EA4EF5D008320C0 /* 登陆页面背景.png */,
+				158760E41EA4EF5D008320C0 /* 默认头像.png */,
+				158760E51EA4EF5D008320C0 /* back.png */,
 				15F2BE571E59A64600780AAC /* Yosemite00.jpg */,
 				15F2BE581E59A64600780AAC /* Yosemite01.jpg */,
 				15F2BE591E59A64600780AAC /* Yosemite02.jpg */,
@@ -886,6 +895,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158760E61EA4EF5D008320C0 /* 登陆页面背景.png in Resources */,
+				158760E71EA4EF5D008320C0 /* 默认头像.png in Resources */,
+				158760E81EA4EF5D008320C0 /* back.png in Resources */,
 				15A19A9A1E226E140063D373 /* Info.plist in Resources */,
 				15AD75131E48B009000C2217 /* SVProgressHUD.bundle in Resources */,
 				15F2BE5F1E59A64600780AAC /* Yosemite03.jpg in Resources */,

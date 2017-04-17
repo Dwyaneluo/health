@@ -30,38 +30,28 @@
     _statusLb.text = @"异";
     [_bgView addSubview:_statusLb];
     [_statusLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_bgView.mas_top).with.offset(5);
+        make.centerY.equalTo(_bgView.mas_centerY);
         make.left.equalTo(_bgView.mas_left).with.offset(5);
         make.size.mas_equalTo(CGSizeMake(15, 15));
     }];
     
     _titleLb = [UILabel new];
     _titleLb.font = [UIFont boldSystemFontOfSize:15];
-    _titleLb.text = @"裸眼视力右";
     [_bgView addSubview:_titleLb];
     [_titleLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_bgView.mas_top).with.offset(5);
-        make.left.equalTo(_statusLb.mas_right);
+        make.centerY.equalTo(_bgView.mas_centerY);
+        make.left.equalTo(_statusLb.mas_right).with.offset(5);
         make.size.mas_equalTo(CGSizeMake(150, 15));
     }];
     
-    _iconV = [UIImageView new];
-    _iconV.backgroundColor = [UIColor redColor];
-    [_bgView addSubview:_iconV];
-    [_iconV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_bgView.mas_top).with.offset(5);
-        make.left.equalTo(_titleLb.mas_right).with.offset(10);
-        make.size.mas_equalTo(CGSizeMake(5, 20));
-    }];
     
     _indexLb = [UILabel new];
     _indexLb.font = [UIFont boldSystemFontOfSize:15];
     _indexLb.textColor = [UIColor redColor];
-    _indexLb.text = @"0.8";
     [_bgView addSubview:_indexLb];
     [_indexLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_bgView.mas_top).with.offset(5);
-        make.left.equalTo(_iconV.mas_right);
+        make.left.equalTo(_titleLb.mas_right).with.offset(10);
         make.size.mas_equalTo(CGSizeMake(150, 15));
     }];
     
@@ -69,11 +59,10 @@
     _normalLb = [UILabel new];
     _normalLb.font = [UIFont boldSystemFontOfSize:15];
     _normalLb.textColor = UIColorFromHexValue(0xBCBCBC);
-    _normalLb.text = @"正常值范围:1~2";
     [_bgView addSubview:_normalLb];
     [_normalLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_iconV.mas_bottom).with.offset(5);
-        make.left.equalTo(_iconV.mas_left);
+        make.top.equalTo(_indexLb.mas_bottom).with.offset(5);
+        make.left.equalTo(_indexLb.mas_left);
         make.size.mas_equalTo(CGSizeMake(150, 15));
     }];
 }
