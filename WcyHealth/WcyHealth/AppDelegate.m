@@ -12,6 +12,7 @@
 #import "FunctionViewController.h"
 #import "MyCenterViewController.h"
 #import "WcyAdSplashImgView.h"
+#import "IQKeyboardManager.h"
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 @interface AppDelegate ()
@@ -24,6 +25,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [IQKeyboardManager sharedManager].enable=YES;
     //1.创建Window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];

@@ -8,13 +8,14 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "SFVerificationCodeView.h"
 @interface LoginViewController ()
 {
     UITextField *phoneTld;
     UITextField *verifyTld;
     UITextField *passwordTld;
     UIButton *loginBtn;
-    UIButton *verifyBtn;
+    SFVerificationCodeView *verifyView;
     UIButton *registBtn;
     UIButton *findPswBtn;
 }
@@ -28,9 +29,14 @@
 }
 
 -(void)createView{
-    UIImageView *TopView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
-    TopView.image= [UIImage imageNamed:@"登陆页面背景"];
-    TopView.userInteractionEnabled=YES;
+
+    
+    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    bgImgView.image= [UIImage imageNamed:@"登陆页面背景"];
+    bgImgView.userInteractionEnabled=YES;
+    [self.view addSubview:bgImgView];
+    
+    UIView *TopView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
     [self.view addSubview:TopView];
     self.view.backgroundColor = UIColorFromHexValue(0xf4f4f4);
     
@@ -51,19 +57,18 @@
         make.size.mas_equalTo(CGSizeMake(100, 30));
     }];
     
-    
     phoneTld = [UITextField new];
     phoneTld.borderStyle = UITextBorderStyleRoundedRect;
     [self.view addSubview:phoneTld];
     [phoneTld mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(TopView.mas_bottom).with.offset(40);
+        make.top.equalTo(TopView.mas_bottom).with.offset(240);
         make.left.equalTo(self.view.mas_left).with.offset(15);
         make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 40));
     }];
     phoneTld.placeholder = @"请输入手机号";
     [self.view addSubview:phoneTld];
     UIImageView *phoneIcon=[[UIImageView alloc]initWithFrame:CGRectMake(-20, 0, 32, 24)];
-    phoneIcon.backgroundColor = [UIColor redColor];
+    phoneIcon.image = [UIImage imageNamed:@"phonenumber"];
     phoneTld.leftView=phoneIcon;
     phoneTld.leftViewMode=UITextFieldViewModeAlways; //此处用来设置leftview现实时机
     phoneTld.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -80,7 +85,7 @@
     passwordTld.placeholder = @"请输入你的密码";
     [self.view addSubview:passwordTld];
     UIImageView *passwordIcon=[[UIImageView alloc]initWithFrame:CGRectMake(-20, 0, 32, 24)];
-    passwordIcon.backgroundColor = [UIColor redColor];
+    passwordIcon.image = [UIImage imageNamed:@"password"];
     passwordTld.leftView=passwordIcon;
     passwordTld.leftViewMode=UITextFieldViewModeAlways; //此处用来设置leftview现实时机
     passwordTld.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -96,17 +101,27 @@
     verifyTld.placeholder = @"请输入图形验证码";
     [self.view addSubview:verifyTld];
     UIImageView *verifyIcon=[[UIImageView alloc]initWithFrame:CGRectMake(-20, 0, 32, 24)];
-    verifyIcon.backgroundColor = [UIColor redColor];
+    verifyIcon.image = [UIImage imageNamed:@"vcode"];
     verifyTld.leftView=verifyIcon;
     verifyTld.leftViewMode=UITextFieldViewModeAlways; //此处用来设置leftview现实时机
     verifyTld.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-    verifyBtn = [UIButton new];
-    verifyBtn.backgroundColor = [UIColor yellowColor];
-    [verifyBtn setTitle:@"ZXCV" forState:UIControlStateNormal];
-    [verifyBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.view addSubview:verifyBtn];
-    [verifyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+     verifyView= [SFVerificationCodeView new];
+    //设置验证码生成模式 默认为Local
+    verifyView.mode = SFVerificationCodeModeLocal;
+    [verifyView willChangeVerificationCode:^(SFVerificationCodeMode mode) {
+        NSLog(@"本地随机生成code");
+        
+    }];
+    [verifyView didChangeVerificationCode:^(NSString *code) {
+        NSLog(@"view code:%@",code);
+        verifyView.code = code;
+        
+    }];
+    //开始生成code
+    [verifyView generateVerificationCode];
+    [self.view addSubview:verifyView];
+    [verifyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(verifyTld.mas_centerY);
         make.right.equalTo(verifyTld.mas_right).with.offset(-5);
         make.size.mas_equalTo(CGSizeMake(120, 30));
