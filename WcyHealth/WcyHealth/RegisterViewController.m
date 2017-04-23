@@ -31,7 +31,7 @@
     [self.view addSubview:TopView];
     self.view.backgroundColor = UIColorFromHexValue(0xf4f4f4);
     
-    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 20, 30)];
+    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 30, 30)];
     [back setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [TopView addSubview:back];

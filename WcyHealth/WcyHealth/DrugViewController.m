@@ -1,22 +1,24 @@
 //
-//  InformationViewController.m
+//  DrugViewController.m
 //  WcyHealth
 //
-//  Created by 天涯 on 2017/1/8.
+//  Created by 天涯 on 2017/4/23.
 //  Copyright © 2017年 tianya. All rights reserved.
 //
 
-#import "InformationViewController.h"
-#import "InformationTableViewCell.h"
-#import "InformListViewController.h"
-@interface InformationViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "DrugViewController.h"
+#import "DrugListViewController.h"
+@interface DrugViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
     NSArray *listArr;
 }
+
 @end
 
-@implementation InformationViewController
+@implementation DrugViewController
+
+
 -(instancetype)init{
     self=[super init];
     if (self) {
@@ -26,7 +28,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"资讯";
+    self.title = @"药品信息";
     [self createView];
     
 }
@@ -36,16 +38,24 @@
 }
 
 -(void)createView {
+    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [back setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
+    
     table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     [self.view addSubview:table];
     table.delegate=self;
     table.dataSource=self;
-    [table registerClass:[InformationTableViewCell class] forCellReuseIdentifier:@"cell"];
+    [table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     table.tableFooterView =[UIView new];
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
 }
 -(void)refreshData{
     [self getNetWork];
+}
+- (void)backBtnClick{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //获取网络数据
 -(void)getNetWork
@@ -54,14 +64,11 @@
     //创建请求管理器
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
     
-    NSString *url=@"http://www.tngou.net/api/info/classify";
-    
-    
+    NSString *url=@"http://www.tngou.net/api/drug/classify";
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
-
     
     [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"responseObject:%@",responseObject);
+        NSLog(@"responseObject:%@",responseObject);
         
         
         if (![responseObject[@"error"] boolValue]) {
@@ -102,16 +109,14 @@
     return 80;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *dict = listArr[indexPath.row];
-    InformListViewController *list = [InformListViewController new];
-    list.classId = [dict objectForKey:@"id"];
-    list.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:list animated:YES];
+        NSDictionary *dict = listArr[indexPath.row];
+        DrugListViewController *list = [DrugListViewController new];
+        list.classId = [dict objectForKey:@"id"];
+        [self.navigationController pushViewController:list animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
-
 
 @end

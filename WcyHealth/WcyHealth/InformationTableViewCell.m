@@ -52,8 +52,7 @@
     }];
 }
 - (void)countCellHeight:(NSDictionary *)dict{
-    self.titleLb.text = [dict objectForKey:@"title"];
-    self.detailLb.text = [dict objectForKey:@"description"];
+
     [self.imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://tnfs.tngou.net/image%@_100x100",dict[@"img"]]] placeholderImage:nil];
     CGSize size = [MBUtilities countString:self.detailLb.text size:CGSizeMake(ScreenWidth-140, MAXFLOAT) fontSize:13];
     [_detailLb mas_updateConstraints:^(MASConstraintMaker *make) {

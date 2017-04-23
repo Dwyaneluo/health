@@ -57,7 +57,7 @@
 }
 
 - (void)createView{
-    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
+    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [back setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];

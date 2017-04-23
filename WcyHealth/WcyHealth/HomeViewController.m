@@ -8,6 +8,9 @@
 
 #import "HomeViewController.h"
 #import "BookingViewController.h"
+#import "medicalReportViewController.h"
+#import "DrugViewController.h"
+
 @interface HomeViewController ()<NewPagedFlowViewDelegate, NewPagedFlowViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     
@@ -266,7 +269,7 @@
         label.text = @"健康宣教";
     }else if (indexPath.row==3){
         image.image = [UIImage imageNamed:@"2"];
-        label.text = @"专项筛查";
+        label.text = @"药品信息";
     }else if (indexPath.row==4){
         image.image = [UIImage imageNamed:@"2"];
         label.text = @"健康指数";
@@ -284,10 +287,19 @@
         [self.navigationController pushViewController:booking animated:YES];
         
     }else if (indexPath.row==1){
+        medicalReportViewController *medical = [medicalReportViewController new];
+        medical.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:medical animated:YES];
     }else if (indexPath.row==2){
+        self.tabBarController.selectedIndex = 1;
     }else if (indexPath.row==3){
+        DrugViewController *drug = [DrugViewController new];
+        drug.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:drug animated:YES];
     }else if (indexPath.row==4){
+        
     }else if (indexPath.row==5){
+        
     }
 }
 //定义每个UICollectionView 的间距

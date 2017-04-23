@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150C0FE81EAB13F6008F169C /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C0FE71EAB13F6008F169C /* InformationDetailViewController.m */; };
+		150C0FEB1EAB1A6C008F169C /* InformListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C0FEA1EAB1A6C008F169C /* InformListViewController.m */; };
 		1514CA291E98AEE600F8C8F4 /* medicalReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1514CA281E98AEE600F8C8F4 /* medicalReportViewController.m */; };
 		1514CA2C1E98B64C00F8C8F4 /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1514CA2B1E98B64C00F8C8F4 /* PersonInfoViewController.m */; };
 		1514CA2F1E98C46D00F8C8F4 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1514CA2E1E98C46D00F8C8F4 /* OrderDetailViewController.m */; };
@@ -99,6 +101,9 @@
 		15AD75131E48B009000C2217 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15AD750C1E48B009000C2217 /* SVProgressHUD.bundle */; };
 		15AD75141E48B009000C2217 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD750E1E48B009000C2217 /* SVProgressHUD.m */; };
 		15AD75151E48B009000C2217 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD75101E48B009000C2217 /* SVRadialGradientLayer.m */; };
+		15C15BDE1EAC5214005903DE /* DrugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C15BDD1EAC5214005903DE /* DrugListViewController.m */; };
+		15C15BE11EAC57B4005903DE /* DrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C15BE01EAC57B4005903DE /* DrugViewController.m */; };
+		15C15BE41EAC5A1F005903DE /* DrugDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C15BE31EAC5A1F005903DE /* DrugDetailViewController.m */; };
 		15C68DF91E9BBEA200DC71F4 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C68DF81E9BBEA100DC71F4 /* ResultsViewController.m */; };
 		15F2BE4D1E59885100780AAC /* MBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE4C1E59885100780AAC /* MBUtilities.m */; };
 		15F2BE551E59A44300780AAC /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE511E59A44300780AAC /* PGIndexBannerSubiew.m */; };
@@ -155,6 +160,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150C0FE61EAB13F6008F169C /* InformationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationDetailViewController.h; sourceTree = "<group>"; };
+		150C0FE71EAB13F6008F169C /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
+		150C0FE91EAB1A6C008F169C /* InformListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformListViewController.h; sourceTree = "<group>"; };
+		150C0FEA1EAB1A6C008F169C /* InformListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformListViewController.m; sourceTree = "<group>"; };
 		1514CA271E98AEE600F8C8F4 /* medicalReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = medicalReportViewController.h; sourceTree = "<group>"; };
 		1514CA281E98AEE600F8C8F4 /* medicalReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = medicalReportViewController.m; sourceTree = "<group>"; };
 		1514CA2A1E98B64C00F8C8F4 /* PersonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoViewController.h; sourceTree = "<group>"; };
@@ -338,6 +347,12 @@
 		15AD750E1E48B009000C2217 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		15AD750F1E48B009000C2217 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		15AD75101E48B009000C2217 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		15C15BDC1EAC5214005903DE /* DrugListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugListViewController.h; sourceTree = "<group>"; };
+		15C15BDD1EAC5214005903DE /* DrugListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugListViewController.m; sourceTree = "<group>"; };
+		15C15BDF1EAC57B4005903DE /* DrugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugViewController.h; sourceTree = "<group>"; };
+		15C15BE01EAC57B4005903DE /* DrugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugViewController.m; sourceTree = "<group>"; };
+		15C15BE21EAC5A1F005903DE /* DrugDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDetailViewController.h; sourceTree = "<group>"; };
+		15C15BE31EAC5A1F005903DE /* DrugDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDetailViewController.m; sourceTree = "<group>"; };
 		15C68DF71E9BBEA100DC71F4 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		15C68DF81E9BBEA100DC71F4 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		15F2BE4A1E59863E00780AAC /* health.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = health.pch; sourceTree = "<group>"; };
@@ -531,6 +546,12 @@
 				154455DB1E8D3516006CE72C /* ComboDetailViewController.m */,
 				152F8DBF1E96724F0070939C /* MakeAppointmentViewController.h */,
 				152F8DC01E96724F0070939C /* MakeAppointmentViewController.m */,
+				15C15BDF1EAC57B4005903DE /* DrugViewController.h */,
+				15C15BE01EAC57B4005903DE /* DrugViewController.m */,
+				15C15BDC1EAC5214005903DE /* DrugListViewController.h */,
+				15C15BDD1EAC5214005903DE /* DrugListViewController.m */,
+				15C15BE21EAC5A1F005903DE /* DrugDetailViewController.h */,
+				15C15BE31EAC5A1F005903DE /* DrugDetailViewController.m */,
 			);
 			name = "首页";
 			sourceTree = "<group>";
@@ -562,6 +583,10 @@
 			children = (
 				15A19A191E21FAC50063D373 /* InformationViewController.h */,
 				15A19A1A1E21FAC50063D373 /* InformationViewController.m */,
+				150C0FE91EAB1A6C008F169C /* InformListViewController.h */,
+				150C0FEA1EAB1A6C008F169C /* InformListViewController.m */,
+				150C0FE61EAB13F6008F169C /* InformationDetailViewController.h */,
+				150C0FE71EAB13F6008F169C /* InformationDetailViewController.m */,
 			);
 			name = "资讯";
 			sourceTree = "<group>";
@@ -1138,6 +1163,7 @@
 				15A8DE481E8BE24000FBAED1 /* BookingTableViewCell.m in Sources */,
 				1514CA681E990CA900F8C8F4 /* MJRefreshBackNormalFooter.m in Sources */,
 				15A19A9C1E226E140063D373 /* MASConstraint.m in Sources */,
+				15C15BE11EAC57B4005903DE /* DrugViewController.m in Sources */,
 				1514CA671E990CA900F8C8F4 /* MJRefreshBackGifFooter.m in Sources */,
 				480E8F1A1EA5C3DC00F3E387 /* IQUIWindow+Hierarchy.m in Sources */,
 				480E8F171EA5C3DC00F3E387 /* IQUITextFieldView+Additions.m in Sources */,
@@ -1148,6 +1174,7 @@
 				15A19A9D1E226E140063D373 /* MASConstraintMaker.m in Sources */,
 				4880393A1EA4BE65000E37C3 /* detailTableViewCell.m in Sources */,
 				15A19A671E222A990063D373 /* AFSecurityPolicy.m in Sources */,
+				15C15BDE1EAC5214005903DE /* DrugListViewController.m in Sources */,
 				480E8F161EA5C3DC00F3E387 /* IQUIScrollView+Additions.m in Sources */,
 				15A19A211E21FB1B0063D373 /* MyCenterViewController.m in Sources */,
 				15A19A791E222A990063D373 /* UIImage+MultiFormat.m in Sources */,
@@ -1171,6 +1198,7 @@
 				15A19A181E21F9B70063D373 /* HomeViewController.m in Sources */,
 				1514CA291E98AEE600F8C8F4 /* medicalReportViewController.m in Sources */,
 				15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */,
+				15C15BE41EAC5A1F005903DE /* DrugDetailViewController.m in Sources */,
 				15F2BE561E59A44300780AAC /* NewPagedFlowView.m in Sources */,
 				15A19A1E1E21FAEE0063D373 /* FunctionViewController.m in Sources */,
 				1514CA2F1E98C46D00F8C8F4 /* OrderDetailViewController.m in Sources */,
@@ -1189,6 +1217,7 @@
 				1514CA661E990CA900F8C8F4 /* MJRefreshAutoStateFooter.m in Sources */,
 				15A19A6D1E222A990063D373 /* NSData+ImageContentType.m in Sources */,
 				1514CA6B1E990CA900F8C8F4 /* MJRefreshNormalHeader.m in Sources */,
+				150C0FE81EAB13F6008F169C /* InformationDetailViewController.m in Sources */,
 				15A19A7B1E222A990063D373 /* UIImageView+HighlightedWebCache.m in Sources */,
 				15A19A771E222A990063D373 /* UIButton+WebCache.m in Sources */,
 				15A19A6A1E222A990063D373 /* AFURLSessionManager.m in Sources */,
@@ -1210,6 +1239,7 @@
 				15F2BE551E59A44300780AAC /* PGIndexBannerSubiew.m in Sources */,
 				15A19A1B1E21FAC50063D373 /* InformationViewController.m in Sources */,
 				1514CA6E1E990CA900F8C8F4 /* MJRefreshConst.m in Sources */,
+				150C0FEB1EAB1A6C008F169C /* InformListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
