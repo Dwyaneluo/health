@@ -1,14 +1,14 @@
 //
-//  DrugViewController.m
+//  CheckViewController.m
 //  WcyHealth
 //
-//  Created by 天涯 on 2017/4/23.
+//  Created by 天涯 on 2017/4/29.
 //  Copyright © 2017年 tianya. All rights reserved.
 //
 
-#import "DrugViewController.h"
-#import "DrugListViewController.h"
-@interface DrugViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "CheckViewController.h"
+#import "CheckListViewController.h"
+@interface CheckViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
     NSArray *listArr;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation DrugViewController
+@implementation CheckViewController
 
 
 -(instancetype)init{
@@ -28,7 +28,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"药品信息";
+    self.title = @"检查项目";
     [self createView];
     
 }
@@ -64,7 +64,7 @@
     //创建请求管理器
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
     
-    NSString *url=@"http://www.tngou.net/api/drug/classify";
+    NSString *url=@"http://www.tngou.net/api/check/classify";
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
     
     [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -107,17 +107,18 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 50;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-        NSDictionary *dict = listArr[indexPath.row];
-        DrugListViewController *list = [DrugListViewController new];
-        list.classId = [dict objectForKey:@"id"];
-        [self.navigationController pushViewController:list animated:YES];
+    NSDictionary *dict = listArr[indexPath.row];
+    CheckListViewController *list = [CheckListViewController new];
+    list.classId = [dict objectForKey:@"id"];
+    [self.navigationController pushViewController:list animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+
 
 @end

@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "SFVerificationCodeView.h"
+#import "FMDBTool.h"
+#import "MBPreferenceManager.h"
 @interface LoginViewController ()
 {
     UITextField *phoneTld;
@@ -17,7 +19,6 @@
     UIButton *loginBtn;
     SFVerificationCodeView *verifyView;
     UIButton *registBtn;
-    UIButton *findPswBtn;
 }
 @end
 
@@ -77,6 +78,7 @@
     passwordTld = [UITextField new];
     passwordTld.borderStyle = UITextBorderStyleRoundedRect;
     [self.view addSubview:passwordTld];
+    passwordTld.secureTextEntry=YES;
     [passwordTld mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(phoneTld.mas_bottom).with.offset(30);
         make.left.equalTo(self.view.mas_left).with.offset(15);
@@ -133,6 +135,7 @@
     loginBtn.layer.borderColor = [UIColor blackColor].CGColor;
     loginBtn.layer.borderWidth = 2;
     [loginBtn setTitle:@"登 录" forState:UIControlStateNormal];
+    [loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:loginBtn];
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -150,28 +153,58 @@
     [self.view addSubview:registBtn];
     [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(loginBtn.mas_bottom).with.offset(30);
-        make.left.equalTo(loginBtn.mas_left);
+        make.centerX.equalTo(self.view.mas_centerX);
         make.size.mas_equalTo(CGSizeMake(100, 40));
     }];
     
-    findPswBtn = [UIButton new];
-    findPswBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [findPswBtn setTitle:@"找回密码" forState:UIControlStateNormal];
-    [findPswBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [self.view addSubview:findPswBtn];
-    [findPswBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(loginBtn.mas_bottom).with.offset(30);
-        make.right.equalTo(loginBtn.mas_right);
-        make.size.mas_equalTo(CGSizeMake(100, 40));
-    }];
 
 }
+//跳转注册界面
 -(void)registBtnAction{
     [self presentViewController:[RegisterViewController new] animated:YES completion:nil];
 }
+//返回主界面
 -(void)backBtnAction{
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+#pragma mark -
+#pragma mark 登陆功能的实现
+//登录按钮事件
+-(void)loginBtnClick{
+    [self.view endEditing:YES];
+    //判断验证码输入是否正确
+    if (![verifyTld.text isEqualToString:verifyView.code]) {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"验证码输入错误！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [verifyView generateVerificationCode];
+        }];
+        
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if ([FMDBTool selectWithInfo:phoneTld.text password:passwordTld.text]) {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"登录成功！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[MBPreferenceManager sharedPreferenceManager] setLoginState:YES];
+            [[MBPreferenceManager sharedPreferenceManager]setPhone:phoneTld.text];
+            [[MBPreferenceManager sharedPreferenceManager]setPassword:passwordTld.text];
+            [self backBtnAction];
+        }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else{
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"登陆失败！用户名或密码错误！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

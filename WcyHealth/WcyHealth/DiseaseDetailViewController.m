@@ -1,21 +1,22 @@
 //
-//  DrugDetailViewController.m
+//  DiseaseDetailViewController.m
 //  WcyHealth
 //
-//  Created by 天涯 on 2017/4/23.
+//  Created by 天涯 on 2017/4/29.
 //  Copyright © 2017年 tianya. All rights reserved.
 //
 
-#import "DrugDetailViewController.h"
+#import "DiseaseDetailViewController.h"
 
-@interface DrugDetailViewController ()<UIWebViewDelegate>{
+@interface DiseaseDetailViewController ()
+<UIWebViewDelegate>{
     UIWebView* webView;
     NSDictionary *dict;
 }
 
 @end
 
-@implementation DrugDetailViewController
+@implementation DiseaseDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,7 +57,7 @@
     [SVProgressHUD show];
     //创建请求管理器
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/drug/show?id=%@",self.idStr];
+    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/disease/show?id=%@",self.idStr];
     NSLog(@"%@",url);
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
     
@@ -81,8 +82,5 @@
         NSLog(@"数据获取失败，%@",error);
     }];
 }
-
-
-
 
 @end

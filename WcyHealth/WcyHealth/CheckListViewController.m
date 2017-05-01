@@ -1,15 +1,15 @@
 //
-//  InformListViewController.m
+//  CheckListViewController.m
 //  WcyHealth
 //
-//  Created by 天涯 on 2017/4/22.
+//  Created by 天涯 on 2017/4/29.
 //  Copyright © 2017年 tianya. All rights reserved.
 //
 
-#import "InformListViewController.h"
+#import "CheckListViewController.h"
 #import "InformationTableViewCell.h"
-#import "InformationDetailViewController.h"
-@interface InformListViewController ()
+#import "CheckDetailViewController.h"
+@interface CheckListViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
@@ -19,7 +19,7 @@
 @end
 static int  currentPage=1;
 static int  totlePage=1;
-@implementation InformListViewController
+@implementation CheckListViewController
 
 
 
@@ -32,7 +32,7 @@ static int  totlePage=1;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"资讯列表";
+    self.title = @"检查列表";
     [self createView];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -44,7 +44,7 @@ static int  totlePage=1;
     [back setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
-
+    
     table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     [self.view addSubview:table];
     table.delegate=self;
@@ -82,19 +82,20 @@ static int  totlePage=1;
     [SVProgressHUD show];
     //创建请求管理器
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/info/list?id=%@&page=%d",self.classId,currentPage];
+    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/check/list?id=%@&page=%d",self.classId,currentPage];
     NSLog(@"%@",url);
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
     
     
     [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"responseObject:%@",responseObject);
+                NSLog(@"responseObject:%@",responseObject);
         NSDictionary *tmp = responseObject;
         
         if (![responseObject[@"error"] boolValue]) {
             [SVProgressHUD dismiss];
-            NSArray *tmp=responseObject[@"tngou"];
-            totlePage = [[responseObject objectForKey:@"total"] intValue];
+            NSArray *tmp=responseObject[@"list"];
+            totlePage = [responseObject[@"totalpage"] intValue];
+
             //获取数据
             if (page==1) {
                 listArr = [listArr mutableCopy];
@@ -126,7 +127,7 @@ static int  totlePage=1;
     }
     NSDictionary *dict = listArr[indexPath.row];
     NSLog(@"%@",[dict objectForKey:@"infoclass"]);
-    cell.titleLb.text = [dict objectForKey:@"title"];
+    cell.titleLb.text = [dict objectForKey:@"name"];
     cell.detailLb.text = [dict objectForKey:@"description"];
     [cell countCellHeight:dict];
     
@@ -140,12 +141,14 @@ static int  totlePage=1;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dict = listArr[indexPath.row];
-    InformationDetailViewController *detail = [InformationDetailViewController new];
-    detail.detailId = [dict objectForKey:@"id"];
+    CheckDetailViewController *detail = [CheckDetailViewController new];
+    detail.idStr = [dict objectForKey:@"id"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+
+
 @end

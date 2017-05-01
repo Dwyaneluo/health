@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"个人信息";
+    self.title = @"订单详情";
     [self createView];
 }
 

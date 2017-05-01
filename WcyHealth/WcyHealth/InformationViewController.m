@@ -88,6 +88,7 @@
     if (cell!=nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:celLStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     }
     NSDictionary *dict = listArr[indexPath.row];

@@ -10,7 +10,8 @@
 #import "BookingViewController.h"
 #import "medicalReportViewController.h"
 #import "DrugViewController.h"
-
+#import "CheckViewController.h"
+#import "DiseaseListViewController.h"
 @interface HomeViewController ()<NewPagedFlowViewDelegate, NewPagedFlowViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     
@@ -266,16 +267,16 @@
         label.text = @"体检报告";
     }else if (indexPath.row==2){
         image.image = [UIImage imageNamed:@"2"];
-        label.text = @"健康宣教";
+        label.text = @"健康资讯";
     }else if (indexPath.row==3){
         image.image = [UIImage imageNamed:@"2"];
         label.text = @"药品信息";
     }else if (indexPath.row==4){
         image.image = [UIImage imageNamed:@"2"];
-        label.text = @"健康指数";
+        label.text = @"检查项目";
     }else if (indexPath.row==5){
         image.image = [UIImage imageNamed:@"2"];
-        label.text = @"健康管理";
+        label.text = @"疾病信息";
     }
     
     return cell;
@@ -297,9 +298,13 @@
         drug.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:drug animated:YES];
     }else if (indexPath.row==4){
-        
+        CheckViewController *check = [CheckViewController new];
+        check.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:check animated:YES];
     }else if (indexPath.row==5){
-        
+        DiseaseListViewController *disease = [DiseaseListViewController new];
+        disease.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:disease animated:YES];
     }
 }
 //定义每个UICollectionView 的间距

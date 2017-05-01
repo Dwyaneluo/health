@@ -13,12 +13,12 @@
 <UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
-    NSInteger *currentPage;
     NSMutableArray *listArr;
 }
 
 @end
-
+static int  currentPage=1;
+static int  totlePage=1;
 @implementation DrugListViewController
 
 
@@ -26,7 +26,6 @@
 -(instancetype)init{
     self=[super init];
     if (self) {
-        currentPage=1;
         listArr = [NSMutableArray array];
     }
     return self;
@@ -64,29 +63,34 @@
     [self .navigationController popViewControllerAnimated:YES];
 }
 -(void)refreshData{
+    currentPage=1;
     [self getNetWork:1];
 }
 -(void)loadMoreData{
     currentPage++;
+    if (currentPage>totlePage) {
+        [table.mj_footer endRefreshingWithNoMoreData];
+        return;
+    }
     [self getNetWork:currentPage];
 }
 //获取网络数据
--(void)getNetWork:(NSInteger *)page
+-(void)getNetWork:(int)page
 {
     [table.mj_header endRefreshing];
     [table.mj_footer endRefreshing];
     [SVProgressHUD show];
     //创建请求管理器
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/drug/list?id=%@",self.classId];
+    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/drug/list?id=%@?page=%d",self.classId,currentPage];
     NSLog(@"%@",url);
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
     
     
     [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //        NSLog(@"responseObject:%@",responseObject);
+                NSLog(@"responseObject:%@",responseObject);
         NSDictionary *tmp = responseObject;
-        
+        totlePage = [[responseObject objectForKey:@"total"] intValue];
         if (![responseObject[@"error"] boolValue]) {
             [SVProgressHUD dismiss];
             NSArray *tmp=responseObject[@"tngou"];
