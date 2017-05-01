@@ -33,6 +33,9 @@
     table.tableFooterView =[UIView new];
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
 }
+-(void)viewWillAppear:(BOOL)animated{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -488,6 +488,7 @@
 		1514CA301E990CA900F8C8F4 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				480E8EF01EA5C3DC00F3E387 /* IQKeyboardManager */,
 				1514CA311E990CA900F8C8F4 /* Base */,
 				1514CA3C1E990CA900F8C8F4 /* Custom */,
 				1514CA531E990CA900F8C8F4 /* MJRefresh.bundle */,
@@ -783,7 +784,6 @@
 			children = (
 				1518CE9B1EB588260027DCA4 /* FMDB */,
 				480E8F361EA5F8A800F3E387 /* SFVerificationCodeView */,
-				480E8EF01EA5C3DC00F3E387 /* IQKeyboardManager */,
 				1514CA301E990CA900F8C8F4 /* MJRefresh */,
 				15F2BE4F1E59A44300780AAC /* CustomeView */,
 				15F2BE521E59A44300780AAC /* NewPagedFlowView */,
@@ -1019,7 +1019,8 @@
 				480E8F081EA5C3DC00F3E387 /* IQToolbar */,
 				480E8F131EA5C3DC00F3E387 /* Resources */,
 			);
-			path = IQKeyboardManager;
+			name = IQKeyboardManager;
+			path = ../IQKeyboardManager;
 			sourceTree = "<group>";
 		};
 		480E8EF11EA5C3DC00F3E387 /* Categories */ = {
