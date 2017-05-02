@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ComboDetailViewController : UIViewController
-
+@property(nonatomic,strong)NSDictionary *infoDict;
 @end

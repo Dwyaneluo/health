@@ -19,7 +19,6 @@
 }
 - (void)setUpCell{
     _icon = [UIImageView new];
-    _icon.backgroundColor = [UIColor redColor];
     [self addSubview:_icon];
     [_icon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left).with.offset(20);
@@ -29,7 +28,7 @@
     
     _title = [UILabel new];
     _title.font = [UIFont boldSystemFontOfSize:17];
-    _title.text = @"常规体检套餐（女已婚）";
+
     [self addSubview:_title];
     [_title mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_icon.mas_right).with.offset(10);
@@ -39,7 +38,7 @@
     
     _oldPrice = [UILabel new];
     _oldPrice.font = [UIFont boldSystemFontOfSize:15];
-    _oldPrice.text = @"原价：¥1088.00";
+
     [self addSubview:_oldPrice];
     [_oldPrice mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_icon.mas_right).with.offset(10);
@@ -50,7 +49,7 @@
     
     _bookingNum = [UILabel new];
     _bookingNum.font = [UIFont boldSystemFontOfSize:15];
-    _bookingNum.text = @"811人已预约";
+
     [self addSubview:_bookingNum];
     [_bookingNum mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_oldPrice.mas_right).with.offset(10);
@@ -60,8 +59,8 @@
     
     _price = [UILabel new];
     _price.font = [UIFont boldSystemFontOfSize:15];
+    _price.textColor = [UIColor redColor];
     _price.textAlignment = NSTextAlignmentCenter;
-    _price.text = @"现价：¥699.00";
     [self addSubview:_price];
     [_price mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_icon.mas_right).with.offset(10);
@@ -69,6 +68,13 @@
         make.size.mas_equalTo(CGSizeMake(150, 20));
     }];
     
+}
+-(void)setValueToCell:(NSDictionary *)dict{
+    _icon.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",dict[@"image"]]];
+    _title.text = [NSString stringWithFormat:@"%@",dict[@"title"]];
+    _oldPrice.text =  [NSString stringWithFormat:@"原价：¥%@",dict[@"oldprice"]];
+    _bookingNum.text = [NSString stringWithFormat:@"%@人已预约",dict[@"sum"]];
+    _price.text = [NSString stringWithFormat:@"现价：¥%@",dict[@"newprice"]];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

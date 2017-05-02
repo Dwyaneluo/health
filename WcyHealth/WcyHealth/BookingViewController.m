@@ -16,6 +16,7 @@
     UIButton *priceBtn;
     UIButton *numBtn;
     UITableView  *table;
+    NSMutableArray *dataArr;
 }
 @end
 
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     self.title = @"体检预约套餐";
     [self createView];
+    
 }
 - (void)createView{
     UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -62,6 +64,10 @@
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
     table.rowHeight = 120;
     [self.view addSubview:table];
+    
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"Combo" ofType:@"plist"];
+    dataArr = [[NSMutableArray alloc]initWithContentsOfFile:plistPath];
+    NSLog(@"%@",dataArr);//直接打印数据
 
 }
 - (void)backBtnClick{
@@ -73,7 +79,7 @@
 }
 #pragma mark-  tablview delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return dataArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellStr= @"cell";
@@ -83,10 +89,14 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
     }
+    NSDictionary *dict = dataArr[indexPath.row];
+    [cell setValueToCell:dict];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dict = [dataArr objectAtIndex:indexPath.row];
     ComboDetailViewController *detail = [ComboDetailViewController new];
+    detail.infoDict = dict;
     [self.navigationController pushViewController:detail animated:YES];
 }
 @end

@@ -14,4 +14,5 @@
 @property (nonatomic,strong)UILabel *price;
 @property (nonatomic,strong)UILabel *bookingNum;
 @property (nonatomic,strong)UILabel *oldPrice;
+-(void)setValueToCell:(NSDictionary *)dict;
 @end

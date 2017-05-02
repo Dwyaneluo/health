@@ -56,7 +56,7 @@
     table.tableHeaderView = head;
     
     imageV = [UIImageView new];
-    imageV.backgroundColor = [UIColor redColor];
+    imageV.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_infoDict objectForKey:@"image"]]];
     [head addSubview:imageV];
     [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(head);
@@ -65,7 +65,7 @@
     }];
     
     nameLb = [UILabel new];
-    nameLb.text = @"入职体检套餐";
+    nameLb.text =[_infoDict objectForKey:@"title"];
     nameLb.textColor = [UIColor blueColor];
     nameLb.font = [UIFont boldSystemFontOfSize:15];
     [head addSubview:nameLb];
@@ -76,7 +76,7 @@
     }];
     
     detailLb = [UILabel new];
-    detailLb.text = @"简单基础的入职体检项目，让你了解自身的基本状况，价格适宜";
+    detailLb.text = [_infoDict objectForKey:@"detail"];
     detailLb.numberOfLines=0;
     detailLb.font = [UIFont systemFontOfSize:14];
     [head addSubview:detailLb];
@@ -88,7 +88,7 @@
     }];
     
     moneyLb = [UILabel new];
-    moneyLb.text = @"¥99.00";
+    moneyLb.text = [NSString stringWithFormat:@"￥%@",[_infoDict objectForKey:@"newprice"]];
     moneyLb.textColor = [UIColor redColor];
     moneyLb.font = [UIFont boldSystemFontOfSize:16];
     [head addSubview:moneyLb];
@@ -99,7 +99,7 @@
     }];
     
     oldPrice = [UILabel new];
-    oldPrice.text = @"原价:140";
+    oldPrice.text = [NSString stringWithFormat:@"原价:%@",[_infoDict objectForKey:@"oldprice"]];
     oldPrice.font = [UIFont systemFontOfSize:14];
     [head addSubview:oldPrice];
     [oldPrice mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -137,22 +137,6 @@
         make.size.mas_equalTo(CGSizeMake((ScreenWidth-30)/3, 40));
     }];
     
-    onlineConsultBtn = [UIButton new];
-    onlineConsultBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [onlineConsultBtn setTitle:@"在线咨询" forState:UIControlStateNormal];
-    [onlineConsultBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    onlineConsultBtn.layer.borderWidth = 1;
-    onlineConsultBtn.layer.borderColor = [UIColor redColor].CGColor;
-    [onlineConsultBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
-    onlineConsultBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 60);
-    //button标题的偏移量，这个偏移量是相对于图片的
-    onlineConsultBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    [head addSubview:onlineConsultBtn];
-    [onlineConsultBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(oldPrice.mas_bottom).with.offset(20);
-        make.left.equalTo(callConsultBtn.mas_right).with.offset(20);
-        make.size.mas_equalTo(CGSizeMake((ScreenWidth-40)/3, 40));
-    }];
     
 }
 #pragma mark - 按钮点击事件
@@ -272,7 +256,6 @@
             UILabel* title = [UILabel new];
             title.font = [UIFont systemFontOfSize:13];
             title.textAlignment = NSTextAlignmentCenter;
-            title.text = @"内科";
             [cell addSubview:title];
             [title mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(cell.mas_centerY);
@@ -293,13 +276,54 @@
             UILabel* title2 = [UILabel new];
             title2.font = [UIFont systemFontOfSize:13];
             title2.numberOfLines=2;
-            title2.text = @"心，肺，肝，脾，腹部，现病史及既往病史采集";
             [cell addSubview:title2];
             [title2 mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(cell.mas_centerY);
                 make.left.equalTo(line.mas_right).with.offset(4);
                 make.size.mas_equalTo(CGSizeMake(ScreenWidth-105, 40));
             }];
+            if (indexPath.section==1) {
+                if (indexPath.row==0) {
+                    title.text = @"内科";
+                    title2.text = @"检查心,肺,肝,胆,脾,肾,肠道,神经系统有无异常";
+                }else if (indexPath.row==1){
+                    title.text = @"外科";
+                    title2.text = @"检查皮肤,浅表淋巴结,甲状腺,乳房,脊柱,四肢关节,肛门,直肠有无异常";
+                }else if (indexPath.row==2){
+                    title.text = @"眼科";
+                    title2.text = @"检查视力是否正常,有无,屈光不正,色盲等";
+                }else if (indexPath.row==3){
+                    title.text = @"一般检查";
+                    title2.text = @"了解身高,体重,血压并衡量胖瘦程度";
+                }
+            }else if (indexPath.section==2){
+                if (indexPath.row==0) {
+                    title.text = @"心电图检查";
+                    title2.text = @"检查有无心律失常,缺血性心脏病,心肌病,变等心脏缺血缺氧性疾病";
+                }else if (indexPath.row==1){
+                    title.text = @"乙肝五项";
+                    title2.text = @"确定是否感染乙肝病毒及是否对乙肝有免疫力，提示病毒是否复制。";
+                }else if (indexPath.row==2){
+                    title.text = @"血常规检查";
+                    title2.text = @"血常规检查一般是针对细胞的检查，包括红白细胞、血小板、淋巴细胞等等";
+                }
+            }else if (indexPath.section==3){
+                if (indexPath.row==0) {
+                    title.text = @"腹部彩超";
+                    title2.text = @"检查子宫、附件、卵巢有无异常（女）,检查肝、胆、胰、脾、双肾，判断腹部有无异常病变（男）";
+                }else if (indexPath.row==1){
+                    title.text = @"胸部透视";
+                    title2.text = @"检查肺脏,结构是否正常,有无异常症像";
+                }
+            }else if (indexPath.section==4){
+                if (indexPath.row==0) {
+                    title.text = @"肝功能";
+                    title2.text = @"主要检查谷丙转氨酶、总胆红素、直接胆红素、间接胆红素这四项,对肝脏健康进行系统检查,如各种肝炎、肿瘤等。";
+                }else if (indexPath.row==1){
+                    title.text = @"血型";
+                    title2.text = @"ABO血型测定";
+                }
+            }
         }
     }
     return cell;
