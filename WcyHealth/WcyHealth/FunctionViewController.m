@@ -9,6 +9,7 @@
 #import "FunctionViewController.h"
 #import "AllOrderTableViewCell.h"
 #import "OrderDetailViewController.h"
+#import "LoginViewController.h"
 @interface FunctionViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
@@ -30,6 +31,21 @@
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
     table.rowHeight = 100;
     [self.view addSubview:table];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    if (IS_LOGIN!=YES) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"还未登录账号" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self presentViewController:[LoginViewController new] animated:YES completion:nil];
+        }];
+        UIAlertAction *cancel =  [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            self.tabBarController.selectedIndex = 0;
+        }];
+        [alert addAction:action];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

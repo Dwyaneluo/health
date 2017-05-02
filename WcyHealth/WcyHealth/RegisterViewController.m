@@ -90,6 +90,7 @@
     
     verifyTld = [UITextField new];
     verifyTld.borderStyle = UITextBorderStyleRoundedRect;
+    verifyTld.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self.view addSubview:verifyTld];
     [verifyTld mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(passwordTld.mas_bottom).with.offset(30);

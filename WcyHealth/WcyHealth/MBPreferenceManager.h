@@ -22,4 +22,15 @@
 - (void)setPassword:(NSString *)password;
 - (NSString *)getPassword;
 
+
+- (void)setUserName:(NSString *)name;
+- (NSString *)getUserName;
+- (void)setUserPhone:(NSString *)phone;
+- (NSString *)getUserPhone;
+- (void)setUserIDCard:(NSString *)idcard;
+- (NSString *)getUserIDCard;
+- (void)setUserGender:(NSString *)gender;
+- (NSString *)getUserGender;
+- (void)setUserMarried:(NSString *)married;
+- (NSString *)getUserMarried;
 @end

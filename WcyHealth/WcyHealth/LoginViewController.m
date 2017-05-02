@@ -94,6 +94,7 @@
     
     verifyTld = [UITextField new];
     verifyTld.borderStyle = UITextBorderStyleRoundedRect;
+    verifyTld.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self.view addSubview:verifyTld];
     [verifyTld mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(passwordTld.mas_bottom).with.offset(30);
@@ -184,6 +185,13 @@
             [verifyView generateVerificationCode];
         }];
         
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if (![FMDBTool selectWithUserName:phoneTld.text]) {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"登陆失败！用户名不存在！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
         return;

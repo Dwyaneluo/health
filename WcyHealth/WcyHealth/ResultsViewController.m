@@ -209,9 +209,6 @@
 
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    
     if (tableView==summaryTabV) {
         NSString * celLStr= @"cell";
         summaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:celLStr];

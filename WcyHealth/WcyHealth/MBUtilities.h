@@ -16,6 +16,6 @@
 + (void)sendLocalPush:(NSString*)push;
 + (CGSize)countString:(NSString *)str size:(CGSize)size fontSize:(NSInteger)fontSize;
 + (CGSize)countString:(NSString *)str size:(CGSize)size font:(UIFont*)font;
-
++(void)accountsLogout;
 
 @end

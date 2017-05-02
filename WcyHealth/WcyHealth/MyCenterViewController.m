@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "medicalReportViewController.h"
 #import "PersonInfoViewController.h"
+
 @interface MyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
@@ -33,12 +34,12 @@
     table.tableFooterView =[UIView new];
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
 }
--(void)viewWillAppear:(BOOL)animated{
-    
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [table reloadData];
 }
 #pragma mark- tablview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -99,10 +100,15 @@
                 [image mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_equalTo(CGSizeMake(80, 80));
                 }];
-                title.text = @"点击登陆";
                 [title mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.left.mas_equalTo(cell.mas_left).with.offset(105);
                 }];
+                title.text = @"点击登陆";
+                if (IS_LOGIN==YES) {
+                    title.text = [NSString stringWithFormat:@"用户%@",[[MBPreferenceManager sharedPreferenceManager] getPhone]];
+                }
+                
+
             }else if(indexPath.row==1){
                 title.text = @"我的报告";
             }else if(indexPath.row==2){
@@ -115,29 +121,49 @@
                 title.text = @"设置";
             }
         }else{
-            title.text = @"检查更新";
+            title.text = @"账号退出";
+            title.textColor = [UIColor redColor];
         }
     }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (IS_LOGIN!=YES) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"还未登录账号" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self presentViewController:[LoginViewController new] animated:YES completion:nil];
+        }];
+        UIAlertAction *cancel =  [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     if (indexPath.section==0){
         if (indexPath.row==0) {
-            [self presentViewController:[LoginViewController new] animated:YES completion:nil];
+            PersonInfoViewController *person = [PersonInfoViewController new];
+            person.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:person animated:YES];
         }else if(indexPath.row==1){
             medicalReportViewController *medical = [medicalReportViewController new];
             medical.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:medical animated:YES];
         }else if(indexPath.row==2){
-            PersonInfoViewController *person = [PersonInfoViewController new];
-            person.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:person animated:YES];
+            self.tabBarController.selectedIndex = 2;
         }
     }else if(indexPath.section==1){
         if (indexPath.row==0) {
+            
         }else if(indexPath.row==1){
+            
         }
-    }else{
+    }else if(indexPath.section==2){
+        [MBUtilities accountsLogout];
+        [self presentViewController:[LoginViewController new] animated:YES completion:nil];
+        
     }
 }
 @end

@@ -11,16 +11,16 @@
 @interface PersonInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
-    UITextField * nameTld;
-    UITextField *phoneNumTld;
-    UITextField *IdCardTld;
-    UIButton *manBtn;
-    UIButton *WomanBtn;
-    UIButton *marriedBtn;
-    UIButton *unmarriedBtn;
-    
-    UIButton *confirmBtn;
-
+    UITextField * nameTld;//姓名输入框
+    UITextField *phoneNumTld;//手机号码输入框
+    UITextField *IdCardTld;//身份证输入框
+    UIButton *manBtn;//女按钮
+    UIButton *WomanBtn;//男按钮
+    UIButton *marriedBtn;//已结婚按钮
+    UIButton *unmarriedBtn;//未结婚按钮
+    UIButton *confirmBtn;//保存按钮
+    NSString *marriedStr;//是否结婚
+    NSString *genderStr;//男或女
 }
 
 @end
@@ -59,7 +59,9 @@
     [table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     table.tableFooterView =[UIView new];
     table.backgroundColor = UIColorFromHexValue(0xf4f4f4);
-    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClickAction)];
+    tap.cancelsTouchesInView = NO;//设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+    [table addGestureRecognizer:tap];
     
     confirmBtn = [UIButton new];
     confirmBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
@@ -68,6 +70,7 @@
     confirmBtn.layer.masksToBounds = YES;
     confirmBtn.layer.cornerRadius = 3;
     confirmBtn.layer.borderWidth = 1;
+    [confirmBtn addTarget:self action:@selector(saveBtnClick) forControlEvents:UIControlEventTouchUpInside];
     confirmBtn.layer.borderColor = [UIColor blackColor].CGColor;
     [table addSubview:confirmBtn];
     [confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,6 +79,12 @@
         make.size.mas_equalTo(CGSizeMake(200, 30));
     }];
 }
+#pragma mark-列表点击事件
+-(void)tapClickAction{
+    [table endEditing:YES];
+    [self.view endEditing:YES];
+}
+#pragma mark-返回按钮事件
 - (void)backBtnClick{
     [self .navigationController popViewControllerAnimated:YES];
 }
@@ -140,8 +149,9 @@
             [manBtn setTitle:@"男" forState:UIControlStateNormal];
             manBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
             [manBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [manBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
-            manBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 40);
+            [manBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            [manBtn addTarget:self action:@selector(checkBoxClickAction:) forControlEvents:UIControlEventTouchUpInside];
+            manBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 50);
             //button标题的偏移量，这个偏移量是相对于图片的
             manBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
             [cell addSubview:manBtn];
@@ -154,8 +164,9 @@
             [WomanBtn setTitle:@"女" forState:UIControlStateNormal];
             [WomanBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             WomanBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-            [WomanBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
-            WomanBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 40);
+            [WomanBtn addTarget:self action:@selector(checkBoxClickAction:) forControlEvents:UIControlEventTouchUpInside];
+            [WomanBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            WomanBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 50);
             //button标题的偏移量，这个偏移量是相对于图片的
             WomanBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
             [cell addSubview:WomanBtn];
@@ -169,9 +180,10 @@
             title.text = @"婚 否";
             [marriedBtn setTitle:@"未婚" forState:UIControlStateNormal];
             marriedBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-            [marriedBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+            [marriedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            [marriedBtn addTarget:self action:@selector(checkBoxClickAction:) forControlEvents:UIControlEventTouchUpInside];
             [marriedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            marriedBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 40);
+            marriedBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 50);
             //button标题的偏移量，这个偏移量是相对于图片的
             marriedBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
             [cell addSubview:marriedBtn];
@@ -183,9 +195,10 @@
             
             [unmarriedBtn setTitle:@"已婚" forState:UIControlStateNormal];
             unmarriedBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-            [unmarriedBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+            [unmarriedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            [unmarriedBtn addTarget:self action:@selector(checkBoxClickAction:) forControlEvents:UIControlEventTouchUpInside];
             [unmarriedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            unmarriedBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 40);
+            unmarriedBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 50);
             //button标题的偏移量，这个偏移量是相对于图片的
             unmarriedBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
             [cell addSubview:unmarriedBtn];
@@ -198,7 +211,63 @@
     }
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+#pragma mark-
+#pragma mark-选择框事件
+-(void)checkBoxClickAction:(UIButton *)button{
+    if ([button isSelected]) {
+        button.selected=NO;
+        [button setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+    }else{
+        if (button==manBtn) {
+            [WomanBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            genderStr = @"男";
+        }else if (button==WomanBtn){
+            [manBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            genderStr = @"女";
+        }else if (button==marriedBtn){
+            [unmarriedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            marriedStr = @"未婚";
+        }else if (button==unmarriedBtn){
+            [marriedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            marriedStr = @"已婚";
+        }
+        button.selected=YES;
+        [button setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
+    }
+    
+
+}
+#pragma mark-保存事件
+-(void)saveBtnClick{
+    [self.view endEditing:YES];
+    [table endEditing:YES];
+    if (nameTld.text.length>0&&phoneNumTld.text.length>0&&IdCardTld.text.length>0&&([manBtn isSelected]||[WomanBtn isSelected])&&([marriedBtn isSelected]||[unmarriedBtn isSelected])) {
+        
+        [[MBPreferenceManager sharedPreferenceManager] setUserName:nameTld.text];
+        [[MBPreferenceManager sharedPreferenceManager] setUserPhone:phoneNumTld.text];
+        [[MBPreferenceManager sharedPreferenceManager] setUserIDCard:IdCardTld.text];
+        [[MBPreferenceManager sharedPreferenceManager] setUserGender:genderStr];
+        [[MBPreferenceManager sharedPreferenceManager] setUserMarried:marriedStr];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"信息填写完成" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self backBtnClick];
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"信息还未填写完整！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+  
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+#pragma mark-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [table endEditing:YES];
+    [self.view endEditing:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

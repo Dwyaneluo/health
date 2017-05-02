@@ -73,8 +73,6 @@
 }
 //帐号登出
 +(void)accountsLogout{
-    NSNotification  *notifi=[[NSNotification alloc]initWithName:@"SRChangeInfoWithAvatar" object:nil userInfo:@{@"type":@"out"}];
-    [[NSNotificationCenter defaultCenter]postNotification:notifi];
     [[MBPreferenceManager sharedPreferenceManager] setLoginState:NO];
     [[MBPreferenceManager sharedPreferenceManager] setPhone:@""];
     [[MBPreferenceManager sharedPreferenceManager] setPassword:@""];

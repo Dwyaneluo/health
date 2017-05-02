@@ -12,6 +12,7 @@
 #import "DrugViewController.h"
 #import "CheckViewController.h"
 #import "DiseaseListViewController.h"
+#import "LoginViewController.h"
 @interface HomeViewController ()<NewPagedFlowViewDelegate, NewPagedFlowViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     
@@ -283,11 +284,37 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row==0){
+        if (IS_LOGIN!=YES) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"还未登录账号" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"去登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self presentViewController:[LoginViewController new] animated:YES completion:nil];
+            }];
+            UIAlertAction *cancel =  [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:action];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
         BookingViewController *booking = [BookingViewController new];
         booking.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:booking animated:YES];
         
     }else if (indexPath.row==1){
+        if (IS_LOGIN!=YES) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"还未登录账号" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"去登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self presentViewController:[LoginViewController new] animated:YES completion:nil];
+            }];
+            UIAlertAction *cancel =  [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:action];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
         medicalReportViewController *medical = [medicalReportViewController new];
         medical.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:medical animated:YES];

@@ -72,11 +72,11 @@ static NSMutableArray *arr;
         NSString *sql=@"insert into user (phonenum,password) values (?,?);";
         rs=[db executeUpdate:sql,user.phonenum,user.password];
         if (rs) {
-            NSLog(@"插入成功");
+            NSLog(@"注册用户成功");
         }
         else
         {
-            NSLog(@"插入失败");
+            NSLog(@"注册用户失败");
         }
     }];
     return rs;
