@@ -76,7 +76,27 @@
     [[MBPreferenceManager sharedPreferenceManager] setLoginState:NO];
     [[MBPreferenceManager sharedPreferenceManager] setPhone:@""];
     [[MBPreferenceManager sharedPreferenceManager] setPassword:@""];
-
+    [[MBPreferenceManager sharedPreferenceManager] setUserState:NO];
 }
-
++(NSString*)randomOrderID{
+    char letters[] ="ABCDEFGHIJKLOMNOPQRSTUVWXYZ";
+    char num[1];
+    
+    num[0]= letters[arc4random()%26];
+    
+    NSString *text = [[NSString alloc] initWithBytes:num
+                                              length:1 encoding:NSUTF8StringEncoding];
+    
+    char chars[] = "1234567890";
+    char codes[12];
+    
+    for(int i=0;i<12; i++){
+        codes[i]= chars[arc4random()%10];
+    }
+    
+    
+   NSString* str = [[NSString alloc] initWithBytes:codes
+                                              length:12 encoding:NSUTF8StringEncoding];
+    return [NSString stringWithFormat:@"%@%@",text,str];
+}
 @end

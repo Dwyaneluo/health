@@ -16,6 +16,9 @@
 - (void)setLoginState:(BOOL)islogin;
 - (BOOL)isLogin;
 
+- (void)setUserState:(BOOL)isexist;
+- (BOOL)isExist;
+
 - (void)setPhone:(NSString *)name;
 - (NSString *)getPhone;
 

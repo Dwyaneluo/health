@@ -12,11 +12,14 @@
 
 @interface BookingViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    UIButton *defaultBtn;
-    UIButton *priceBtn;
-    UIButton *numBtn;
-    UITableView  *table;
+    UIButton *defaultBtn;//默认排序
+    UIButton *priceBtn;//按照价格排序
+    UIButton *numBtn;//按照数量排序
+    UITableView  *table;//列表
     NSMutableArray *dataArr;
+    NSArray *defaultArr;//默认数组
+    NSArray *priceArr;//价格数组
+    NSArray *sumArr;//数量数组
 }
 @end
 
@@ -37,13 +40,15 @@
     
     defaultBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth/3, 40)];
     [defaultBtn setTitle:@"默认" forState:UIControlStateNormal];
-    [defaultBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [defaultBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [defaultBtn addTarget:self action:@selector(defaultBtnClick) forControlEvents:UIControlEventTouchUpInside];
     defaultBtn.layer.borderWidth=0.5;
     defaultBtn.layer.borderColor = [UIColor blackColor].CGColor;
     [self.view addSubview:defaultBtn];
     
     priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth/3, 64, ScreenWidth/3, 40)];
     [priceBtn setTitle:@"价格" forState:UIControlStateNormal];
+    [priceBtn addTarget:self action:@selector(priceBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [priceBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     priceBtn.layer.borderWidth=0.5;
     priceBtn.layer.borderColor = [UIColor blackColor].CGColor;
@@ -51,6 +56,7 @@
     
     numBtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth*2/3, 64, ScreenWidth/3, 40)];
     [numBtn setTitle:@"销量" forState:UIControlStateNormal];
+    [numBtn addTarget:self action:@selector(numBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [numBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     numBtn.layer.borderWidth=0.5;
     numBtn.layer.borderColor = [UIColor blackColor].CGColor;
@@ -67,11 +73,65 @@
     
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"Combo" ofType:@"plist"];
     dataArr = [[NSMutableArray alloc]initWithContentsOfFile:plistPath];
+    defaultArr = [NSArray arrayWithArray:dataArr];
     NSLog(@"%@",dataArr);//直接打印数据
 
 }
+#pragma mark-
+#pragma mark- 返回按钮
 - (void)backBtnClick{
     [self .navigationController popViewControllerAnimated:YES];
+}
+#pragma mark- 按钮点击事件
+//默认按钮
+- (void)defaultBtnClick{
+
+    [defaultBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [priceBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [numBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    dataArr = [NSMutableArray arrayWithArray:defaultArr];
+    [table reloadData];
+}
+//价格按钮
+- (void)priceBtnClick{
+    [priceBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [defaultBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [numBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    if (priceArr.count<1) {
+        priceArr = [dataArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            if ([[obj1 objectForKey:@"oldprice"] integerValue] < [[obj2 objectForKey:@"oldprice"] integerValue])
+            {
+                return NSOrderedDescending;
+            }
+            else
+            {
+                return NSOrderedAscending;
+            }
+        }];
+    }
+    dataArr = [NSMutableArray arrayWithArray:priceArr];
+    [table reloadData];
+}
+//销量按钮
+- (void)numBtnClick{
+    [numBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [defaultBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [priceBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    if (sumArr.count<1) {
+        sumArr = [dataArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            if ([[obj1 objectForKey:@"sum"] integerValue] < [[obj2 objectForKey:@"sum"] integerValue])
+            {
+                return NSOrderedDescending;
+            }
+            else
+            {
+                return NSOrderedAscending;
+            }
+        }];
+    }
+    dataArr = [NSMutableArray arrayWithArray:sumArr];
+    [table reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

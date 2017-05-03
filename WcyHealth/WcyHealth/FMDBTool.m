@@ -119,8 +119,8 @@ static NSMutableArray *arr;
 {
     arr=[NSMutableArray new];
     [fmq inDatabase:^(FMDatabase *db) {
-        NSString *sql=@"insert into orde (ordernum,orderstate,ordertime,ordermoney,orderoldmoney,ordertitle,orderdetail,name,idcard,gender,married,phone) values (?,?,?,?,?,?,?,?,?,?,?,?);";
-        rs=[db executeUpdate:sql,order.ordernum,order.orderstate,order.ordertime,order.ordermoney,order.orderoldmoney,order.ordertitle,order.orderdetail,order.name,order.idcard,order.gender,order.married,order.phone];
+        NSString *sql=@"insert into orde (ordersum,orderimage,ordernum,orderstate,ordertime,ordermoney,orderoldmoney,ordertitle,orderdetail,name,idcard,gender,married,phone) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        rs=[db executeUpdate:sql,order.ordersum,order.orderimage,order.ordernum,order.orderstate,order.ordertime,order.ordermoney,order.orderoldmoney,order.ordertitle,order.orderdetail,order.name,order.idcard,order.gender,order.married,order.phone];
         if (rs) {
             NSLog(@"订单插入成功");
         }
@@ -132,11 +132,11 @@ static NSMutableArray *arr;
     return rs;
 }
 #pragma mark -删除订单
-+(void)deleteOrderForPhoneNum:(NSNumber*)number
++(void)deleteOrderForOrdernum:(NSString*)ordernum
 {
     [fmq inDatabase:^(FMDatabase *db) {
-        NSString *sql=@"delete from orde where phone = ? ;";
-        BOOL rs=[db executeUpdate:sql,number];
+        NSString *sql=@"delete from orde where ordernum = ? ;";
+        BOOL rs=[db executeUpdate:sql,ordernum];
         if (rs) {
             NSLog(@"删除成功");
         }
@@ -147,6 +147,23 @@ static NSMutableArray *arr;
         
     }];
 
+}
+#pragma mark -修改订单状态
++(void)changeOrderForOrderID:(NSString*)ordernum state:(NSString *)state
+{
+    [fmq inDatabase:^(FMDatabase *db) {
+        NSString *sql=@"update orde set orderstate = ? where ordernum = ? ;";
+        BOOL rs=[db executeUpdate:sql,state,ordernum];
+        if (rs) {
+            NSLog(@"修改成功");
+        }
+        else
+        {
+            NSLog(@"修改失败");
+        }
+        
+    }];
+    
 }
 #pragma mark -获取所有订单
 +(NSArray*)getAllOrder
@@ -161,7 +178,8 @@ static NSMutableArray *arr;
             o.orderstate=[re stringForColumn:@"orderstate"];
             o.ordertime=[re stringForColumn:@"ordertime"];
             o.ordermoney=[re objectForColumnName:@"ordermoney"];
-            
+            o.orderimage=[re stringForColumn:@"orderimage"];
+            o.ordersum=[re objectForColumnName:@"ordersum"];
             o.orderoldmoney=[re objectForColumnName:@"orderoldmoney"];
             o.ordertitle=[re objectForColumnName:@"ordertitle"];
             o.orderdetail=[re objectForColumnName:@"orderdetail"];
@@ -188,7 +206,8 @@ static NSMutableArray *arr;
             o.orderstate=[re stringForColumn:@"orderstate"];
             o.ordertime=[re stringForColumn:@"ordertime"];
             o.ordermoney=[re objectForColumnName:@"ordermoney"];
-            
+            o.orderimage=[re stringForColumn:@"orderimage"];
+            o.ordersum=[re objectForColumnName:@"ordersum"];
             o.orderoldmoney=[re objectForColumnName:@"orderoldmoney"];
             o.ordertitle=[re objectForColumnName:@"ordertitle"];
             o.orderdetail=[re objectForColumnName:@"orderdetail"];

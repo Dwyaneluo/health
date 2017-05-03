@@ -113,6 +113,7 @@
             title.text = @"姓 名：";
             
             nameTld.borderStyle = UITextBorderStyleRoundedRect;
+
             nameTld.placeholder = @"请输入体检人姓名";
             [nameTld setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
             [cell addSubview:nameTld];
@@ -209,6 +210,22 @@
             }];
         }
     }
+    if ([[MBPreferenceManager sharedPreferenceManager] isExist]==YES) {
+        nameTld.text = [[MBPreferenceManager sharedPreferenceManager] getUserName];
+        phoneNumTld.text = [[MBPreferenceManager sharedPreferenceManager] getUserPhone];
+        IdCardTld.text = [[MBPreferenceManager sharedPreferenceManager]getUserIDCard];
+        if ([[[MBPreferenceManager sharedPreferenceManager] getUserGender] isEqualToString:@"男"]) {
+            [self checkBoxClickAction:manBtn];
+        }else{
+            [self checkBoxClickAction:WomanBtn];
+        }
+        
+        if ([[[MBPreferenceManager sharedPreferenceManager] getUserMarried] isEqualToString:@"已婚"]) {
+            [self checkBoxClickAction:marriedBtn];
+        }else{
+            [self checkBoxClickAction:unmarriedBtn];
+        }
+    }
     return cell;
 }
 #pragma mark-
@@ -226,10 +243,10 @@
             genderStr = @"女";
         }else if (button==marriedBtn){
             [unmarriedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
-            marriedStr = @"未婚";
+            marriedStr = @"已婚";
         }else if (button==unmarriedBtn){
             [marriedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
-            marriedStr = @"已婚";
+            marriedStr = @"未婚";
         }
         button.selected=YES;
         [button setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
@@ -243,6 +260,7 @@
     [table endEditing:YES];
     if (nameTld.text.length>0&&phoneNumTld.text.length>0&&IdCardTld.text.length>0&&([manBtn isSelected]||[WomanBtn isSelected])&&([marriedBtn isSelected]||[unmarriedBtn isSelected])) {
         
+        [[MBPreferenceManager sharedPreferenceManager] setUserState:YES];
         [[MBPreferenceManager sharedPreferenceManager] setUserName:nameTld.text];
         [[MBPreferenceManager sharedPreferenceManager] setUserPhone:phoneNumTld.text];
         [[MBPreferenceManager sharedPreferenceManager] setUserIDCard:IdCardTld.text];

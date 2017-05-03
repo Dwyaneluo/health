@@ -62,6 +62,14 @@ static MBPreferenceManager *sharedManager = nil;
      return [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
 }
 
+- (void)setUserState:(BOOL)isexist{
+    [[NSUserDefaults standardUserDefaults] setBool:isexist forKey:@"exist"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (BOOL)isExist{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"exist"];
+}
+
 - (void)setUserName:(NSString *)name{
     if (name == nil || [name isKindOfClass:[NSNull class]]) {
         return;

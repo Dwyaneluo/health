@@ -17,5 +17,5 @@
 + (CGSize)countString:(NSString *)str size:(CGSize)size fontSize:(NSInteger)fontSize;
 + (CGSize)countString:(NSString *)str size:(CGSize)size font:(UIFont*)font;
 +(void)accountsLogout;
-
++(NSString*)randomOrderID;
 @end

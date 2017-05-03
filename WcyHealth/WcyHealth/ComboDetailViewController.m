@@ -142,6 +142,7 @@
 #pragma mark - 按钮点击事件
 - (void)confirmBtnClick{
     MakeAppointmentViewController *appoint = [MakeAppointmentViewController new];
+    appoint.infoDict = _infoDict;
     [self.navigationController pushViewController:appoint animated:YES];
 }
 - (void)backBtnClick{
