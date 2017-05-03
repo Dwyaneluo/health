@@ -128,6 +128,9 @@
 		15FAF7B91EB45FF2001F1FD1 /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FAF7B81EB45FF2001F1FD1 /* CheckDetailViewController.m */; };
 		15FAF7BC1EB46318001F1FD1 /* DiseaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FAF7BB1EB46318001F1FD1 /* DiseaseListViewController.m */; };
 		15FAF7C01EB464B6001F1FD1 /* DiseaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FAF7BF1EB464B6001F1FD1 /* DiseaseDetailViewController.m */; };
+		48027B041EB9D3750061EA2D /* telephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 48027B011EB9D3750061EA2D /* telephone.png */; };
+		48027B051EB9D3750061EA2D /* telephone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48027B021EB9D3750061EA2D /* telephone@2x.png */; };
+		48027B061EB9D3750061EA2D /* telephone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48027B031EB9D3750061EA2D /* telephone@3x.png */; };
 		480E8F151EA5C3DC00F3E387 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 480E8EF31EA5C3DC00F3E387 /* IQNSArray+Sort.m */; };
 		480E8F161EA5C3DC00F3E387 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 480E8EF51EA5C3DC00F3E387 /* IQUIScrollView+Additions.m */; };
 		480E8F171EA5C3DC00F3E387 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 480E8EF71EA5C3DC00F3E387 /* IQUITextFieldView+Additions.m */; };
@@ -436,6 +439,9 @@
 		15FAF7BB1EB46318001F1FD1 /* DiseaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseListViewController.m; sourceTree = "<group>"; };
 		15FAF7BE1EB464B6001F1FD1 /* DiseaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiseaseDetailViewController.h; sourceTree = "<group>"; };
 		15FAF7BF1EB464B6001F1FD1 /* DiseaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseDetailViewController.m; sourceTree = "<group>"; };
+		48027B011EB9D3750061EA2D /* telephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telephone.png; sourceTree = "<group>"; };
+		48027B021EB9D3750061EA2D /* telephone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "telephone@2x.png"; sourceTree = "<group>"; };
+		48027B031EB9D3750061EA2D /* telephone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "telephone@3x.png"; sourceTree = "<group>"; };
 		480E8EF21EA5C3DC00F3E387 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		480E8EF31EA5C3DC00F3E387 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		480E8EF41EA5C3DC00F3E387 /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
@@ -861,6 +867,9 @@
 		15A19A231E2202290063D373 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				48027B011EB9D3750061EA2D /* telephone.png */,
+				48027B021EB9D3750061EA2D /* telephone@2x.png */,
+				48027B031EB9D3750061EA2D /* telephone@3x.png */,
 				486D75FC1EB97B1D00081567 /* alarmclock.png */,
 				486D75FD1EB97B1D00081567 /* alarmclock@2x.png */,
 				486D75FE1EB97B1D00081567 /* alarmclock@3x.png */,
@@ -1279,6 +1288,7 @@
 				486D76121EB97B1D00081567 /* personalpage_setting@2x.png in Resources */,
 				48DDD2221EB88B3200E0E379 /* 入职.jpg in Resources */,
 				480E8F2E1EA5F58D00F3E387 /* password@2x.png in Resources */,
+				48027B041EB9D3750061EA2D /* telephone.png in Resources */,
 				486D76101EB97B1D00081567 /* personalpage_ongoing@3x.png in Resources */,
 				486D76131EB97B1D00081567 /* personalpage_setting@3x.png in Resources */,
 				158760E61EA4EF5D008320C0 /* 登陆页面背景.png in Resources */,
@@ -1292,6 +1302,7 @@
 				480E8F321EA5F58D00F3E387 /* phonenumber@3x.png in Resources */,
 				15AD75131E48B009000C2217 /* SVProgressHUD.bundle in Resources */,
 				48DDD2231EB88B3200E0E379 /* 心脑血管.jpg in Resources */,
+				48027B061EB9D3750061EA2D /* telephone@3x.png in Resources */,
 				15F2BE5F1E59A64600780AAC /* Yosemite03.jpg in Resources */,
 				486D76091EB97B1D00081567 /* alarmclock@2x.png in Resources */,
 				48DDD2241EB88B3200E0E379 /* 中青年男.jpg in Resources */,
@@ -1315,6 +1326,7 @@
 				48DDD1FD1EB870AE00E0E379 /* Combo.plist in Resources */,
 				480E8F311EA5F58D00F3E387 /* phonenumber@2x.png in Resources */,
 				48DDD1FB1EB85A9E00E0E379 /* 选中.png in Resources */,
+				48027B051EB9D3750061EA2D /* telephone@2x.png in Resources */,
 				486D760C1EB97B1D00081567 /* individuals-sel@2x.png in Resources */,
 				15A199E51E21F6C60063D373 /* Assets.xcassets in Resources */,
 				486D760E1EB97B1D00081567 /* personalpage_ongoing.png in Resources */,

@@ -124,6 +124,7 @@
     callConsultBtn = [UIButton new];
     callConsultBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [callConsultBtn setTitle:@"电话咨询" forState:UIControlStateNormal];
+    [callConsultBtn addTarget:self action:@selector(callConsultBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [callConsultBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     callConsultBtn.layer.borderWidth = 1;
     callConsultBtn.layer.borderColor = [UIColor blueColor].CGColor;
@@ -146,6 +147,14 @@
     appoint.infoDict = _infoDict;
     [self.navigationController pushViewController:appoint animated:YES];
 }
+#pragma mark - 拨打电话事件
+- (void)callConsultBtnClick{
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"10010"];
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
+}
+#pragma mark -
 - (void)backBtnClick{
     [self .navigationController popViewControllerAnimated:YES];
 }
