@@ -35,7 +35,9 @@
 }
 
 -(void)createView {
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth    , 104)];
+    
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 104)];
+    topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     
     summaryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth/2, 40)];

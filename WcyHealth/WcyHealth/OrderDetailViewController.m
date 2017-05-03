@@ -7,7 +7,8 @@
 //
 
 #import "OrderDetailViewController.h"
-
+#import "ResultsViewController.h"
+#import "ComboDetailViewController.h"
 @interface OrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *table;
@@ -51,7 +52,7 @@
     table.tableHeaderView = head;
     
     date = [UILabel new];
-    date.text = @"预约体检时间:2017年2月10日";
+    date.text = [NSString stringWithFormat:@"预约体检时间:%@",self.orderInfo.ordertime];
     date.font = [UIFont boldSystemFontOfSize:15];
     [head addSubview:date];
     [date mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,7 +62,7 @@
     }];
     
     name = [UILabel new];
-    name.text = @"体检人:    张三";
+    name.text =[NSString stringWithFormat:@"体检人:    %@",self.orderInfo.name];
     name.font = [UIFont systemFontOfSize:16];
     [head addSubview:name];
     [name mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -71,7 +72,7 @@
     }];
     
     IDCard = [UILabel new];
-    IDCard.text = @"身份证:    321111199112123231";
+    IDCard.text = [NSString stringWithFormat:@"身份证:    %@",self.orderInfo.idcard];
     IDCard.font = [UIFont systemFontOfSize:16];
     [head addSubview:IDCard];
     [IDCard mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,7 +82,7 @@
     }];
     
     phoneNum = [UILabel new];
-    phoneNum.text = @"手机号:    18023456789";
+    phoneNum.text = [NSString stringWithFormat:@"手机号:    %@",self.orderInfo.phone];
     phoneNum.font = [UIFont systemFontOfSize:16];
     [head addSubview:phoneNum];
     [phoneNum mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,7 +92,7 @@
     }];
     
     gender = [UILabel new];
-    gender.text = @"性别:    男";
+    gender.text = [NSString stringWithFormat:@"性别:    %@",self.orderInfo.gender];
     gender.font = [UIFont systemFontOfSize:16];
     [head addSubview:gender];
     [gender mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,7 +102,7 @@
     }];
     
     marry = [UILabel new];
-    marry.text = @"婚否:    未婚";
+    marry.text = [NSString stringWithFormat:@"婚否:     %@",self.orderInfo.married];
     marry.font = [UIFont systemFontOfSize:16];
     [head addSubview:marry];
     [marry mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -111,7 +112,7 @@
     }];
     
     orderNum = [UILabel new];
-    orderNum.text = @"订单号:B000043009295";
+    orderNum.text = [NSString stringWithFormat:@"订单号:%@",self.orderInfo.ordernum];
     orderNum.font = [UIFont systemFontOfSize:16];
     [head addSubview:orderNum];
     [orderNum mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -123,6 +124,7 @@
     lookBtn =[UIButton new];
     [lookBtn setTitle:@"查看报告" forState:UIControlStateNormal];
     [lookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [lookBtn addTarget:self action:@selector(lookBtnClick) forControlEvents:UIControlEventTouchUpInside];
     lookBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     lookBtn.layer.borderWidth=1;
     lookBtn.layer.borderColor = [UIColor blackColor].CGColor;
@@ -133,6 +135,13 @@
         make.size.mas_equalTo(CGSizeMake(80, 30));
     }];
 }
+#pragma mark - 
+#pragma mark - 查看报告按钮事件
+- (void)lookBtnClick{
+    ResultsViewController *results = [ResultsViewController new];
+    [self.navigationController pushViewController:results animated:YES];
+}
+#pragma mark - 返回按钮事件
 - (void)backBtnClick{
     [self .navigationController popViewControllerAnimated:YES];
 }
@@ -148,7 +157,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UIImageView *image = [UIImageView new];
-        image.backgroundColor = [UIColor redColor];
+        image.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",self.orderInfo.orderimage]];
         [cell addSubview:image];
         [image mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(cell.mas_top).with.offset(10);
@@ -158,7 +167,7 @@
         }];
         
         UILabel *title = [UILabel new];
-        title.text = @"入职体检套餐";
+        title.text = self.orderInfo.ordertitle;
         title.font = [UIFont boldSystemFontOfSize:15];
         [cell addSubview:title];
         [title mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -168,7 +177,7 @@
         }];
         
         UILabel *detail = [UILabel new];
-        detail.text = @"简单基础的入职体检项目,让您了解自身的基本状况，价格适宜";
+        detail.text = self.orderInfo.orderdetail;
         detail.numberOfLines=3;
         detail.font = [UIFont boldSystemFontOfSize:14];
         [cell addSubview:detail];
@@ -179,7 +188,7 @@
         }];
         
         UILabel *price = [UILabel new];
-        price.text = @"¥99.00";
+        price.text = [NSString stringWithFormat:@"¥%@",self.orderInfo.ordermoney];
         price.numberOfLines=3;
         price.font = [UIFont boldSystemFontOfSize:14];
         [cell addSubview:price];
@@ -190,7 +199,8 @@
         }];
         
         UIButton *refund =[UIButton new];
-        [refund setTitle:@"退款" forState:UIControlStateNormal];
+        [refund setTitle:@"取消" forState:UIControlStateNormal];
+        [refund addTarget:self action:@selector(refundBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [refund setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         refund.titleLabel.font = [UIFont systemFontOfSize:13];
         refund.layer.borderWidth=1;
@@ -205,7 +215,46 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:self.orderInfo.ordertitle forKey:@"title"];
+    [dict setValue:self.orderInfo.ordermoney forKey:@"newprice"];
+    [dict setValue:self.orderInfo.orderoldmoney forKey:@"oldprice"];
+    [dict setValue:self.orderInfo.ordersum forKey:@"sum"];
+    [dict setValue:self.orderInfo.orderimage forKey:@"image"];
+    [dict setValue:self.orderInfo.orderdetail forKey:@"detail"];
+    
+    ComboDetailViewController *combo = [ComboDetailViewController new];
+    combo.infoDict = dict;
+    [self.navigationController pushViewController:combo animated:YES];
 }
+#pragma mark -
+#pragma mark - 退款按钮事件
+- (void)refundBtnClick{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"确定取消该订单？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if ([FMDBTool changeOrderForOrderID:self.orderInfo.ordernum state:@"已取消"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"取消订单成功" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self backBtnClick];
+            }];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"取消订单失败，请稍后再试" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
+    UIAlertAction *cancel =  [UIAlertAction actionWithTitle:@"不用了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:action];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+#pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
    

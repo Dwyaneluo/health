@@ -109,6 +109,7 @@
     }];
     
     confirmBtn = [UIButton new];
+    confirmBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [confirmBtn setTitle:@"立即预约" forState:UIControlStateNormal];
     [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [confirmBtn addTarget:self action:@selector(confirmBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -126,7 +127,7 @@
     [callConsultBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     callConsultBtn.layer.borderWidth = 1;
     callConsultBtn.layer.borderColor = [UIColor blueColor].CGColor;
-    [callConsultBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+    [callConsultBtn setImage:[UIImage imageNamed:@"telephone"] forState:UIControlStateNormal];
     callConsultBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 60);
     //button标题的偏移量，这个偏移量是相对于图片的
     callConsultBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);

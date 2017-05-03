@@ -10,9 +10,11 @@
 #import "AllOrderTableViewCell.h"
 #import "OrderDetailViewController.h"
 #import "LoginViewController.h"
-@interface FunctionViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "ComboDetailViewController.h"
+@interface FunctionViewController ()<UITableViewDelegate,UITableViewDataSource,cellBtnClickDelegate>
 {
     UITableView *table;
+    NSArray *dataArr;//订单数组
 }
 @end
 
@@ -46,6 +48,8 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
+    dataArr = [FMDBTool getAllOrder];
+    [table reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -53,7 +57,7 @@
 }
 #pragma mark-  tablview delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return dataArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellStr= @"cell";
@@ -61,13 +65,33 @@
     if (cell!=nil) {
         cell = [[AllOrderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.delegate=self;
     }
+    OrderInfo *info = [dataArr objectAtIndex:indexPath.row];
+    [cell setValueToCell:info];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     OrderDetailViewController* order = [OrderDetailViewController new];
+    OrderInfo *info = [dataArr objectAtIndex:indexPath.row];
+    order.orderInfo=info;
     order.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:order animated:YES];
+}
+#pragma mark-
+#pragma mark- 重新购买&再次购买按钮事件
+-(void)cellBtnclick:(OrderInfo*)info{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    [dict setValue:info.ordertitle forKey:@"title"];
+    [dict setValue:info.ordermoney forKey:@"newprice"];
+    [dict setValue:info.orderoldmoney forKey:@"oldprice"];
+    [dict setValue:info.ordersum forKey:@"sum"];
+    [dict setValue:info.orderimage forKey:@"image"];
+    [dict setValue:info.orderdetail forKey:@"detail"];
+    
+    ComboDetailViewController *combo = [ComboDetailViewController new];
+    combo.infoDict = dict;
+    [self.navigationController pushViewController:combo animated:YES];
 }
 @end

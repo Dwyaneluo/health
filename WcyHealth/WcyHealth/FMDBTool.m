@@ -34,17 +34,13 @@ static NSMutableArray *arr;
         rs=[db executeUpdate:@"create table if not exists user (id integer primary key autoincrement,phonenum text,password text);"];
         if (rs) {
             NSLog(@"查找用户表成功");
-        }
-        else
-        {
+        }else{
             NSLog(@"查找用户表失败");
         }
-        rs=[db executeUpdate:@"create table if not exists orde (ordernum integer ,orderstate text,ordertime text,ordermoney integer,orderoldmoney integer,ordertitle text,orderdetail text,name text,idcard text,gender text,married text,phone text);"];
+        rs=[db executeUpdate:@"create table if not exists orde (ordersum text,orderimage text,ordernum text ,orderstate text,ordertime text,ordermoney integer,orderoldmoney integer,ordertitle text,orderdetail text,name text,idcard text,gender text,married text,phone text);"];
         if (rs) {
             NSLog(@"查找订单表成功");
-        }
-        else
-        {
+        }else{
             NSLog(@"查找订单表失败");
         }
     }];
@@ -132,7 +128,7 @@ static NSMutableArray *arr;
     return rs;
 }
 #pragma mark -删除订单
-+(void)deleteOrderForOrdernum:(NSString*)ordernum
++(BOOL)deleteOrderForOrdernum:(NSString*)ordernum
 {
     [fmq inDatabase:^(FMDatabase *db) {
         NSString *sql=@"delete from orde where ordernum = ? ;";
@@ -146,10 +142,11 @@ static NSMutableArray *arr;
         }
         
     }];
+    return rs;
 
 }
 #pragma mark -修改订单状态
-+(void)changeOrderForOrderID:(NSString*)ordernum state:(NSString *)state
++(BOOL)changeOrderForOrderID:(NSString*)ordernum state:(NSString *)state
 {
     [fmq inDatabase:^(FMDatabase *db) {
         NSString *sql=@"update orde set orderstate = ? where ordernum = ? ;";
@@ -163,6 +160,7 @@ static NSMutableArray *arr;
         }
         
     }];
+    return rs;
     
 }
 #pragma mark -获取所有订单

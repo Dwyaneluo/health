@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"体检预约套餐";
+    self.title = @"体检预约套餐列表";
     [self createView];
     
 }

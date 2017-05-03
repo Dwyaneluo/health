@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FMDBTool.h"
 @interface OrderDetailViewController : UIViewController
-
+@property (nonatomic,strong)OrderInfo *orderInfo;
 @end

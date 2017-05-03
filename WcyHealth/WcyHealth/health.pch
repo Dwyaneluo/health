@@ -23,6 +23,7 @@
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
 #import "MJRefresh.h"
+#import "FMDBTool.h"
 #import "UIImageView+WebCache.h"
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height

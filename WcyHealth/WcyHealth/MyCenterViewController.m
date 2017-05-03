@@ -85,7 +85,7 @@
         }];
         
         UIImageView *image = [UIImageView new];
-        image.image = [UIImage imageNamed:@"默认头像"];
+        
         [cell addSubview:image];
         [image mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(cell.mas_centerY);
@@ -93,8 +93,10 @@
             make.size.mas_equalTo(CGSizeMake(30, 30));
         }];
         
+        
         if (indexPath.section==0){
             if (indexPath.row==0) {
+                image.image = [UIImage imageNamed:@"默认头像"];
                 image.layer.masksToBounds=true;
                 image.layer.cornerRadius=40;
                 [image mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -110,17 +112,23 @@
                 
 
             }else if(indexPath.row==1){
+                
+                image.image = [UIImage imageNamed:@"personalpage_ongoing"];
                 title.text = @"我的报告";
             }else if(indexPath.row==2){
+                 image.image = [UIImage imageNamed:@"personalpage_ongoing"];
                 title.text = @"我的订单";
             }
         }else if(indexPath.section==1){
             if (indexPath.row==0) {
+                 image.image = [UIImage imageNamed:@"personalpage_ongoing"];
                 title.text = @"帮助";
             }else if(indexPath.row==1){
+                 image.image = [UIImage imageNamed:@"personalpage_setting"];
                 title.text = @"设置";
             }
         }else{
+             image.image = [UIImage imageNamed:@"personalpage_ongoing"];
             title.text = @"账号退出";
             title.textColor = [UIColor redColor];
         }
