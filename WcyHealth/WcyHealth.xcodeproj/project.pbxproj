@@ -46,7 +46,7 @@
 		15395FEC1E82BD2700797C74 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEB1E82BD2700797C74 /* RegisterViewController.m */; };
 		15395FEF1E82C24000797C74 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15395FEE1E82C24000797C74 /* LoginViewController.m */; };
 		154455DC1E8D3516006CE72C /* ComboDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154455DB1E8D3516006CE72C /* ComboDetailViewController.m */; };
-		158760E61EA4EF5D008320C0 /* 登陆页面背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 158760E31EA4EF5D008320C0 /* 登陆页面背景.png */; };
+		158760E61EA4EF5D008320C0 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 158760E31EA4EF5D008320C0 /* login.png */; };
 		158760E71EA4EF5D008320C0 /* 默认头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 158760E41EA4EF5D008320C0 /* 默认头像.png */; };
 		158760E81EA4EF5D008320C0 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 158760E51EA4EF5D008320C0 /* back.png */; };
 		159FCA271E8AA21F00391107 /* AllOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FCA261E8AA21F00391107 /* AllOrderTableViewCell.m */; };
@@ -170,6 +170,7 @@
 		486D76131EB97B1D00081567 /* personalpage_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 486D76071EB97B1D00081567 /* personalpage_setting@3x.png */; };
 		488039371EA49D05000E37C3 /* summaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 488039361EA49D05000E37C3 /* summaryTableViewCell.m */; };
 		4880393A1EA4BE65000E37C3 /* detailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 488039391EA4BE65000E37C3 /* detailTableViewCell.m */; };
+		48CA970F1EBAD07A004A8739 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CA970E1EBAD07A004A8739 /* ChangePasswordViewController.m */; };
 		48DDD1FA1EB85A9E00E0E379 /* 未选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 48DDD1F81EB85A9E00E0E379 /* 未选中.png */; };
 		48DDD1FB1EB85A9E00E0E379 /* 选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 48DDD1F91EB85A9E00E0E379 /* 选中.png */; };
 		48DDD1FD1EB870AE00E0E379 /* Combo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DDD1FC1EB870AE00E0E379 /* Combo.plist */; };
@@ -280,7 +281,7 @@
 		15395FEE1E82C24000797C74 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		154455DA1E8D3516006CE72C /* ComboDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboDetailViewController.h; sourceTree = "<group>"; };
 		154455DB1E8D3516006CE72C /* ComboDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboDetailViewController.m; sourceTree = "<group>"; };
-		158760E31EA4EF5D008320C0 /* 登陆页面背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登陆页面背景.png"; sourceTree = "<group>"; };
+		158760E31EA4EF5D008320C0 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		158760E41EA4EF5D008320C0 /* 默认头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像.png"; sourceTree = "<group>"; };
 		158760E51EA4EF5D008320C0 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		159FCA251E8AA21F00391107 /* AllOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllOrderTableViewCell.h; sourceTree = "<group>"; };
@@ -500,6 +501,8 @@
 		488039361EA49D05000E37C3 /* summaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = summaryTableViewCell.m; sourceTree = "<group>"; };
 		488039381EA4BE65000E37C3 /* detailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailTableViewCell.h; sourceTree = "<group>"; };
 		488039391EA4BE65000E37C3 /* detailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailTableViewCell.m; sourceTree = "<group>"; };
+		48CA970D1EBAD07A004A8739 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		48CA970E1EBAD07A004A8739 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		48DDD1F81EB85A9E00E0E379 /* 未选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未选中.png"; sourceTree = "<group>"; };
 		48DDD1F91EB85A9E00E0E379 /* 选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中.png"; sourceTree = "<group>"; };
 		48DDD1FC1EB870AE00E0E379 /* Combo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Combo.plist; sourceTree = "<group>"; };
@@ -728,6 +731,8 @@
 				1514CA2B1E98B64C00F8C8F4 /* PersonInfoViewController.m */,
 				15C68DF71E9BBEA100DC71F4 /* ResultsViewController.h */,
 				15C68DF81E9BBEA100DC71F4 /* ResultsViewController.m */,
+				48CA970D1EBAD07A004A8739 /* ChangePasswordViewController.h */,
+				48CA970E1EBAD07A004A8739 /* ChangePasswordViewController.m */,
 			);
 			name = "个人中心";
 			sourceTree = "<group>";
@@ -903,7 +908,7 @@
 				480E8F2A1EA5F58D00F3E387 /* vcode.png */,
 				480E8F2B1EA5F58D00F3E387 /* vcode@2x.png */,
 				480E8F2C1EA5F58D00F3E387 /* vcode@3x.png */,
-				158760E31EA4EF5D008320C0 /* 登陆页面背景.png */,
+				158760E31EA4EF5D008320C0 /* login.png */,
 				158760E41EA4EF5D008320C0 /* 默认头像.png */,
 				158760E51EA4EF5D008320C0 /* back.png */,
 				15F2BE571E59A64600780AAC /* Yosemite00.jpg */,
@@ -1291,7 +1296,7 @@
 				48027B041EB9D3750061EA2D /* telephone.png in Resources */,
 				486D76101EB97B1D00081567 /* personalpage_ongoing@3x.png in Resources */,
 				486D76131EB97B1D00081567 /* personalpage_setting@3x.png in Resources */,
-				158760E61EA4EF5D008320C0 /* 登陆页面背景.png in Resources */,
+				158760E61EA4EF5D008320C0 /* login.png in Resources */,
 				480E8F301EA5F58D00F3E387 /* phonenumber.png in Resources */,
 				48DDD2201EB88B3200E0E379 /* 健康防癌.jpg in Resources */,
 				158760E71EA4EF5D008320C0 /* 默认头像.png in Resources */,
@@ -1480,6 +1485,7 @@
 				15F2BE551E59A44300780AAC /* PGIndexBannerSubiew.m in Sources */,
 				15A19A1B1E21FAC50063D373 /* InformationViewController.m in Sources */,
 				1514CA6E1E990CA900F8C8F4 /* MJRefreshConst.m in Sources */,
+				48CA970F1EBAD07A004A8739 /* ChangePasswordViewController.m in Sources */,
 				150C0FEB1EAB1A6C008F169C /* InformListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

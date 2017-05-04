@@ -17,10 +17,11 @@
 +(NSArray*)getAllUser;//获取所有用户
 +(BOOL)selectWithUserName:(NSString*)username;//判断用户是否已经注册
 +(BOOL)addOrder:(OrderInfo*)order;//增加订单
-+(BOOL)deleteOrderForOrdernum:(NSNumber*)number;//删除订单根据订单号
++(BOOL)deleteOrderForOrdernum:(NSString*)number;//删除订单根据订单号
 +(BOOL)changeOrderForOrderID:(NSString*)ordernum state:(NSString *)state;//修改订单状态
 +(NSArray*)getAllOrder;//获取所有订单
 +(NSArray*)getFinishOrder:(NSString *)string;//获取已完成订单，或未完成订单
 
-
+//修改用户密码
++(BOOL)changePasswordForUser:(NSString*)phonenum newPassword:(NSString *)password;
 @end

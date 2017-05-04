@@ -61,6 +61,16 @@ static MBPreferenceManager *sharedManager = nil;
 - (NSString *)getPassword{
      return [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
 }
+- (void)setAvatar:(NSData *)name {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:name forKey:@"Avatar"];
+    [defaults synchronize];
+}
+
+- (NSData *)getAvatar {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"Avatar"];
+}
 
 - (void)setUserState:(BOOL)isexist{
     [[NSUserDefaults standardUserDefaults] setBool:isexist forKey:@"exist"];

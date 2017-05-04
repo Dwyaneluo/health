@@ -77,6 +77,24 @@ static NSMutableArray *arr;
     }];
     return rs;
 }
+#pragma mark -修改用户密码
++(BOOL)changePasswordForUser:(NSString*)phonenum newPassword:(NSString *)password
+{
+    [fmq inDatabase:^(FMDatabase *db) {
+        NSString *sql=@"update user set password = ? where phonenum = ? ;";
+        BOOL rs=[db executeUpdate:sql,password,phonenum];
+        if (rs) {
+            NSLog(@"修改密码成功");
+        }
+        else
+        {
+            NSLog(@"修改密码失败");
+        }
+        
+    }];
+    return rs;
+    
+}
 #pragma mark -判断是否已注册用户
 +(BOOL)selectWithUserName:(NSString*)username
 {

@@ -33,7 +33,7 @@
 
     
     UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    bgImgView.image= [UIImage imageNamed:@"登陆页面背景"];
+    bgImgView.image= [UIImage imageNamed:@"login"];
     bgImgView.userInteractionEnabled=YES;
     [self.view addSubview:bgImgView];
     

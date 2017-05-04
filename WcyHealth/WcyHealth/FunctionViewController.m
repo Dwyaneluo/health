@@ -14,7 +14,7 @@
 @interface FunctionViewController ()<UITableViewDelegate,UITableViewDataSource,cellBtnClickDelegate>
 {
     UITableView *table;
-    NSArray *dataArr;//订单数组
+    NSMutableArray *dataArr;//订单数组
 }
 @end
 
@@ -48,7 +48,7 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    dataArr = [FMDBTool getAllOrder];
+    dataArr = [NSMutableArray arrayWithArray:[FMDBTool getAllOrder]];
     [table reloadData];
 }
 - (void)didReceiveMemoryWarning {
@@ -77,6 +77,41 @@
     order.orderInfo=info;
     order.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:order animated:YES];
+}
+//先要设Cell可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+//定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+//设置进入编辑状态时，Cell不会缩进
+- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+//点击删除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //在这里实现删除操作
+    OrderInfo *info = [dataArr objectAtIndex:indexPath.row];
+    if ([FMDBTool deleteOrderForOrdernum:info.ordernum]) {
+        //删除数据，和删除动画
+        [dataArr removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    }else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"删除订单失败！请稍后再试" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+
 }
 #pragma mark-
 #pragma mark- 重新购买&再次购买按钮事件

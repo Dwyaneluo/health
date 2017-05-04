@@ -19,6 +19,9 @@
 - (void)setUserState:(BOOL)isexist;
 - (BOOL)isExist;
 
+- (void)setAvatar:(NSData *)name;
+- (NSData *)getAvatar;
+
 - (void)setPhone:(NSString *)name;
 - (NSString *)getPhone;
 
@@ -36,4 +39,5 @@
 - (NSString *)getUserGender;
 - (void)setUserMarried:(NSString *)married;
 - (NSString *)getUserMarried;
+
 @end
