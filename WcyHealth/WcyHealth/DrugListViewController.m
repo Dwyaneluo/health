@@ -135,7 +135,7 @@ static int  totlePage=1;
     NSDictionary *dict = listArr[indexPath.row];
     NSString *str = [dict objectForKey:@"description"];
     CGSize size = [MBUtilities countString:str size:CGSizeMake(ScreenWidth-130, MAXFLOAT) fontSize:13];
-    return 60+size.height+5;
+    return 80+size.height+5;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dict = listArr[indexPath.row];
