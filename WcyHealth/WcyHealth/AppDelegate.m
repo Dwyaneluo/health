@@ -33,6 +33,7 @@
     UITabBarController *tb=[[UITabBarController alloc]init];
     //设置控制器为Window的根控制器
     
+    
     self.window.rootViewController=tb;
      //b.创建子控制器
     HomeViewController *home=[[HomeViewController alloc]init];
@@ -90,22 +91,25 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    self._didBecomeActiveCalled = NO;
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
      AppDelegate *app=[UIApplication sharedApplication].delegate;
-    
+    if (self._didBecomeActiveCalled == YES) {
+        return;
+    } else {
+        self._didBecomeActiveCalled = YES;
+    }
     //广告页的实现
     self.splashView= [[WcyAdSplashImgView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    self.splashView.image = [UIImage imageNamed:@"Yosemite02.jpg"];
+    self.splashView.image = [UIImage imageNamed:@"启动页面"];
     AppDelegate __weak* weakSelf = self;
     self.splashView.dismissAction = ^(void) {
         [weakSelf.splashView removeFromSuperview];

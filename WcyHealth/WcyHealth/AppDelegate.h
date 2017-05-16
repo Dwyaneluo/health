@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, assign) BOOL _didBecomeActiveCalled;
 @property (strong, nonatomic) UINavigationController *srnav;
 @end
 

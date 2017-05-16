@@ -163,6 +163,7 @@
 		482E8D291ECAE15000146FE3 /* 药品信息.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482E8D231ECAE15000146FE3 /* 药品信息.jpeg */; };
 		482E8D2A1ECAE15000146FE3 /* 预约体检.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482E8D241ECAE15000146FE3 /* 预约体检.jpeg */; };
 		482E8D2E1ECAE4DA00146FE3 /* 天气背景.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 482E8D2D1ECAE4DA00146FE3 /* 天气背景.jpg */; };
+		482E8D301ECAEC0400146FE3 /* 启动页面.png in Resources */ = {isa = PBXBuildFile; fileRef = 482E8D2F1ECAEC0400146FE3 /* 启动页面.png */; };
 		486D76081EB97B1D00081567 /* alarmclock.png in Resources */ = {isa = PBXBuildFile; fileRef = 486D75FC1EB97B1D00081567 /* alarmclock.png */; };
 		486D76091EB97B1D00081567 /* alarmclock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 486D75FD1EB97B1D00081567 /* alarmclock@2x.png */; };
 		486D760A1EB97B1D00081567 /* alarmclock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 486D75FE1EB97B1D00081567 /* alarmclock@3x.png */; };
@@ -499,6 +500,7 @@
 		482E8D231ECAE15000146FE3 /* 药品信息.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "药品信息.jpeg"; sourceTree = "<group>"; };
 		482E8D241ECAE15000146FE3 /* 预约体检.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "预约体检.jpeg"; sourceTree = "<group>"; };
 		482E8D2D1ECAE4DA00146FE3 /* 天气背景.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "天气背景.jpg"; sourceTree = "<group>"; };
+		482E8D2F1ECAEC0400146FE3 /* 启动页面.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页面.png"; sourceTree = "<group>"; };
 		486D75FC1EB97B1D00081567 /* alarmclock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmclock.png; sourceTree = "<group>"; };
 		486D75FD1EB97B1D00081567 /* alarmclock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmclock@2x.png"; sourceTree = "<group>"; };
 		486D75FE1EB97B1D00081567 /* alarmclock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmclock@3x.png"; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 		15A19A231E2202290063D373 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				482E8D2F1ECAEC0400146FE3 /* 启动页面.png */,
 				482E8D2D1ECAE4DA00146FE3 /* 天气背景.jpg */,
 				482E8D1F1ECAE15000146FE3 /* 疾病信息.jpg */,
 				482E8D201ECAE15000146FE3 /* 检查项目.jpg */,
@@ -1316,6 +1319,7 @@
 				480E8F2E1EA5F58D00F3E387 /* password@2x.png in Resources */,
 				48027B041EB9D3750061EA2D /* telephone.png in Resources */,
 				486D76101EB97B1D00081567 /* personalpage_ongoing@3x.png in Resources */,
+				482E8D301ECAEC0400146FE3 /* 启动页面.png in Resources */,
 				486D76131EB97B1D00081567 /* personalpage_setting@3x.png in Resources */,
 				482E8D291ECAE15000146FE3 /* 药品信息.jpeg in Resources */,
 				158760E61EA4EF5D008320C0 /* login.png in Resources */,
