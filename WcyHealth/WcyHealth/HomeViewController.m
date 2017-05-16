@@ -39,9 +39,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"首页";
-    
-
-    
+    [self createView];
+}
+//创建视图
+-(void)createView{
     for (int index = 0; index < 5; index++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d.jpg",index]];
         [self.imageArray addObject:image];
@@ -102,7 +103,7 @@
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     
-
+    
     nightImgV = [UIImageView new];
     [headView addSubview:nightImgV];
     [nightImgV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -155,7 +156,6 @@
     
     [self.view addSubview:CollView];
 }
-
 -(void)viewWillAppear:(BOOL)animated{
         [self getNetWork];
 }

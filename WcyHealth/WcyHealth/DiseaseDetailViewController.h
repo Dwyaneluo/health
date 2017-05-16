@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DiseaseDetailViewController : UIViewController
-@property(nonatomic,copy)NSString *idStr;
+@property(nonatomic,copy)NSString *urlStr;
+@property(nonatomic,copy)NSString *titleStr;
 @end

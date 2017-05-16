@@ -142,8 +142,28 @@ static int  totlePage=1;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dict = listArr[indexPath.row];
     DiseaseDetailViewController *detail = [DiseaseDetailViewController new];
-    detail.idStr = [dict objectForKey:@"id"];
-    [self.navigationController pushViewController:detail animated:YES];
+    //创建请求管理器
+    AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
+    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/disease/show?id=%@",[dict objectForKey:@"id"]];
+    NSLog(@"%@",url);
+    NSMutableDictionary *params=[NSMutableDictionary dictionary];
+    
+    
+    [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"responseObject:%@",responseObject);
+
+        if (![responseObject[@"error"] boolValue]) {
+
+            //获取数据
+            detail.titleStr = [responseObject objectForKey:@"name"];
+            detail.urlStr = [responseObject objectForKey:@"url"];
+            [self.navigationController pushViewController:detail animated:YES];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showWithStatus:@"获取失败"];
+        NSLog(@"数据获取失败，%@",error);
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

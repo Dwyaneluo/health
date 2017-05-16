@@ -10,7 +10,6 @@
 
 @interface DrugDetailViewController ()<UIWebViewDelegate>{
     UIWebView* webView;
-    NSDictionary *dict;
 }
 
 @end
@@ -21,9 +20,11 @@
     [super viewDidLoad];
     
     [self createView];
-}
--(void)viewWillAppear:(BOOL)animated{
-    [self refreshData];
+    self.title = self.titleStr;
+    [SVProgressHUD show];
+    NSURL *url=[NSURL URLWithString:self.urlStr];
+    NSURLRequest *request=[NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
 }
 
 -(void)createView {
@@ -36,9 +37,6 @@
     [self.view addSubview:webView];
     webView.delegate=self;
 }
--(void)refreshData{
-    [self getNetWork];
-}
 - (void)backBtnClick{
     [self .navigationController popViewControllerAnimated:YES];
 }
@@ -50,36 +48,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
-}
--(void)getNetWork
-{
-    [SVProgressHUD show];
-    //创建请求管理器
-    AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/drug/show?id=%@",self.idStr];
-    NSLog(@"%@",url);
-    NSMutableDictionary *params=[NSMutableDictionary dictionary];
-    
-    
-    [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"responseObject:%@",responseObject);
-        
-        
-        if (![responseObject[@"error"] boolValue]) {
-            
-            
-            //获取数据
-            dict  = responseObject;
-            self.title = [dict objectForKey:@"name"];
-            NSURL *url=[NSURL URLWithString:[dict objectForKey:@"url"]];
-            NSURLRequest *request=[NSURLRequest requestWithURL:url];
-            [webView loadRequest:request];
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [SVProgressHUD showWithStatus:@"获取失败"];
-        NSLog(@"数据获取失败，%@",error);
-    }];
 }
 
 

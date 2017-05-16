@@ -14,8 +14,8 @@
     UITextField *phoneTld;
     UITextField *verifyTld;
     UITextField *passwordTld;
+    UITextField *passwordTwo;
     UIButton *registBtn;
-    UIButton *verifyBtn;
     SFVerificationCodeView *verifyView;
 }
 @end
@@ -88,12 +88,29 @@
     passwordTld.leftViewMode=UITextFieldViewModeAlways; //此处用来设置leftview现实时机
     passwordTld.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
+    passwordTwo = [UITextField new];
+    passwordTwo.borderStyle = UITextBorderStyleRoundedRect;
+    [self.view addSubview:passwordTwo];
+    [passwordTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(passwordTld.mas_bottom).with.offset(30);
+        make.left.equalTo(self.view.mas_left).with.offset(15);
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 40));
+    }];
+    passwordTwo.placeholder = @"请确认你的密码";
+    [self.view addSubview:passwordTwo];
+    passwordTwo.secureTextEntry=YES;
+    UIImageView *passwordIconTwo=[[UIImageView alloc]initWithFrame:CGRectMake(-20, 0, 32, 24)];
+    passwordIconTwo.image = [UIImage imageNamed:@"password"];
+    passwordTwo.leftView=passwordIconTwo;
+    passwordTwo.leftViewMode=UITextFieldViewModeAlways; //此处用来设置leftview现实时机
+    passwordTwo.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    
     verifyTld = [UITextField new];
     verifyTld.borderStyle = UITextBorderStyleRoundedRect;
     verifyTld.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self.view addSubview:verifyTld];
     [verifyTld mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(passwordTld.mas_bottom).with.offset(30);
+        make.top.equalTo(passwordTwo.mas_bottom).with.offset(30);
         make.left.equalTo(self.view.mas_left).with.offset(15);
         make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 40));
     }];
@@ -126,7 +143,7 @@
         make.size.mas_equalTo(CGSizeMake(120, 30));
     }];
     
-
+    
     
     registBtn = [UIButton new];
     registBtn.layer.masksToBounds=YES;
@@ -163,21 +180,24 @@
         UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [verifyView generateVerificationCode];
         }];
-
+        
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
     //判断信息是否输入完整
-    if (phoneTld.text.length>0&&passwordTld.text.length>0) {
-        if ([FMDBTool selectWithUserName:phoneTld.text]) {
+    if (phoneTld.text.length>0&&passwordTld.text.length>0&&passwordTwo.text.length>0) {
+        if (![passwordTld.text isEqualToString:passwordTwo.text]) {
+            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"两次密码不一致！" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else if ([FMDBTool selectWithUserName:phoneTld.text]) {
             UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"用户已注册！" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
-        }
-        else
-        {
+        }else{
             User *u=[User new];
             u.phonenum=phoneTld.text;
             u.password=passwordTld.text;

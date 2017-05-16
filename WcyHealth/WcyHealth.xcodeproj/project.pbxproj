@@ -687,7 +687,7 @@
 			isa = PBXGroup;
 			children = (
 				15FAF7BD1EB46324001F1FD1 /* 疾病信息 */,
-				15FAF7B01EB446CC001F1FD1 /* 科室检查 */,
+				15FAF7B01EB446CC001F1FD1 /* 检查项目 */,
 				15FAF7AF1EB446B6001F1FD1 /* 药品信息 */,
 				15A19A161E21F9B70063D373 /* HomeViewController.h */,
 				15A19A171E21F9B70063D373 /* HomeViewController.m */,
@@ -1095,7 +1095,7 @@
 			name = "药品信息";
 			sourceTree = "<group>";
 		};
-		15FAF7B01EB446CC001F1FD1 /* 科室检查 */ = {
+		15FAF7B01EB446CC001F1FD1 /* 检查项目 */ = {
 			isa = PBXGroup;
 			children = (
 				15FAF7B11EB44E24001F1FD1 /* CheckViewController.h */,
@@ -1105,7 +1105,7 @@
 				15FAF7B71EB45FF2001F1FD1 /* CheckDetailViewController.h */,
 				15FAF7B81EB45FF2001F1FD1 /* CheckDetailViewController.m */,
 			);
-			name = "科室检查";
+			name = "检查项目";
 			sourceTree = "<group>";
 		};
 		15FAF7BD1EB46324001F1FD1 /* 疾病信息 */ = {

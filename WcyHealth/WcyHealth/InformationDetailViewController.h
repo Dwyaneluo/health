@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InformationDetailViewController : UIViewController
-@property (nonatomic,copy)NSString *detailId;
+@property(nonatomic,copy)NSString *urlStr;
+@property(nonatomic,copy)NSString *titleStr;
 @end

@@ -141,8 +141,27 @@ static int  totlePage=1;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dict = listArr[indexPath.row];
     InformationDetailViewController *detail = [InformationDetailViewController new];
-    detail.detailId = [dict objectForKey:@"id"];
-    [self.navigationController pushViewController:detail animated:YES];
+    AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
+    
+    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/info/show?id=%@",[dict objectForKey:@"id"]];
+    NSMutableDictionary *params=[NSMutableDictionary dictionary];
+    
+    
+    [manger GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"responseObject:%@",responseObject);
+        
+        
+        if (![responseObject[@"error"] boolValue]) {
+            //获取数据
+            detail.titleStr = [responseObject objectForKey:@"title"];
+            detail.urlStr = [responseObject objectForKey:@"url"];
+            [self.navigationController pushViewController:detail animated:YES];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showWithStatus:@"获取失败"];
+        NSLog(@"数据获取失败，%@",error);
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
