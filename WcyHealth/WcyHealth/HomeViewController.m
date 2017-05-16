@@ -50,8 +50,9 @@
     
     
     
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 65, ScreenWidth, 200)];
-    headView.backgroundColor = [UIColor whiteColor];
+    UIImageView *headView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, ScreenWidth, 200)];
+    headView.image = [UIImage imageNamed:@"天气背景.jpg"];
+    headView.userInteractionEnabled=YES;
     [self.view addSubview:headView];
     
     dateLb = [UILabel new];
@@ -252,31 +253,31 @@
     
     UILabel *label = [UILabel new];
     label.font = [UIFont boldSystemFontOfSize:16];
-    label.textAlignment = NSTextAlignmentRight;
+    label.textAlignment = NSTextAlignmentCenter;
     [cell addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(image.mas_bottom).with.offset(5);
-        make.left.equalTo(cell.mas_left);
+        make.centerX.equalTo(cell.mas_centerX);
         make.size.mas_equalTo(CGSizeMake((ScreenWidth-40)/4, 20));
     }];
     
     if (indexPath.row==0){
-        image.image = [UIImage imageNamed:@"1"];
+        image.image = [UIImage imageNamed:@"预约体检.jpeg"];
         label.text = @"预约体检";
     }else if (indexPath.row==1){
-        image.image = [UIImage imageNamed:@"2"];
+        image.image = [UIImage imageNamed:@"体检报告.jpeg"];
         label.text = @"体检报告";
     }else if (indexPath.row==2){
-        image.image = [UIImage imageNamed:@"2"];
+        image.image = [UIImage imageNamed:@"健康资讯.jpeg"];
         label.text = @"健康资讯";
     }else if (indexPath.row==3){
-        image.image = [UIImage imageNamed:@"2"];
+        image.image = [UIImage imageNamed:@"药品信息.jpeg"];
         label.text = @"药品信息";
     }else if (indexPath.row==4){
-        image.image = [UIImage imageNamed:@"2"];
+        image.image = [UIImage imageNamed:@"检查项目.jpg"];
         label.text = @"检查项目";
     }else if (indexPath.row==5){
-        image.image = [UIImage imageNamed:@"2"];
+        image.image = [UIImage imageNamed:@"疾病信息.jpg"];
         label.text = @"疾病信息";
     }
     
