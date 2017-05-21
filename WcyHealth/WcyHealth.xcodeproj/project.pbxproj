@@ -111,6 +111,11 @@
 		15AD75131E48B009000C2217 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15AD750C1E48B009000C2217 /* SVProgressHUD.bundle */; };
 		15AD75141E48B009000C2217 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD750E1E48B009000C2217 /* SVProgressHUD.m */; };
 		15AD75151E48B009000C2217 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD75101E48B009000C2217 /* SVRadialGradientLayer.m */; };
+		15B9CDD71ED1DB560014ABEA /* Yosemite01.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 15B9CDD21ED1DB560014ABEA /* Yosemite01.jpeg */; };
+		15B9CDD81ED1DB560014ABEA /* Yosemite02.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 15B9CDD31ED1DB560014ABEA /* Yosemite02.jpeg */; };
+		15B9CDD91ED1DB560014ABEA /* Yosemite03.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 15B9CDD41ED1DB560014ABEA /* Yosemite03.jpeg */; };
+		15B9CDDA1ED1DB560014ABEA /* Yosemite04.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 15B9CDD51ED1DB560014ABEA /* Yosemite04.jpeg */; };
+		15B9CDDB1ED1DB560014ABEA /* Yosemite05.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 15B9CDD61ED1DB560014ABEA /* Yosemite05.jpeg */; };
 		15C15BDE1EAC5214005903DE /* DrugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C15BDD1EAC5214005903DE /* DrugListViewController.m */; };
 		15C15BE11EAC57B4005903DE /* DrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C15BE01EAC57B4005903DE /* DrugViewController.m */; };
 		15C15BE41EAC5A1F005903DE /* DrugDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C15BE31EAC5A1F005903DE /* DrugDetailViewController.m */; };
@@ -118,11 +123,6 @@
 		15F2BE4D1E59885100780AAC /* MBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE4C1E59885100780AAC /* MBUtilities.m */; };
 		15F2BE551E59A44300780AAC /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE511E59A44300780AAC /* PGIndexBannerSubiew.m */; };
 		15F2BE561E59A44300780AAC /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2BE541E59A44300780AAC /* NewPagedFlowView.m */; };
-		15F2BE5C1E59A64600780AAC /* Yosemite00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15F2BE571E59A64600780AAC /* Yosemite00.jpg */; };
-		15F2BE5D1E59A64600780AAC /* Yosemite01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15F2BE581E59A64600780AAC /* Yosemite01.jpg */; };
-		15F2BE5E1E59A64600780AAC /* Yosemite02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15F2BE591E59A64600780AAC /* Yosemite02.jpg */; };
-		15F2BE5F1E59A64600780AAC /* Yosemite03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15F2BE5A1E59A64600780AAC /* Yosemite03.jpg */; };
-		15F2BE601E59A64600780AAC /* Yosemite04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15F2BE5B1E59A64600780AAC /* Yosemite04.jpg */; };
 		15FAF7B31EB44E24001F1FD1 /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FAF7B21EB44E24001F1FD1 /* CheckViewController.m */; };
 		15FAF7B61EB457B7001F1FD1 /* CheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FAF7B51EB457B7001F1FD1 /* CheckListViewController.m */; };
 		15FAF7B91EB45FF2001F1FD1 /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FAF7B81EB45FF2001F1FD1 /* CheckDetailViewController.m */; };
@@ -418,6 +418,11 @@
 		15AD750E1E48B009000C2217 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		15AD750F1E48B009000C2217 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		15AD75101E48B009000C2217 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		15B9CDD21ED1DB560014ABEA /* Yosemite01.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite01.jpeg; sourceTree = "<group>"; };
+		15B9CDD31ED1DB560014ABEA /* Yosemite02.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite02.jpeg; sourceTree = "<group>"; };
+		15B9CDD41ED1DB560014ABEA /* Yosemite03.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite03.jpeg; sourceTree = "<group>"; };
+		15B9CDD51ED1DB560014ABEA /* Yosemite04.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite04.jpeg; sourceTree = "<group>"; };
+		15B9CDD61ED1DB560014ABEA /* Yosemite05.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite05.jpeg; sourceTree = "<group>"; };
 		15C15BDC1EAC5214005903DE /* DrugListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugListViewController.h; sourceTree = "<group>"; };
 		15C15BDD1EAC5214005903DE /* DrugListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugListViewController.m; sourceTree = "<group>"; };
 		15C15BDF1EAC57B4005903DE /* DrugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugViewController.h; sourceTree = "<group>"; };
@@ -433,11 +438,6 @@
 		15F2BE511E59A44300780AAC /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
 		15F2BE531E59A44300780AAC /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
 		15F2BE541E59A44300780AAC /* NewPagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPagedFlowView.m; sourceTree = "<group>"; };
-		15F2BE571E59A64600780AAC /* Yosemite00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite00.jpg; sourceTree = "<group>"; };
-		15F2BE581E59A64600780AAC /* Yosemite01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite01.jpg; sourceTree = "<group>"; };
-		15F2BE591E59A64600780AAC /* Yosemite02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite02.jpg; sourceTree = "<group>"; };
-		15F2BE5A1E59A64600780AAC /* Yosemite03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite03.jpg; sourceTree = "<group>"; };
-		15F2BE5B1E59A64600780AAC /* Yosemite04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite04.jpg; sourceTree = "<group>"; };
 		15FAF7B11EB44E24001F1FD1 /* CheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckViewController.h; sourceTree = "<group>"; };
 		15FAF7B21EB44E24001F1FD1 /* CheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckViewController.m; sourceTree = "<group>"; };
 		15FAF7B41EB457B7001F1FD1 /* CheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListViewController.h; sourceTree = "<group>"; };
@@ -883,6 +883,11 @@
 		15A19A231E2202290063D373 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				15B9CDD21ED1DB560014ABEA /* Yosemite01.jpeg */,
+				15B9CDD31ED1DB560014ABEA /* Yosemite02.jpeg */,
+				15B9CDD41ED1DB560014ABEA /* Yosemite03.jpeg */,
+				15B9CDD51ED1DB560014ABEA /* Yosemite04.jpeg */,
+				15B9CDD61ED1DB560014ABEA /* Yosemite05.jpeg */,
 				482E8D2F1ECAEC0400146FE3 /* 启动页面.png */,
 				482E8D2D1ECAE4DA00146FE3 /* 天气背景.jpg */,
 				482E8D1F1ECAE15000146FE3 /* 疾病信息.jpg */,
@@ -930,11 +935,6 @@
 				158760E31EA4EF5D008320C0 /* login.png */,
 				158760E41EA4EF5D008320C0 /* 默认头像.png */,
 				158760E51EA4EF5D008320C0 /* back.png */,
-				15F2BE571E59A64600780AAC /* Yosemite00.jpg */,
-				15F2BE581E59A64600780AAC /* Yosemite01.jpg */,
-				15F2BE591E59A64600780AAC /* Yosemite02.jpg */,
-				15F2BE5A1E59A64600780AAC /* Yosemite03.jpg */,
-				15F2BE5B1E59A64600780AAC /* Yosemite04.jpg */,
 				15A19A241E2202640063D373 /* 4.png */,
 				15A19A251E2202640063D373 /* 3.png */,
 				15A19A261E2202640063D373 /* 2.png */,
@@ -1326,6 +1326,7 @@
 				48DDD2221EB88B3200E0E379 /* 入职.jpg in Resources */,
 				480E8F2E1EA5F58D00F3E387 /* password@2x.png in Resources */,
 				48027B041EB9D3750061EA2D /* telephone.png in Resources */,
+				15B9CDDB1ED1DB560014ABEA /* Yosemite05.jpeg in Resources */,
 				486D76101EB97B1D00081567 /* personalpage_ongoing@3x.png in Resources */,
 				482E8D301ECAEC0400146FE3 /* 启动页面.png in Resources */,
 				486D76131EB97B1D00081567 /* personalpage_setting@3x.png in Resources */,
@@ -1336,23 +1337,25 @@
 				48DDD2201EB88B3200E0E379 /* 健康防癌.jpg in Resources */,
 				158760E71EA4EF5D008320C0 /* 默认头像.png in Resources */,
 				480E8F2D1EA5F58D00F3E387 /* password.png in Resources */,
+				15B9CDD71ED1DB560014ABEA /* Yosemite01.jpeg in Resources */,
 				480E8F331EA5F58D00F3E387 /* vcode.png in Resources */,
 				158760E81EA4EF5D008320C0 /* back.png in Resources */,
 				482E8D2A1ECAE15000146FE3 /* 预约体检.jpeg in Resources */,
 				15A19A9A1E226E140063D373 /* Info.plist in Resources */,
+				15B9CDD81ED1DB560014ABEA /* Yosemite02.jpeg in Resources */,
 				482E8D271ECAE15000146FE3 /* 健康资讯.jpeg in Resources */,
+				15B9CDDA1ED1DB560014ABEA /* Yosemite04.jpeg in Resources */,
 				480E8F321EA5F58D00F3E387 /* phonenumber@3x.png in Resources */,
 				15AD75131E48B009000C2217 /* SVProgressHUD.bundle in Resources */,
 				48DDD2231EB88B3200E0E379 /* 心脑血管.jpg in Resources */,
 				48027B061EB9D3750061EA2D /* telephone@3x.png in Resources */,
-				15F2BE5F1E59A64600780AAC /* Yosemite03.jpg in Resources */,
 				486D76091EB97B1D00081567 /* alarmclock@2x.png in Resources */,
 				48DDD2241EB88B3200E0E379 /* 中青年男.jpg in Resources */,
+				15B9CDD91ED1DB560014ABEA /* Yosemite03.jpeg in Resources */,
 				486D760D1EB97B1D00081567 /* individuals-sel@3x.png in Resources */,
 				15A19A2A1E2202640063D373 /* 2.png in Resources */,
 				48DDD21F1EB88B3200E0E379 /* 婚前女.jpg in Resources */,
 				480E8F231EA5C3DC00F3E387 /* IQKeyboardManager.bundle in Resources */,
-				15F2BE601E59A64600780AAC /* Yosemite04.jpg in Resources */,
 				48DDD21E1EB88B3200E0E379 /* 婚前男.jpg in Resources */,
 				15A19A291E2202640063D373 /* 3.png in Resources */,
 				480E8F2F1EA5F58D00F3E387 /* password@3x.png in Resources */,
@@ -1365,7 +1368,6 @@
 				480E8F351EA5F58D00F3E387 /* vcode@3x.png in Resources */,
 				482E8D281ECAE15000146FE3 /* 体检报告.jpeg in Resources */,
 				48DDD2251EB88B3200E0E379 /* 中青年女.jpg in Resources */,
-				15F2BE5C1E59A64600780AAC /* Yosemite00.jpg in Resources */,
 				482E8D261ECAE15000146FE3 /* 检查项目.jpg in Resources */,
 				486D760A1EB97B1D00081567 /* alarmclock@3x.png in Resources */,
 				48DDD1FD1EB870AE00E0E379 /* Combo.plist in Resources */,
@@ -1377,10 +1379,8 @@
 				486D760E1EB97B1D00081567 /* personalpage_ongoing.png in Resources */,
 				480E8F341EA5F58D00F3E387 /* vcode@2x.png in Resources */,
 				48DDD1FA1EB85A9E00E0E379 /* 未选中.png in Resources */,
-				15F2BE5D1E59A64600780AAC /* Yosemite01.jpg in Resources */,
 				15A199E31E21F6C60063D373 /* Main.storyboard in Resources */,
 				486D76111EB97B1D00081567 /* personalpage_setting.png in Resources */,
-				15F2BE5E1E59A64600780AAC /* Yosemite02.jpg in Resources */,
 				15A19A2B1E2202640063D373 /* 1.png in Resources */,
 				1518CEAC1EB588260027DCA4 /* FMDB1.textClipping in Resources */,
 				48DDD21C1EB88B3200E0E379 /* 妇科.jpg in Resources */,

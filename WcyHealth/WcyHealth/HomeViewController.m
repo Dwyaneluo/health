@@ -43,8 +43,8 @@
 }
 //创建视图
 -(void)createView{
-    for (int index = 0; index < 5; index++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d.jpg",index]];
+    for (int index = 1; index < 6; index++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d.jpeg",index]];
         [self.imageArray addObject:image];
     }
     

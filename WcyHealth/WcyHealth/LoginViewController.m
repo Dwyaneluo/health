@@ -179,7 +179,7 @@
 -(void)loginBtnClick{
     [self.view endEditing:YES];
     //判断用户输入信息是否完整
-    if (phoneTld.text.length>0&&passwordTld.text.length>0&&verifyTld.text.length>0) {
+    if (phoneTld.text.length<1||passwordTld.text.length<1||verifyTld.text.length<1) {
         UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"用户信息填写不完整！" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
         [alert addAction:cancel];
