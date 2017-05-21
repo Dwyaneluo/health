@@ -174,20 +174,20 @@
 -(void)registBtnClick
 {
     [self.view endEditing:YES];
-    //判断验证码输入是否正确
-    if (![verifyTld.text isEqualToString:verifyView.code]) {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"验证码输入错误！" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [verifyView generateVerificationCode];
-        }];
-        
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
-    }
+   
     //判断信息是否输入完整
-    if (phoneTld.text.length>0&&passwordTld.text.length>0&&passwordTwo.text.length>0) {
-        if (![passwordTld.text isEqualToString:passwordTwo.text]) {
+    if (phoneTld.text.length>0&&passwordTld.text.length>0&&passwordTwo.text.length>0&&verifyTld.text.length>0) {
+        //判断验证码输入是否正确
+        if (![verifyTld.text isEqualToString:verifyView.code]) {
+            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"验证码输入错误！" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                [verifyView generateVerificationCode];
+            }];
+            
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }else if (![passwordTld.text isEqualToString:passwordTwo.text]) {
             UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示信息" message:@"两次密码不一致！" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
             [alert addAction:cancel];

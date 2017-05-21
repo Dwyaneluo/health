@@ -686,17 +686,12 @@
 		15395FE81E82BCC700797C74 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				15A19A161E21F9B70063D373 /* HomeViewController.h */,
+				15A19A171E21F9B70063D373 /* HomeViewController.m */,
+				15E193FA1ECFE90C00C5DAC9 /* 预约体检 */,
 				15FAF7BD1EB46324001F1FD1 /* 疾病信息 */,
 				15FAF7B01EB446CC001F1FD1 /* 检查项目 */,
 				15FAF7AF1EB446B6001F1FD1 /* 药品信息 */,
-				15A19A161E21F9B70063D373 /* HomeViewController.h */,
-				15A19A171E21F9B70063D373 /* HomeViewController.m */,
-				159FCA2B1E8AAB1B00391107 /* BookingViewController.h */,
-				159FCA2C1E8AAB1B00391107 /* BookingViewController.m */,
-				154455DA1E8D3516006CE72C /* ComboDetailViewController.h */,
-				154455DB1E8D3516006CE72C /* ComboDetailViewController.m */,
-				152F8DBF1E96724F0070939C /* MakeAppointmentViewController.h */,
-				152F8DC01E96724F0070939C /* MakeAppointmentViewController.m */,
 			);
 			name = "首页";
 			sourceTree = "<group>";
@@ -1062,6 +1057,19 @@
 				15AD75101E48B009000C2217 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		15E193FA1ECFE90C00C5DAC9 /* 预约体检 */ = {
+			isa = PBXGroup;
+			children = (
+				159FCA2B1E8AAB1B00391107 /* BookingViewController.h */,
+				159FCA2C1E8AAB1B00391107 /* BookingViewController.m */,
+				154455DA1E8D3516006CE72C /* ComboDetailViewController.h */,
+				154455DB1E8D3516006CE72C /* ComboDetailViewController.m */,
+				152F8DBF1E96724F0070939C /* MakeAppointmentViewController.h */,
+				152F8DC01E96724F0070939C /* MakeAppointmentViewController.m */,
+			);
+			name = "预约体检";
 			sourceTree = "<group>";
 		};
 		15F2BE4F1E59A44300780AAC /* CustomeView */ = {

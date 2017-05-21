@@ -121,19 +121,19 @@
         make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 20));
     }];
     
-    lookBtn =[UIButton new];
-    [lookBtn setTitle:@"查看报告" forState:UIControlStateNormal];
-    [lookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [lookBtn addTarget:self action:@selector(lookBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    lookBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    lookBtn.layer.borderWidth=1;
-    lookBtn.layer.borderColor = [UIColor blackColor].CGColor;
-    [head addSubview:lookBtn];
-    [lookBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(head.mas_top).with.offset(60);
-        make.right.equalTo(head.mas_right).with.offset(-10);
-        make.size.mas_equalTo(CGSizeMake(80, 30));
-    }];
+//    lookBtn =[UIButton new];
+//    [lookBtn setTitle:@"查看报告" forState:UIControlStateNormal];
+//    [lookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [lookBtn addTarget:self action:@selector(lookBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    lookBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+//    lookBtn.layer.borderWidth=1;
+//    lookBtn.layer.borderColor = [UIColor blackColor].CGColor;
+//    [head addSubview:lookBtn];
+//    [lookBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(head.mas_top).with.offset(60);
+//        make.right.equalTo(head.mas_right).with.offset(-10);
+//        make.size.mas_equalTo(CGSizeMake(80, 30));
+//    }];
 }
 #pragma mark - 
 #pragma mark - 查看报告按钮事件
@@ -230,6 +230,15 @@
 #pragma mark -
 #pragma mark - 退款按钮事件
 - (void)refundBtnClick{
+    if ([self.orderInfo.orderstate isEqualToString:@"已取消"]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"该订单已取消，不可重新取消" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"确定取消该订单？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if ([FMDBTool changeOrderForOrderID:self.orderInfo.ordernum state:@"已取消"]) {

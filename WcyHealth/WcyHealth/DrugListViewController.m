@@ -82,7 +82,7 @@ static int  totlePage=1;
     [SVProgressHUD show];
     //创建请求管理器
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/drug/list?id=%@?page=%d",self.classId,currentPage];
+    NSString *url=[NSString stringWithFormat:@"http://www.tngou.net/api/drug/list?id=%@&page=%d",self.classId,currentPage];
     NSLog(@"%@",url);
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
     

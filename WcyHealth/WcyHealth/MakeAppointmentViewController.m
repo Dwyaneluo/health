@@ -190,7 +190,7 @@
         if ([FMDBTool addOrder:order]) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"提交订单成功，可去我的订单界面查看。" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self backBtnClick];
+                 [self.navigationController popToRootViewControllerAnimated:YES];
             }];
             [alert addAction:action];
             [self presentViewController:alert animated:YES completion:nil];

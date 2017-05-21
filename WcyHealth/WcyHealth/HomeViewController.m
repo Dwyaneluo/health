@@ -353,6 +353,7 @@
     //创建请求管理器
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
 
+    //填入参数
     NSString *url=@"http://api.map.baidu.com/telematics/v3/weather";
     NSMutableDictionary *params=[NSMutableDictionary dictionary];
     params[@"location"]=@"苏州";

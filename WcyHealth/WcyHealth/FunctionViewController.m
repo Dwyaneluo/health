@@ -11,6 +11,7 @@
 #import "OrderDetailViewController.h"
 #import "LoginViewController.h"
 #import "ComboDetailViewController.h"
+#import "BookingViewController.h"
 @interface FunctionViewController ()<UITableViewDelegate,UITableViewDataSource,cellBtnClickDelegate>
 {
     UITableView *table;
@@ -125,8 +126,8 @@
     [dict setValue:info.orderimage forKey:@"image"];
     [dict setValue:info.orderdetail forKey:@"detail"];
     
-    ComboDetailViewController *combo = [ComboDetailViewController new];
-    combo.infoDict = dict;
-    [self.navigationController pushViewController:combo animated:YES];
+    BookingViewController *book = [BookingViewController new];
+    
+    [self.navigationController pushViewController:book animated:YES];
 }
 @end
